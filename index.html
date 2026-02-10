@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>qekkel</title>
+  <meta name="description" content="qekkel — artist portfolio. Arts, projects, store, contact." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet"> 
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="qekkel — portfolio" />
+  <meta property="og:image" content="images/preview.jpg" />
+
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+
+<body>
+  <div id="wrapper">
+
+    <!-- HERO / HEADER -->
+    <header id="header">
+     
+
+
+<button id="open-cart" class="nav-btn cart-btn">
+  <span data-i18n="cart">Cart</span>
+  <span class="cart-count">0</span>
+</button>
+
+      <div class="content">
+        <div class="inner">
+          <h1>qekkel</h1>
+          <p data-i18n="hero_subtitle">Artist portfolio</p>
+
+          <!-- Language toggle -->
+          <div class="lang-toggle" role="group" aria-label="Language switch">
+            <button type="button" class="lang-btn" data-lang="ru" aria-pressed="false">RU</button>
+            <button type="button" class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
+          </div>
+        </div>
+      </div>
+
+      <nav class="site-nav" aria-label="Section navigation">
+        <ul>
+          <li><a href="#arts" data-i18n="nav_arts">Arts</a></li>
+          <li><a href="#projects" data-i18n="nav_projects">Projects</a></li>
+          <li><a href="#about" data-i18n="nav_about">About</a></li>
+          <li><a href="#store" data-i18n="nav_store">Store</a></li>
+          <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+
+    
+    <!-- MAIN -->
+    <main id="page">
+  
+      <!-- ARTS -->
+      <section id="arts" class="section">
+        <div class="gallery">
+          <h2 class="major" data-i18n="arts_title">Arts</h2>
+
+          <div class="art-grid">
+            <!-- заменяй src на свои файлы -->
+            <div class="art-item"><img loading="lazy" src="images/art1.gif" alt="Artwork 1"></div>
+            <div class="art-item"><img loading="lazy" src="images/art2.webp" alt="Artwork 2"></div>
+            <div class="art-item"><img loading="lazy" src="images/art3.gif" alt="Artwork 3"></div>
+            <div class="art-item"><img loading="lazy" src="images/art4.webp" alt="Artwork 4"></div>
+            <div class="art-item"><img loading="lazy" src="images/art5.webp" alt="Artwork 5"></div>
+            <div class="art-item"><img loading="lazy" src="images/art6.webp" alt="Artwork 6"></div>
+            <div class="art-item"><img loading="lazy" src="images/art7.jpg" alt="Artwork 7"></div>
+            <div class="art-item"><img loading="lazy" src="images/art8.jpg" alt="Artwork 8"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects" class="section">
+        <div class="gallery">
+          <h2 class="major" data-i18n="projects_title">Projects</h2>
+
+          <div class="projects-grid">
+            <a class="project-card wide" href="#" onclick="event.preventDefault()">
+              <div class="project-thumb">
+                <img loading="lazy" src="projects/1/bloody.jpg" alt="Project 1">
+              </div>
+              <div class="project-info">
+                <h3 data-i18n="proj1_title">Stickers</h3>
+                <p data-i18n="proj1_desc">Creating sticker for bar</p>
+              </div>
+            </a>
+
+            <a class="project-card tall" href="#" onclick="event.preventDefault()">
+              <div class="project-thumb">
+                <img loading="lazy" src="projects/2/olia-qekkel-8.jpg" alt="Project 2">
+              </div>
+              <div class="project-info">
+                <h3 data-i18n="proj2_title">CG project of Home</h3>
+                <p data-i18n="proj2_desc">Short description of the project.</p>
+              </div>
+            </a>
+
+            <a class="project-card" href="#" onclick="event.preventDefault()">
+              <div class="project-thumb">
+                <img loading="lazy" src="projects/4/hmirov-1.jpg" alt="Project 3">
+              </div>
+              <div class="project-info">
+                <h3 data-i18n="proj3_title">Project 3</h3>
+                <p data-i18n="proj3_desc">Short description of the project.</p>
+              </div>
+            </a>
+
+            <a class="project-card" href="#" onclick="event.preventDefault()">
+              <div class="project-thumb">
+                <img loading="lazy" src="projects/3/pastramamaa-02.png" alt="Project 4">
+              </div>
+              <div class="project-info">
+                <h3 data-i18n="proj4_title">Project 4</h3>
+                <p data-i18n="proj4_desc">Short description of the project.</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+ <!-- ABOUT -->
+<section id="about" class="section">
+   <div class="about-photos">
+    <img src="images/fotos/olga-baum-1.gif" alt="">
+    <img src="images/fotos/me-3.JPG" alt="">
+    <img src="images/fotos/i-draw-3.JPG" alt="">
+    
+  </div>
+
+  <!-- Содержимое -->
+  <div class="gallery">
+    <div class="about-container">
+      <div class="about-text">
+        <h2 class="major" data-i18n="about_title">About</h2>
+
+        <!--<p class="about-lead" data-i18n="about_lead">Hello, I’m Olga.</p>-->
+
+        <div id="about-text">
+          <p>I create visual worlds that live between <strong>fantasy and function</strong>.</p>
+
+          <p><span class="about-accent">Atmosphere. Depth. Presence.</span></p>
+
+          <p>Through painting, CG, and visual design, I explore emotional identity and symbolic communication.</p>
+
+          <p>Open to collaborations with brands and artists who care about meaning and aesthetics.</p>
+
+          <div class="about-tags" data-i18n="about_lead">
+            <span>Art Direction</span>
+            <span>Visual Identity</span>
+            <span>CG & 3D</span>
+            <span>Posters & Covers</span>
+            <span>Limited Drops</span>
+          </div>
+
+          <p class="about-loc">Based between Europe and Russia. Working worldwide.</p>
+        </div>
+
+        <ul class="actions">
+          <li><a href="#contact" class="button primary" data-i18n="about_cta">Let’s Connect</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- STORE -->
+      <section id="store" class="section">
+        <div class="gallery">
+          <h2 class="major" data-i18n="store_title">Store</h2>
+          <p class="store-lead" data-i18n="store_lead">Original pieces, postcards, and limited drops.</p>
+
+          <div class="store-grid">
+            <!-- ВАЖНО: базовая цена хранится в EUR (data-price-eur).
+                 На RU будет показываться ₽ (по курсу в JS). -->
+
+            <button class="store-card" type="button"
+              aria-label="View item"
+              aria-expanded="false"
+              aria-controls="store-listing"
+              data-id="original-01"
+              data-title-en="Original #01"
+              data-title-ru="Оригинал #01"
+              data-status-en="Available"
+              data-status-ru="В наличии"
+              data-size-en="A2"
+              data-size-ru="A2"
+              data-medium-en="Oil"
+              data-medium-ru="Масло"
+              data-img="images/art11.jpg,images/art11/detail1.webp,images/art11/detail2.webp"
+              data-extras=""
+              
+              data-price-eur="120">
+              <div class="store-thumb">
+                <img loading="lazy" src="images/art11.jpg" alt="Original #01">
+              </div>
+              <div class="store-info">
+                <h3 class="store-title" data-i18n-dynamic="store_item1_title">Original #01</h3>
+                <p class="store-price" data-price></p>
+              </div>
+            </button>
+
+            <button class="store-card" type="button"
+              aria-label="View item"
+              aria-expanded="false"
+              aria-controls="store-listing"
+              data-id="original-02"
+              data-title-en="Postcard Set"
+              data-title-ru="Набор открыток"
+              data-status-en="Available"
+              data-status-ru="В наличии"
+              data-size-en="A6, 6 cards"
+              data-size-ru="A6, 6 шт."
+              data-medium-en="Printed"
+              data-medium-ru="Печать"
+              data-img="images/art2.jpg,images/art2/detail1.webp,images/art2/detail2.webp"
+              data-extras=""
+              data-price-eur="15">
+              <div class="store-thumb">
+                <img loading="lazy" src="images/art2.jpg" alt="Postcard Set">
+              </div>
+              <div class="store-info">
+                <h3 class="store-title" data-i18n-dynamic="store_item2_title">Postcard Set</h3>
+                <p class="store-price" data-price></p>
+              </div>
+            </button>
+
+            <button class="store-card" type="button"
+              aria-label="View item"
+              aria-expanded="false"
+              aria-controls="store-listing"
+              data-id="original-03"
+              data-title-en="Mini Originals"
+              data-title-ru="Мини-оригиналы"
+              data-status-en="Limited"
+              data-status-ru="Лимит"
+              data-size-en="Small"
+              data-size-ru="Маленький формат"
+              data-medium-en="Sketch"
+              data-medium-ru="Скетч"
+              data-img="images/art6.webp"
+              data-extras=""
+              data-price-eur="45">
+              <div class="store-thumb">
+                <img loading="lazy" src="images/art6.webp" alt= "Mini Originals">
+                <span class="store-badge" data-i18n="badge_limited">Limited</span>
+              </div>
+              <div class="store-info">
+                <h3 class="store-title" data-i18n-dynamic="store_item3_title">Mini Originals</h3>
+                <p class="store-price" data-price></p>
+              </div>
+            </button>
+
+            <button class="store-card" type="button"
+              aria-label="View item"
+              aria-expanded="false"
+              aria-controls="store-listing"
+              data-id="original-04"
+              data-title-en="Art Prints"
+              data-title-ru="Принты"
+              data-status-en="Available"
+              data-status-ru="В наличии"
+              data-size-en="A3 / A4"
+              data-size-ru="A3 / A4"
+              data-medium-en="Archival print"
+              data-medium-ru="Архивная печать"
+             data-img="images/art4.webp,images/art4/detail1.webp,images/art4/detail2.webp,images/art4/detail3.webp,images/art4/detail4.webp"
+data-extras=""
+              data-price-eur="35">
+              <div class="store-thumb">
+                <img loading="lazy" src="images/art4.webp" alt="Art Prints">
+              </div>
+              <div class="store-info">
+                <h3 class="store-title" data-i18n-dynamic="store_item4_title">Art Prints</h3>
+                <p class="store-price" data-price></p>
+              </div>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="section">
+        <div class="gallery">
+          <h2 class="major" data-i18n="contact_title">Contact</h2>
+
+          <!-- Formspree: вставь свой endpoint (ты уже говорила, что через Formspree) -->
+          <form id="contact-form" method="post" action="https://formspree.io/f/xovdeodl">
+            <div class="fields">
+              <div class="field half">
+                <label for="name" data-i18n="Name">Name</label>
+                <input id="name" type="text" name="name" required
+                  data-i18n-placeholder="form_name_ph" placeholder="Name" />
+              </div>
+
+              <div class="field half">
+                <label for="email" data-i18n="Email">Email</label>
+                <input id="email" type="email" name="email" required
+                  data-i18n-placeholder="form_email_ph" placeholder="Email" />
+              </div>
+
+              <div class="field">
+                <label for="message" data-i18n="Message">Message</label>
+                <textarea id="message" name="message" rows="4" required
+                  data-i18n-placeholder="form_msg_ph" placeholder="Message"></textarea>
+              </div>
+            </div>
+
+            <ul class="actions">
+              <li><input type="submit" class="primary" data-i18n-value="form_send" value="Send"></li>
+            </ul>
+
+            <p class="form-note" id="form-note" aria-live="polite"></p>
+          </form>
+
+          <ul class="icons">
+            <li><a class="icon" href="https://www.instagram.com/qekkel/" onclick="event.preventDefault()"  aria-label="Instagram"    data-tooltip="@qekkel">
+      <!-- Instagram SVG -->
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5.8A4.2 4.2 0 1 0 16.2 12 4.2 4.2 0 0 0 12 7.8zm0 6.8A2.6 2.6 0 1 1 14.6 12 2.6 2.6 0 0 1 12 14.6zM17.3 6.2a1 1 0 1 0 1 1 1 1 0 0 0-1-1z"/>
+      </svg>
+    </a>
+  </li>
+            <li><a class="icon" href="https://x.com/picola_art" onclick="event.preventDefault()"   aria-label="X / Twitter"     data-tooltip="@picola_art">
+      <!-- X SVG -->
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M18.9 2H22l-7.4 8.4L23 22h-6.7l-5.3-6.6L4.6 22H1.5l7.9-9L1 2h6.8l4.8 6.1L18.9 2z"/>
+      </svg>
+    </a>
+  </li>
+            <li><a class="icon" href="https://www.youtube.com/@qekkel" onclick="event.preventDefault()" aria-label="YouTube"    data-tooltip="@qekkel">
+      <!-- YouTube SVG -->
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M23 7.2s-.2-1.6-.9-2.3c-.8-.9-1.7-.9-2.1-1C16.9 3.5 12 3.5 12 3.5h0s-4.9 0-8 .4c-.4.1-1.3.1-2.1 1C1.2 5.6 1 7.2 1 7.2S.8 9 .8 10.8v1.7C.8 14.3 1 16 1 16s.2 1.6.9 2.3c.8.9 1.9.9 2.4 1 1.7.2 7.7.4 7.7.4s4.9 0 8-.4c.4-.1 1.3-.1 2.1-1 .7-.7.9-2.3.9-2.3s.2-1.7.2-3.5v-1.7C23.2 9 23 7.2 23 7.2zM9.7 14.6V8.9l5.4 2.9-5.4 2.8z"/>
+      </svg>
+    </a>
+  </li>
+          </ul>
+        </div>
+      </section>
+
+    </main>
+
+    <footer id="footer">
+      <p class="copyright">© <span id="year"></span> qekkel</p>
+    </footer>
+  </div>
+
+  <div id="bg" aria-hidden="true"></div>
+<div id="bg-portrait" aria-hidden="true"></div>
+<div id="grain" aria-hidden="true"></div>
+
+  <!-- STORE MODAL -->
+  <div id="store-listing" class="store-listing" hidden>
+    <div class="store-listing-inner" role="dialog" aria-modal="true" aria-label="Store item">
+      <button id="store-close" class="store-close" type="button" aria-label="Close">×</button>
+
+     <div id="store-media" class="store-listing-media">
+      <div id="store-extras" class="store-extras" hidden>
+  <h4 class="store-extras-title">More visuals</h4>
+  <div class="store-extras-grid"></div>
+</div>
+
+         <div class="zoom-wrap">
+        <img id="store-img" src="" alt="">
+          </div>
+        <div id="store-thumbs" class="store-thumbs"></div>
+      </div>
+
+      <div class="store-listing-text">
+        <p id="store-status" class="store-status"></p>
+        <h3 id="store-title"></h3>
+
+        <ul class="modal-specs">
+          <li><strong data-i18n="modal_price">Price:</strong> <span id="store-price"></span></li>
+          <li><strong data-i18n="modal_size">Size:</strong> <span id="store-size"></span></li>
+          <li><strong data-i18n="modal_medium">Medium:</strong> <span id="store-medium"></span></li>
+        </ul>
+
+        <ul class="actions">
+          <button id="add-to-cart" class="button primary">
+  Add to cart
+</button>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+
+<!-- МОДАЛЬНОЕ ОКНО КОРЗИНЫ -->
+<div id="cart-modal" class="cart-modal" hidden>
+  <div class="cart-content">
+    <h2>Ваша корзина</h2>
+    <div id="cart-items"></div>
+    <p><strong data-i18n="cart_total">Total:</strong>
+   <span id="cart-total">0</span>
+</p>
+    <button id="checkout" class="button primary"
+        data-i18n="cart_checkout">
+  Checkout
+</button>
+  </div>
+</div>
+</body>
+</html>
+
+
