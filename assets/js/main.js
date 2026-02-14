@@ -13,6 +13,7 @@ window.addEventListener("load", () => {
   revealSections();
 });
 
+
 /* =========================
    REVEAL SECTIONS ON SCROLL
 ========================= */
@@ -57,7 +58,7 @@ const FX_EUR_TO_RUB = 100;
 
 const i18n = {
   en: {
-    hero_subtitle: "Artist portfolio",
+    hero_subtitle: "Independent Visual Artist & Designer",
     nav_arts: "Arts",
     nav_projects: "Projects",
     nav_about: "About",
@@ -96,6 +97,14 @@ proj4_desc: "Logo design for a cozy café with a warm and modern visual identity
     store_lead: "Original pieces, postcards, and limited drops.",
     badge_limited: "Original",
     contact_title: "Contact",
+    order_title: "Order request",
+    send_tg: "Send via Telegram",
+send_email: "Send via Email",
+form_name: "Name",
+form_email: "Email",
+form_country: "Country",
+form_message: "Message (optional)",
+form_submit: "Send order request",
     modal_price: "Price:",
     modal_size: "Size:",
     modal_medium: "Medium:",
@@ -109,7 +118,7 @@ proj4_desc: "Logo design for a cozy café with a warm and modern visual identity
     cart: "Cart",
   },
   ru: {
-    hero_subtitle: "Портфолио художника",
+    hero_subtitle: "Независимый художник и дизайнер",
     nav_arts: "Арт",
     nav_projects: "Проекты",
     nav_about: "Обо мне",
@@ -143,6 +152,14 @@ proj4_desc: "Разработка логотипа для уютного каф�
     store_lead: "Оригиналы, открытки и лимитированные дропы.",
     badge_limited: "Оригинал",
     contact_title: "Контакты",
+    order_title: "Заказ",
+    send_tg: "Через Telegram",
+send_email: "Через Email",
+    form_name: "Имя",
+    form_email: "Email",
+    form_country: "Страна",
+    form_message: "Сообщение (необязательно)",
+    form_submit: "Отправить запрос",
     modal_price: "Цена:",
     modal_size: "Размер:",
     modal_medium: "Техника:",
@@ -158,7 +175,28 @@ proj4_desc: "Разработка логотипа для уютного каф�
 };
 
 
-let currentLang = "en";
+
+
+let currentLang;
+
+const savedLang = localStorage.getItem("siteLang");
+
+if (savedLang) {
+  // если пользователь уже выбирал язык
+  currentLang = savedLang;
+} else {
+  // первый заход — определяем по браузеру
+  const browserLang = navigator.language || navigator.userLanguage;
+
+  if (browserLang && browserLang.startsWith("ru")) {
+    currentLang = "ru";
+  } else {
+    currentLang = "en";
+  }
+}
+
+
+
 
 function t(key) {
   return i18n[currentLang]?.[key] || key;
@@ -172,19 +210,23 @@ function formatMoney(amount, currency) {
 }
 
 function applyI18n() {
+  const dict = i18n[currentLang];
 
-  document.querySelectorAll(".lang-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    currentLang = btn.dataset.lang;
-    applyI18n();
-  });
-});
+
+
 
   document.documentElement.lang = currentLang;
 
   document.querySelectorAll("[data-i18n]").forEach(el => {
     el.textContent = t(el.dataset.i18n);
   });
+
+
+  // Перевод placeholder
+document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+  const key = el.dataset.i18nPlaceholder;
+  el.placeholder = t(key);
+});
 
 
   
@@ -469,6 +511,23 @@ if (year) year.textContent = new Date().getFullYear();
 
 document.addEventListener("DOMContentLoaded", () => {
 
+  
+
+  let checkoutMethod = "tg"; 
+
+ document.querySelectorAll(".lang-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    currentLang = btn.dataset.lang;
+
+    // сохраняем выбор
+    localStorage.setItem("siteLang", currentLang);
+
+    applyI18n();
+  });
+});
+
+
+
   applyI18n();
 
   function saveCart() {
@@ -509,6 +568,48 @@ document.addEventListener("DOMContentLoaded", () => {
   const cartItemsEl = document.getElementById("cart-items");
   const cartTotalEl = document.getElementById("cart-total");
   const addToCartBtn = document.getElementById("add-to-cart");
+  const sendTgBtn = document.getElementById("send-tg");
+  const sendEmailBtn = document.getElementById("send-email");
+
+// =========================
+// TELEGRAM (без формы)
+// =========================
+sendTgBtn?.addEventListener("click", () => {
+
+  if (!cart.length) {
+    alert(currentLang === "ru" ? "Корзина пуста" : "Cart is empty");
+    return;
+  }
+
+  let orderText =
+    currentLang === "ru"
+      ? "Здравствуйте! Я хочу заказать:\n\n"
+      : "Hello! I would like to order:\n\n";
+
+  cart.forEach((item, i) => {
+    orderText += `${i + 1}. ${item.title}\n`;
+  });
+
+  const total = cart.reduce((s, i) => s + i.price, 0);
+
+  orderText +=
+    currentLang === "ru"
+      ? `\nИтого: €${total}`
+      : `\nTotal: €${total}`;
+
+  const tgUrl =
+    `https://t.me/qekkel?text=${encodeURIComponent(orderText)}`;
+
+  window.open(tgUrl, "_blank");
+
+  // Закрываем корзину
+  cartModal.classList.remove("open");
+});
+
+sendEmailBtn?.addEventListener("click", () => {
+  checkoutMethod = "email";
+  checkoutModal.hidden = false;
+});
 
   // =========================
   // ADD BUTTON
@@ -583,26 +684,32 @@ document.addEventListener("DOMContentLoaded", () => {
     renderCart();
     updateCartCounter();
   }
+// =========================
+// OPEN / CLOSE CART
+// =========================
 
-  // =========================
-  // OPEN / CLOSE CART
-  // =========================
-  openCartBtn?.addEventListener("click", () => {
-    renderCart();
-    cartModal.hidden = false;
+openCartBtn?.addEventListener("click", () => {
+  renderCart();
+  cartModal.classList.add("open");
+});
 
-    requestAnimationFrame(() => {
-      cartModal.classList.add("open");
-    });
-  });
+closeCartBtn?.addEventListener("click", () => {
+  cartModal.classList.remove("open");
+});
 
-  closeCartBtn?.addEventListener("click", () => {
+// Закрытие по клику вне содержимого
+cartModal?.addEventListener("click", (e) => {
+  if (e.target === cartModal) {
     cartModal.classList.remove("open");
-    setTimeout(() => {
-      cartModal.hidden = true;
-    }, 250);
-  });
+  }
+});
 
+// Закрытие по ESC
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    cartModal.classList.remove("open");
+  }
+});
   // =========================
   // CHECKOUT
   // =========================
@@ -619,13 +726,27 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    cartModal.classList.remove("open");
-    setTimeout(() => {
-      cartModal.hidden = true;
-    }, 250);
+   checkoutForm.hidden = true;
+checkoutSuccess.hidden = false;
 
-    checkoutForm.hidden = false;
-    checkoutSuccess.hidden = true;
+cart = [];
+localStorage.setItem("cart", JSON.stringify(cart));
+updateCartCounter();
+renderCart();
+
+// Через 1.5 секунды закрываем всё
+setTimeout(() => {
+  checkoutModal.hidden = true;
+  cartModal.hidden = true;
+
+  checkoutForm.hidden = false;
+  checkoutSuccess.hidden = true;
+}, 1500);
+
+cart = [];
+saveCart();
+updateCartCounter();
+renderCart();
 
     checkoutModal.hidden = false;
   });
@@ -665,10 +786,17 @@ document.addEventListener("DOMContentLoaded", () => {
     orderText += `\nTotal: €${total}\n\n`;
     orderText += `Message:\n${message}`;
 
-    const tgUrl =
-      `https://t.me/qekkel?text=${encodeURIComponent(orderText)}`;
+   if (checkoutMethod === "tg") {
+  const tgUrl =
+    `https://t.me/qekkel?text=${encodeURIComponent(orderText)}`;
+  window.open(tgUrl, "_blank");
+}
 
-    window.open(tgUrl, "_blank");
+if (checkoutMethod === "email") {
+  const mailUrl =
+    `mailto:your@email.com?subject=Artwork Order ${orderId}&body=${encodeURIComponent(orderText)}`;
+  window.location.href = mailUrl;
+}
 
     checkoutForm.hidden = true;
     checkoutSuccess.hidden = false;
@@ -684,5 +812,62 @@ document.addEventListener("DOMContentLoaded", () => {
   // =========================
   cartModal.hidden = true;
   updateCartCounter();
+
+/* =========================
+   CUSTOM CURSOR SMOOTH
+========================= */
+
+const cursor = document.querySelector(".custom-cursor");
+
+if (cursor) {
+
+  let mouseX = 0;
+  let mouseY = 0;
+  let posX = 0;
+  let posY = 0;
+
+  document.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  function animate() {
+    posX += (mouseX - posX) * 0.15;
+    posY += (mouseY - posY) * 0.15;
+
+    cursor.style.left = posX + "px";
+    cursor.style.top = posY + "px";
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+
+  document.addEventListener("mouseover", (e) => {
+    if (e.target.closest("a, button")) {
+      cursor.style.width = "28px";
+      cursor.style.height = "28px";
+      cursor.style.background = "rgba(255,255,255,0.3)";
+    }
+  });
+
+  document.addEventListener("mouseout", (e) => {
+    if (e.target.closest("a, button")) {
+      cursor.style.width = "14px";
+      cursor.style.height = "14px";
+      cursor.style.background = "rgba(255,255,255,0.9)";
+    }
+  });
+
+  // 🔥 ВАЖНО: отдельно, не внутри другого события
+  document.addEventListener("mouseleave", () => {
+    cursor.style.opacity = "0";
+  });
+
+  document.addEventListener("mouseenter", () => {
+    cursor.style.opacity = "1";
+  });
+
+}
 
 });
