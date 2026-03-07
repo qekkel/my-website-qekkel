@@ -59,6 +59,9 @@ const FX_EUR_TO_RUB = 100;
 const i18n = {
   en: {
     hero_subtitle: "Independent Visual Artist & Designer",
+    about_seo: "I am a contemporary visual artist working between traditional oil painting and digital CG concept art. In my work I explore emotional identity, symbolic language and atmospheric storytelling. I create original artworks and limited releases for collectors and creative collaborations worldwide.",
+    arts_seo: "These works include abstract oil paintings, experimental digital pieces and contemporary visual compositions. Each artwork reflects my balance between structure and emotion, fantasy and form.",
+    store_seo: "In my store you can find original paintings, small-format works and limited releases. Each piece is created by me and available for collectors worldwide.",
     nav_arts: "Arts",
     nav_projects: "Projects",
     nav_about: "About",
@@ -119,6 +122,9 @@ form_submit: "Send order request",
   },
   ru: {
     hero_subtitle: "Независимый художник и дизайнер",
+    about_seo: "Я современный художник, работающий на стыке традиционной живописи и цифрового CG-арта. В своих работах я исследую эмоциональную идентичность, символику и атмосферное повествование. Я создаю оригинальные произведения и лимитированные работы для коллекционеров и творческих коллабораций по всему миру.",
+    arts_seo: "Здесь собраны абстрактные живописные работы, экспериментальные цифровые произведения и современные визуальные композиции. В каждом произведении я ищу баланс между структурой и эмоцией, фантазией и формой.",
+    store_seo: "В магазине представлены оригинальные работы, небольшие форматы и лимитированные релизы. Каждое произведение создано мной и доступно коллекционерам по всему миру.",
     nav_arts: "Арт",
     nav_projects: "Проекты",
     nav_about: "Обо мне",
@@ -662,9 +668,10 @@ sendEmailBtn?.addEventListener("click", () => {
         <button class="remove-btn">×</button>
       `;
 
-      div.querySelector(".remove-btn").addEventListener("click", () => {
-        removeFromCart(index);
-      });
+     div.querySelector(".remove-btn").addEventListener("click", (e) => {
+  e.stopPropagation();   // ← ВАЖНО
+  removeFromCart(index);
+});
 
       cartItemsEl.appendChild(div);
       total += item.price;
@@ -690,24 +697,24 @@ sendEmailBtn?.addEventListener("click", () => {
 
 openCartBtn?.addEventListener("click", () => {
   renderCart();
-  cartModal.classList.add("open");
+  cartModal.hidden = false;
 });
 
 closeCartBtn?.addEventListener("click", () => {
-  cartModal.classList.remove("open");
+  cartModal.hidden = true;
 });
 
 // Закрытие по клику вне содержимого
 cartModal?.addEventListener("click", (e) => {
-  if (e.target === cartModal) {
-    cartModal.classList.remove("open");
+  if (!e.target.closest(".cart-content")) {
+    cartModal.hidden = true;
   }
 });
 
 // Закрытие по ESC
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
-    cartModal.classList.remove("open");
+    cartModal.hidden = true;
   }
 });
   // =========================
@@ -871,3 +878,251 @@ if (cursor) {
 }
 
 });
+/* =========================
+   ARTS MODAL (opens all)
+========================= */
+(function () {
+  const modal = document.getElementById("art-modal");
+  const closeBtn = document.getElementById("art-close");
+  const imgEl = document.getElementById("art-img");
+  const titleEl = document.getElementById("art-title");
+  const descEl = document.getElementById("art-desc");
+  const metaEl = document.getElementById("art-meta");
+  const processTitleEl = document.getElementById("art-process-title");
+  const processListEl = document.getElementById("art-process-list");
+
+  if (!modal || !imgEl || !titleEl || !descEl || !metaEl || !processTitleEl || !processListEl) return;
+
+  const ARTS = {
+art1: {
+  titleEn: "Adventure Time in an alternate reality",
+  titleRu: "Adventure Time в реальной реальности",
+  year: "2023",
+  mediumEn: "Animated GIF, Digital Illustration",
+  mediumRu: "GIF, цифровая иллюстрация",
+  descEn: "Cartoon characters placed into a reality that feels slightly too real",
+  descRu: "ерои мультика помещены в реальность, которая кажется слишком уж реалистичной",
+  process: {
+    en: [
+      "Adobe Photoshop",
+    ],
+    ru: [
+      "Adobe Photoshop",
+    ]
+  }
+},
+  art2: {
+    titleEn: "BMO",
+    titleRu: "Бимо",
+    year: "2023",
+    mediumEn: "Digital Illustration",
+    mediumRu: "Цифровая иллюстрация",
+    descEn: "BMO Cross-Section: a tiny heart sleeping among the wires",
+    descRu: "Бимо в разрезе: среди проводов можно заметить сладко спящее сердечко",
+   process: {
+    en: [
+      "Adobe Photoshop",
+    ],
+    ru: [
+      "Adobe Photoshop",
+    ]
+  }
+  },
+
+  art3: {
+    titleEn: "Vampire Queen",
+    titleRu: "Королева вампиров",
+    year: "2025",
+    mediumEn: "Animated GIF, Digital Illustration",
+    mediumRu: "GIF, цифровая иллюстрация",
+    descEn: "Marceline has spotted her next victim",
+    descRu: "Марселин заметила новую жертву",
+   process: {
+    en: [
+      "Procreate",
+    ],
+    ru: [
+      "Procreate",
+    ]
+  }
+  },
+
+art4: {
+  titleEn: "Over the Garden Wall",
+  titleRu: "По ту сторону Изгороди",
+  year: "2023",
+  mediumEn: "Watercolor on Paper",
+  mediumRu: "Акварель на бумаге",
+  descEn: "Greg and Wirt preparing for Halloween",
+  descRu: "Грег и Вирт готовятся к Хэллоуину",
+  process: {
+    en: [
+      "Watercolor painting",
+      "A5",
+    ],
+    ru: [
+      "Акварельная живопись",
+      "A5",
+    ]
+  }
+},
+
+art5: {
+  titleEn: "Sagittarius",
+  titleRu: "Стрелец",
+  year: "2024",
+  mediumEn: "Digital Illustration",
+  mediumRu: "Цифровая иллюстрация",
+  descEn: "Huntress releasing her arrow",
+  descRu: "Охотница выпускает стрелу",
+  process: {
+    en: [
+      "Adobe Photoshop"
+    ],
+    ru: [
+      "Adobe Photoshop"
+    ]
+  }
+},
+
+art6: {
+  titleEn: "Sing Street",
+  titleRu: "Рок-н-рольщики",
+  year: "2018",
+  mediumEn: "Ink on Paper",
+  mediumRu: "Тушь на бумаге",
+  descEn: "Boys imagine their first song together",
+  descRu: "Мальчики придумывают свою первую песню",
+  process: {
+    en: [
+      "Ink drawing"
+    ],
+    ru: [
+      "Рисунок тушью"
+    ]
+  }
+},
+
+art7: {
+  titleEn: "Surreal Bouquet",
+  titleRu: "Сюрреалистический букет",
+  year: "2024",
+  mediumEn: "Acrylic on Canvas",
+  mediumRu: "Акрил на холсте",
+  descEn: "Flowers growing from my hands",
+  descRu: "Из рук моих вырастут цветы",
+  process: {
+    en: [
+      "Acryl"
+    ],
+    ru: [
+      "Акрил"
+    ]
+  }
+},
+
+art8: {
+  titleEn: "Marceline",
+  titleRu: "Марселин",
+  year: "2023",
+  mediumEn: "Oil on Canvas",
+  mediumRu: "Масло на холсте",
+  descEn: "A small tribute to Marcy – painted as a way of expressing my love for her.",
+  descRu: "Небольшая дань Марси – картина, через которую я выражаю свою любовь к ней.",
+  process: {
+    en: [
+      "Oil painting"
+    ],
+    ru: [
+      "Живопись маслом"
+    ]
+  }
+},
+
+};
+
+  function getLang() {
+    return typeof currentLang === "string" ? currentLang : "en";
+  }
+
+  function openFromItem(item) {
+    const id = item.dataset.artId;
+    const img = item.querySelector("img");
+    const src = img?.getAttribute("src") || "";
+    const alt = img?.getAttribute("alt") || "";
+
+    const L = getLang();
+    const art = ARTS[id] || {};
+
+    const title =
+      (L === "ru" ? art.titleRu : art.titleEn) ||
+      alt ||
+      id ||
+      "Artwork";
+
+    titleEl.textContent = title;
+
+    // meta
+    const year = art.year ? String(art.year) : "";
+    const medium = (L === "ru" ? art.mediumRu : art.mediumEn) || "";
+    const meta = [year, medium].filter(Boolean).join(" • ");
+    metaEl.textContent = meta;
+    metaEl.style.display = meta ? "" : "none";
+
+    // desc
+    const desc = (L === "ru" ? art.descRu : art.descEn) || "";
+    descEl.textContent = desc;
+    descEl.style.display = desc ? "" : "none";
+
+    // process
+    processTitleEl.textContent = L === "ru" ? "Техника" : "Medium";
+    processListEl.innerHTML = "";
+    const steps = (art.process && (L === "ru" ? art.process.ru : art.process.en)) || [];
+
+    if (steps.length) {
+      steps.forEach(s => {
+        const li = document.createElement("li");
+        li.textContent = s;
+        processListEl.appendChild(li);
+      });
+      processListEl.parentElement.style.display = "";
+    } else {
+      processListEl.parentElement.style.display = "none";
+    }
+
+    // image
+    imgEl.src = src || art.image || "";
+    imgEl.alt = title;
+
+    modal.hidden = false;
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeArt() {
+    modal.hidden = true;
+    document.body.style.overflow = "";
+  }
+
+  document.querySelectorAll(".art-item[data-art-id]").forEach(item => {
+    item.addEventListener("click", () => openFromItem(item));
+    item.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        openFromItem(item);
+      }
+    });
+  });
+
+  closeBtn?.addEventListener("click", closeArt);
+  modal.addEventListener("click", e => { if (e.target === modal) closeArt(); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && !modal.hidden) closeArt(); });
+})();
+
+
+if (typeof window.gtag === "function") {
+  gtag("event", "add_to_cart", {
+    currency: "EUR",
+    value: currentProduct?.price || 0,
+    items: [{ item_name: currentProduct?.title || "unknown" }]
+  });
+}
