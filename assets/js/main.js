@@ -119,6 +119,9 @@ form_submit: "Send order request",
     cart_title: "Your cart",
     cart_empty: "Cart is empty",
     cart: "Cart",
+    form_name_ph:"Name",
+    form_email_ph:"Email",
+    form_msg_ph:"Message",
   },
   ru: {
     hero_subtitle: "Независимый художник и дизайнер",
@@ -177,6 +180,9 @@ send_email: "Через Email",
     cart_title: "Ваша корзина",
     cart_empty: "Корзина пуста",
     cart: "Корзина",
+    form_name_ph:"Имя",
+    form_email_ph:"Почта",
+    form_msg_ph:"Сообщение",
   }
 };
 
