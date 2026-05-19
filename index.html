@@ -36,6 +36,154 @@
   gtag('config', 'G-39BNBDPZNP');
 </script>
 
+<style>
+/* ====== STORE BADGE NEW ====== */
+.store-badge-new {
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(230, 150, 180, 0.8);
+  color: rgb(230, 160, 190);
+  font-weight: 600;
+}
+
+/* ====== ABOUT SPLIT LAYOUT ====== */
+#about .about-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem 5rem;
+  align-items: start;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+#about .about-right {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  padding-top: 3rem;
+}
+
+#about .about-right img:first-child {
+  grid-column: span 2;
+  height: 320px;
+  width: 100%;
+  object-fit: cover;
+}
+
+#about .about-right img:not(:first-child) {
+  height: 240px;
+  width: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 736px) {
+  #about .about-split {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  #about .about-right {
+    order: -1;
+  }
+  #about .about-right img:first-child { height: 220px; }
+  #about .about-right img:not(:first-child) { height: 130px; }
+}
+
+/* ====== STORE MODAL REDESIGN ====== */
+.store-modal-desc {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.65;
+  margin: 0.4rem 0 1.6rem;
+}
+
+.store-specs-row {
+  display: flex;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+}
+
+.store-spec {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.store-spec + .store-spec {
+  padding-left: 1.2rem;
+  border-left: 1px solid rgba(255,255,255,0.08);
+}
+
+.store-spec-label {
+  font-size: 0.57rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+}
+
+.store-spec-value {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.88);
+}
+
+.price-note {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.35);
+  margin-top: 0.4rem;
+  line-height: 1.4;
+}
+
+.store-add-btn {
+  align-self: flex-start;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.8);
+  padding: 0.75rem 2.2rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.store-add-btn:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.65);
+  color: #fff;
+}
+
+/* ====== ART MODAL NAVIGATION ====== */
+.art-modal-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.art-modal-nav-btn {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.45);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  transition: color 0.2s;
+  line-height: 1;
+}
+.art-modal-nav-btn:hover { color: #fff; }
+.art-modal-counter {
+  flex: 1;
+  text-align: center;
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.3);
+  text-transform: uppercase;
+}
+</style>
 </head>
 
 <body>
@@ -143,8 +291,8 @@
     data-images="projects/1/bloody-00.jpg,projects/1/bloody-01.jpg,projects/1/bloody-02.jpg,projects/1/bloody.jpg"
     data-title-en="Stickers for Bar"
     data-title-ru="Стикеры для бара"
-    data-desc-en="Creating a sticker pack for Bloody Mary Bar — illustration, branding, and print preparation. Bold dark visuals with custom lettering."
-    data-desc-ru="Создание стикерпака для бара Bloody Mary — иллюстрация, брендинг и подготовка к печати. Яркая тёмная графика с авторским леттерингом."
+    data-desc-en="Creating a sticker pack for Bloody Mary Bar – illustration, branding, and print preparation. Bold dark visuals with custom lettering."
+    data-desc-ru="Создание стикерпака для бара Bloody Mary – иллюстрация, брендинг и подготовка к печати. Яркая тёмная графика с авторским леттерингом."
     data-category-en="Illustration · 2023"
     data-category-ru="Иллюстрация · 2023"
     data-meta-en="Client|Bloody Mary Bar|Type|Print / Illustration|Year|2023"
@@ -206,8 +354,8 @@
     data-images="projects/4/hmirov-1.jpg,projects/4/hmirov-2.JPG"
     data-title-en="Hmirov Pole"
     data-title-ru="Хмыров поле"
-    data-desc-en="Game art and visual concept for Hmirov Pole — a top-down indie game set in a lush field environment."
-    data-desc-ru="Геймарт и визуальный концепт для Хмыров поле — инди-игры с видом сверху в атмосфере зелёного поля."
+    data-desc-en="Game art and visual concept for Hmirov Pole – a top-down indie game set in a lush field environment."
+    data-desc-ru="Геймарт и визуальный концепт для Хмыров поле – инди-игры с видом сверху в атмосфере зелёного поля."
     data-category-en="Game Art · 2024"
     data-category-ru="Геймарт · 2024"
     data-meta-en="Type|Game Art|Format|Top-down|Year|2024"
@@ -223,53 +371,50 @@
   </div>
 
     </div>
+
+    <div class="projects-cta">
+      <div class="projects-cta-tags">
+        <span>Logo</span><span>Flyer</span><span>Branding</span>
+        <button id="open-prices" class="projects-cta-prices" data-i18n="projects_cta_prices">Prices →</button>
+      </div>
+      <p class="projects-cta-text">
+        <span data-i18n="projects_cta_text">Need something?</span>
+        <a href="#contact" data-i18n="projects_cta_btn">Get in touch →</a>
+      </p>
+    </div>
+
   </div>
 </section>
 
 <!-- ABOUT -->
 <section id="about" class="section">
-   <div class="about-photos">
-    <img src="images/fotos/olga-baum-1.gif" alt="">
-    <img src="images/fotos/me-3.JPG" alt="">
-    <img src="images/fotos/i-draw-3.JPG" alt="">
-    
-  </div>
+  <div class="about-split">
 
-  <!-- Содержимое -->
-  <div class="gallery">
-    <div class="about-container">
-      <div class="about-text">
-        <h2 class="major" data-i18n="about_title">About</h2>
-
-        <!--<p class="about-lead" data-i18n="about_lead">Hello, I’m Olga.</p>-->
-
-        <div id="about-text">
-          <p>I create visual worlds that live between <strong>fantasy and function</strong>.</p>
-
-          <p><span class="about-accent">Atmosphere. Depth. Presence.</span></p>
-
-          <p>Through painting, CG, and visual design, I explore emotional identity and symbolic communication.</p>
-
-          <p>Open to collaborations with brands and artists who care about meaning and aesthetics.</p>
-               <h3>About My Practice</h3>
-              <p data-i18n="about_seo"></p>
-
-          <div class="about-tags">
-            <span>Art Direction</span>
-            <span>Visual Identity</span>
-            <span>CG & 3D</span>
-            <span>Posters & Covers</span>
-            <span>Limited Drops</span>
-          </div>
-
-          <p class="about-loc">Based between Europe and Russia. Working worldwide.</p>
-        </div>
-
-        <ul class="actions">
-          <li><a href="#contact" class="button primary" data-i18n="about_cta">Let’s Connect</a></li>
-        </ul>
+    <div class="about-left">
+      <h2 class="major" data-i18n="about_title">About</h2>
+      <div id="about-text">
+        <p>Hi, I'm Olga – visual artist and designer.</p>
+        <p>I work with oil, acrylic, digital illustration, and 2D animation. Original artworks, commissions, and creative collabs.</p>
+        <p>Open to brand collaborations: identity, illustration, concept art.</p>
+        <p class="about-loc">Based in Europe. Working worldwide.</p>
       </div>
+      <div class="about-tags">
+        <span>Visual Identity</span>
+        <span>2D Animation</span>
+        <span>Posters & Covers</span>
+        <span>Limited Drops</span>
+      </div>
+      <ul class="actions">
+        <li><a href="#contact" class="button primary" data-i18n="about_cta">Let’s Connect</a></li>
+      </ul>
     </div>
+
+    <div class="about-right">
+      <img src="images/fotos/me-3.JPG" alt="">
+      <img src="images/fotos/olga-baum-1.gif" alt="">
+      <img src="images/fotos/olga-me.gif" alt="">
+    </div>
+
   </div>
 </section>
 
@@ -280,8 +425,89 @@
           <p class="store-lead" data-i18n="store_lead">Original pieces, postcards, and limited drops.</p>
 
           <div class="store-grid">
-            <!-- ВАЖНО: базовая цена хранится в EUR (data-price-eur).
-                 На RU будет показываться ₽ (по курсу в JS). -->
+            <button class="store-card" type="button"
+              aria-label="View item"
+              aria-expanded="false"
+              aria-controls="store-listing"
+              data-id="original-05"
+              data-title-en="Sakura"
+              data-title-ru="Сакура"
+              data-status-en="Original Artwork"
+              data-status-ru="Оригинал"
+              data-size-en="10×10 cm"
+              data-size-ru="10×10 см"
+              data-medium-en="Oil"
+              data-medium-ru="Масло"
+              data-img="images/spring/sacura00.png,images/spring/spring3.png"
+              data-extras=""
+              data-desc-en="Cherry blossoms, blue sky, the first breath of spring. Stretched canvas, ships in a protective box."
+              data-desc-ru="Сакура, синее небо, первый вздох весны. Натянутый холст, доставляется в защитной коробке."
+              data-price-eur="65">
+              <div class="store-thumb">
+                <img loading="lazy" src="images/spring/sacura00.png" alt="Sakura">
+                <span class="store-badge store-badge-new" data-i18n="badge_new">New</span>
+              </div>
+              <div class="store-info">
+                <h3 class="store-title">Sakura</h3>
+                <p class="store-price" data-price></p>
+              </div>
+            </button>
+
+            <button class="store-card" type="button"
+              aria-label="View item"
+              aria-expanded="false"
+              aria-controls="store-listing"
+              data-id="original-06"
+              data-title-en="Spring Park"
+              data-title-ru="Весенний парк"
+              data-status-en="Original Artwork"
+              data-status-ru="Оригинал"
+              data-size-en="10×10 cm"
+              data-size-ru="10×10 см"
+              data-medium-en="Oil"
+              data-medium-ru="Масло"
+              data-img="images/spring/park2.png,images/spring/park1.png,images/spring/spring4.png,images/spring/spring1.png,images/spring/spring.png"
+              data-extras=""
+              data-desc-en="A golden sunset through blooming trees – spring light and the first warm rays of sun. Stretched canvas, ships in a protective box."
+              data-desc-ru="Золотой закат сквозь цветущие деревья – весенний свет и первые тёплые лучи солнца. Натянутый холст, доставляется в защитной коробке."
+              data-price-eur="65">
+              <div class="store-thumb">
+                <img loading="lazy" src="images/spring/park2.png" alt="Spring Park">
+                <span class="store-badge store-badge-new" data-i18n="badge_new">New</span>
+              </div>
+              <div class="store-info">
+                <h3 class="store-title">Spring Park</h3>
+                <p class="store-price" data-price></p>
+              </div>
+            </button>
+
+            <button class="store-card" type="button"
+              aria-label="View item"
+              aria-expanded="false"
+              aria-controls="store-listing"
+              data-id="original-07"
+              data-title-en="Sakura II"
+              data-title-ru="Сакура II"
+              data-status-en="Original Artwork"
+              data-status-ru="Оригинал"
+              data-size-en="10×10 cm"
+              data-size-ru="10×10 см"
+              data-medium-en="Oil"
+              data-medium-ru="Масло"
+              data-img="images/spring/spring5.png,images/spring/spring2.png"
+              data-extras=""
+              data-desc-en="Cherry blossoms and fresh green shoots – the very first days of spring. Stretched canvas, ships in a protective box."
+              data-desc-ru="Цветы сакуры и первая зелень – самые первые дни весны. Натянутый холст, доставляется в защитной коробке."
+              data-price-eur="65">
+              <div class="store-thumb">
+                <img loading="lazy" src="images/spring/spring5.png" alt="Sakura II">
+                <span class="store-badge store-badge-new" data-i18n="badge_new">New</span>
+              </div>
+              <div class="store-info">
+                <h3 class="store-title">Sakura II</h3>
+                <p class="store-price" data-price></p>
+              </div>
+            </button>
 
             <button class="store-card" type="button"
               aria-label="View item"
@@ -298,7 +524,8 @@
               data-medium-ru="Масло"
               data-img="images/art11.jpg,images/art11/detail4.webp,images/art11/detail2.webp,images/art11/detail7.webp"
               data-extras=""
-              
+              data-desc-en="An abstract oil composition – chaos and structure layered through texture and bold colour. Ships rolled in a protective tube."
+              data-desc-ru="Абстрактная масляная работа – хаос и структура через фактуру и цвет. Доставляется свёрнутым в защитной тубе."
               data-price-eur="220">
               <div class="store-thumb">
                 <img loading="lazy" src="images/art11.jpg" alt="Original #01">
@@ -315,16 +542,18 @@
               aria-expanded="false"
               aria-controls="store-listing"
               data-id="original-02"
-              data-title-en="Сюрреалистический букет"
-              data-title-ru="Surreal Bouquet"
+              data-title-en="Surreal Bouquet"
+              data-title-ru="Сюрреалистический букет"
               data-status-en="Original Artwork"
               data-status-ru="Оригинал"
               data-size-en="A2"
               data-size-ru="A2"
               data-medium-en="Acryl"
               data-medium-ru="Акрил"
-              data-img="images/art7.jpg,images/art07/1.jpg,images/art07/2.jpg,images/art07/7.jpg,"
+              data-img="images/art7.jpg,images/art07/1.jpg,images/art07/2.jpg,images/art07/7.jpg"
               data-extras=""
+              data-desc-en="Flowers growing from my hands – a surreal acrylic painting on canvas."
+              data-desc-ru="Из рук моих вырастут цветы – сюрреалистическая картина акрилом на холсте."
               data-price-eur="160"
               data-sale-eur="140">
               <div class="store-thumb">
@@ -350,10 +579,11 @@
               data-size-ru="40x40 см"
               data-medium-en="Acryl"
               data-medium-ru="Акрил"
-              data-img="images/art02.png,images/art02/detail2.webp,images/art02/detail5.webp,images/art02/detail6.webp,"
+              data-img="images/art02.png,images/art02/detail2.webp,images/art02/detail5.webp,images/art02/detail6.webp"
               data-extras=""
-              data-price-eur="165"
-              >
+              data-desc-en="Swirling tropical energy in acrylic – vivid colours, bold movement on a square canvas. Stretched canvas, ships in a protective box."
+              data-desc-ru="Тропический вихрь в акриле – насыщенные цвета и динамика на квадратном холсте. Натянутый холст, доставляется в защитной коробке."
+              data-price-eur="165">
               <div class="store-thumb">
                 <img loading="lazy" src="images/art02.png" alt= "Mini Originals">
                 <span class="store-badge" data-i18n="badge_limited">Limited</span>
@@ -377,8 +607,10 @@
               data-size-ru="35x30 см"
               data-medium-en="Acryl"
               data-medium-ru="Акрил"
-             data-img="images/art01/detail4.webp,images/art01/detail1.webp,images/art01/detail2.webp,images/art01/detail3.webp,"
-data-extras=""
+             data-img="images/art01/detail4.webp,images/art01/detail1.webp,images/art01/detail2.webp,images/art01/detail3.webp"
+              data-extras=""
+              data-desc-en="Two cats in a dreamy embrace – painted in bold complementary colours on canvas. Stretched canvas, ships in a protective box."
+              data-desc-ru="Две кошки в объятиях – акрил в контрастных цветах на холсте. Натянутый холст, доставляется в защитной коробке."
               data-price-eur="120">
               <div class="store-thumb">
                 <img loading="lazy" src="images/art01/detail4.webp" alt="Art Prints">
@@ -396,25 +628,36 @@ data-extras=""
       <!-- CONTACT -->
       <section id="contact" class="section">
         <div class="gallery">
-          <h2 class="major" data-i18n="contact_title">Contact</h2>
+          <div class="contact-header">
+            <h2 class="major" data-i18n="contact_title">Contact</h2>
+            <a href="https://t.me/qekkel" target="_blank" rel="noopener noreferrer" class="contact-tg-link">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8l-1.7 8c-.12.58-.46.72-.93.45l-2.57-1.9-1.24 1.19c-.14.14-.26.26-.53.26l.19-2.63 4.84-4.37c.21-.19-.05-.29-.32-.1L7.9 14.6l-2.53-.79c-.55-.17-.56-.55.12-.81l9.9-3.82c.46-.17.86.11.71.82z"/></svg>
+              <span data-i18n="contact_tg">Write in Telegram</span>
+            </a>
+          </div>
 
-          <!-- Formspree: вставь свой endpoint (ты уже говорила, что через Formspree) -->
           <form id="contact-form" method="post" action="https://formspree.io/f/xovdeodl">
             <div class="fields">
               <div class="field half">
-                <label for="name" data-i18n="Name">Name</label>
-                <input id="name" type="text" name="name" required
-                  data-i18n-placeholder="form_name_ph" placeholder="Name" />
+                <label for="firstname" data-i18n="form_firstname_label">First name</label>
+                <input id="firstname" type="text" name="firstname" required
+                  data-i18n-placeholder="form_firstname_ph" placeholder="First name" />
               </div>
 
               <div class="field half">
-                <label for="email" data-i18n="Email">Email</label>
+                <label for="lastname" data-i18n="form_lastname_label">Last name</label>
+                <input id="lastname" type="text" name="lastname" required
+                  data-i18n-placeholder="form_lastname_ph" placeholder="Last name" />
+              </div>
+
+              <div class="field half">
+                <label for="email" data-i18n="form_email_label">Email</label>
                 <input id="email" type="email" name="email" required
                   data-i18n-placeholder="form_email_ph" placeholder="Email" />
               </div>
 
               <div class="field">
-                <label for="message" data-i18n="Message">Message</label>
+                <label for="message" data-i18n="form_message_label">Message</label>
                 <textarea id="message" name="message" rows="4" required
                   data-i18n-placeholder="form_msg_ph" placeholder="Message"></textarea>
               </div>
@@ -502,18 +745,24 @@ data-extras=""
       <div class="store-listing-text">
         <p id="store-status" class="store-status"></p>
         <h3 id="store-title"></h3>
+        <p id="store-desc" class="store-modal-desc"></p>
 
-        <ul class="modal-specs">
-          <li><strong data-i18n="modal_price">Price:</strong> <span id="store-price"></span></li>
-          <li><strong data-i18n="modal_size">Size:</strong> <span id="store-size"></span></li>
-          <li><strong data-i18n="modal_medium">Medium:</strong> <span id="store-medium"></span></li>
-        </ul>
+        <div class="store-specs-row">
+          <div class="store-spec">
+            <span class="store-spec-label" data-i18n="modal_price">Price</span>
+            <span class="store-spec-value" id="store-price"></span>
+          </div>
+          <div class="store-spec">
+            <span class="store-spec-label" data-i18n="modal_size">Size</span>
+            <span class="store-spec-value" id="store-size"></span>
+          </div>
+          <div class="store-spec">
+            <span class="store-spec-label" data-i18n="modal_medium">Medium</span>
+            <span class="store-spec-value" id="store-medium"></span>
+          </div>
+        </div>
 
-        <ul class="actions">
-          <button id="add-to-cart" class="button primary">
-  Add to cart
-</button>
-        </ul>
+        <button id="add-to-cart" class="store-add-btn">Add to cart</button>
       </div>
     </div>
   </div>
@@ -521,7 +770,7 @@ data-extras=""
 <!-- МОДАЛЬНОЕ ОКНО КОРЗИНЫ -->
 <div id="cart-modal" class="cart-modal" hidden>
   <div class="cart-content">
-    <h2>Ваша корзина</h2>
+    <h2 data-i18n="cart_title">Your cart</h2>
     <div id="cart-items"></div>
     <p><strong data-i18n="cart_total">Total:</strong>
    <span id="cart-total">0</span>
@@ -532,6 +781,38 @@ data-extras=""
 </div>
 </div>
 </div>
+<!-- PRICES MODAL -->
+<div id="prices-modal" class="prices-modal" hidden>
+  <div class="prices-overlay"></div>
+  <div class="prices-box">
+    <button id="prices-close" class="prices-close">×</button>
+    <h2 data-i18n="prices_title">Prices</h2>
+    <div class="prices-list">
+      <div class="prices-row">
+        <span class="prices-service" data-i18n="prices_logo">Logo</span>
+        <span class="prices-value">
+          <span class="prices-currency" data-i18n-price="logo_usd">от $80</span>
+          <span class="prices-sep">/</span>
+          <span class="prices-currency" data-i18n-price="logo_rub">от 7 500₽</span>
+        </span>
+      </div>
+      <div class="prices-row">
+        <span class="prices-service" data-i18n="prices_flyer">Flyer</span>
+        <span class="prices-value">
+          <span class="prices-currency" data-i18n-price="flyer_usd">от $40</span>
+          <span class="prices-sep">/</span>
+          <span class="prices-currency" data-i18n-price="flyer_rub">от 4 000₽</span>
+        </span>
+      </div>
+      <div class="prices-row prices-row-custom">
+        <span class="prices-service" data-i18n="prices_custom">Bigger project?</span>
+        <a href="#contact" class="prices-talk" data-i18n="prices_talk">Let's talk →</a>
+      </div>
+    </div>
+    <p class="prices-note" data-i18n="prices_note">Final price depends on complexity. I'll confirm after we discuss.</p>
+  </div>
+</div>
+
 <div id="checkout-modal" class="checkout-modal" hidden>
   <div class="checkout-overlay"></div>
 
@@ -541,29 +822,41 @@ data-extras=""
    <h2 data-i18n="order_title">Order request</h2>
 
 <form id="checkout-form">
- <input type="text" name="name"
-       data-i18n-placeholder="form_name"
-       placeholder="Name" required />
+  <input type="text" name="name"
+         data-i18n-placeholder="form_name"
+         placeholder="Name" required />
 
-<input type="email" name="email"
-       data-i18n-placeholder="form_email"
-       placeholder="Email" required />
+  <input type="email" name="email"
+         data-i18n-placeholder="form_email"
+         placeholder="Email" required />
 
-<input type="text" name="country"
-       data-i18n-placeholder="form_country"
-       placeholder="Country" required />
+  <input type="text" name="address"
+         data-i18n-placeholder="form_address"
+         placeholder="Full address (for shipping)" required />
 
-<textarea name="message"
-          data-i18n-placeholder="form_message"
-          placeholder="Message (optional)"></textarea>
-          
+  <input type="text" name="country"
+         data-i18n-placeholder="form_country"
+         placeholder="Country" required />
+
+  <label class="gift-wrap-label">
+    <input type="checkbox" name="gift" />
+    <span data-i18n="form_gift">Gift wrapping</span>
+  </label>
+
+  <textarea name="message"
+            data-i18n-placeholder="form_message"
+            placeholder="Message (optional)"></textarea>
+
   <button type="submit" class="primary" data-i18n="form_submit">
     Send order request
   </button>
+  <p class="checkout-shipping-note" data-i18n="checkout_shipping_note">
+    Shipping from €10, calculated separately and confirmed after order.
+  </p>
 </form>
 
     <div id="checkout-success" class="checkout-success" hidden>
-      <p>Thank you. I will contact you shortly.</p>
+      <p data-i18n="checkout_success">Thank you. I will contact you shortly.</p>
     </div>
   </div>
 </div>
@@ -583,6 +876,12 @@ data-extras=""
       <div class="art-process">
         <h4 id="art-process-title">Medium</h4>
         <ul id="art-process-list"></ul>
+      </div>
+
+      <div class="art-modal-footer">
+        <button id="art-prev" class="art-modal-nav-btn" aria-label="Previous artwork">←</button>
+        <span id="art-counter" class="art-modal-counter"></span>
+        <button id="art-next" class="art-modal-nav-btn" aria-label="Next artwork">→</button>
       </div>
     </div>
   </div>
