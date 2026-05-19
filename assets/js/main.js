@@ -134,7 +134,7 @@ form_submit: "Send order request",
     nav_store: "Магазин",
     nav_contact: "Контакты",
     arts_title: "Арт",
-    // Русский
+    projects_title: "Проекты",
 proj1_title: "Стикеры Bloody Mary",
 proj1_desc: "Стикер-пак для бара с нотками БДСМ, отражающий уникальную атмосферу заведения.",
 
@@ -723,7 +723,7 @@ document.addEventListener("keydown", (e) => {
     cartModal.hidden = true;
   }
 });
-  // =========================
+  // =====================
   // CHECKOUT
   // =========================
 
@@ -1124,6 +1124,109 @@ art8: {
   document.addEventListener("keydown", e => { if (e.key === "Escape" && !modal.hidden) closeArt(); });
 })();
 
+
+// === PROJECT MODAL ===
+(function () {
+  const overlay  = document.getElementById('project-modal');
+  if (!overlay) return;
+  const closeBtn = document.getElementById('project-close');
+  const mainImg  = document.getElementById('project-modal-img');
+  const thumbsEl = document.getElementById('project-modal-thumbs');
+  const titleEl  = document.getElementById('project-modal-title');
+  const descEl   = document.getElementById('project-modal-desc');
+  const catEl    = document.getElementById('project-modal-category');
+  const metaEl   = document.getElementById('project-modal-meta');
+  const tagsEl   = document.getElementById('project-modal-tags');
+  const numEl    = document.getElementById('project-modal-num');
+  const prevBtn  = document.getElementById('project-prev');
+  const nextBtn  = document.getElementById('project-next');
+
+  const cards = Array.from(document.querySelectorAll('.project-card'));
+  let currentCardIndex = 0;
+  let images = [];
+
+  function getLang() {
+    return (typeof currentLang === 'string' ? currentLang : 'en');
+  }
+
+  function setThumb(i) {
+    mainImg.src = images[i];
+    thumbsEl.querySelectorAll('.pm-thumb').forEach((t, idx) => {
+      t.classList.toggle('active', idx === i);
+    });
+  }
+
+  function openModal(cardIndex) {
+    currentCardIndex = cardIndex;
+    const card = cards[cardIndex];
+    const lang = getLang();
+    const isRu = lang === 'ru';
+
+    images = (card.dataset.images || card.dataset.img || '').split(',').map(s => s.trim()).filter(Boolean);
+
+    mainImg.src = images[0] || '';
+    mainImg.alt = (isRu ? card.dataset.titleRu : card.dataset.titleEn) || '';
+    titleEl.textContent = (isRu ? card.dataset.titleRu : card.dataset.titleEn) || '';
+    descEl.textContent  = (isRu ? card.dataset.descRu  : card.dataset.descEn)  || '';
+    catEl.textContent   = (isRu ? card.dataset.categoryRu : card.dataset.categoryEn) || '';
+
+    // thumbnails
+    thumbsEl.innerHTML = '';
+    images.forEach((src, i) => {
+      const d = document.createElement('div');
+      d.className = 'pm-thumb' + (i === 0 ? ' active' : '');
+      d.innerHTML = '<img src="' + src + '" alt="">';
+      d.addEventListener('click', () => setThumb(i));
+      thumbsEl.appendChild(d);
+    });
+
+    // meta rows
+    const metaRaw = (isRu ? card.dataset.metaRu : card.dataset.metaEn) || '';
+    const metaParts = metaRaw.split('|');
+    metaEl.innerHTML = '';
+    for (let i = 0; i < metaParts.length; i += 2) {
+      if (!metaParts[i]) continue;
+      const row = document.createElement('div');
+      row.className = 'pm-meta-row';
+      row.innerHTML = '<span class="pm-meta-label">' + metaParts[i] + '</span><span class="pm-meta-value">' + (metaParts[i+1] || '') + '</span>';
+      metaEl.appendChild(row);
+    }
+
+    // tags
+    const tags = (card.dataset.tags || '').split(',').map(s => s.trim()).filter(Boolean);
+    tagsEl.innerHTML = tags.map(t => '<span class="pm-tag">' + t + '</span>').join('');
+
+    // counter
+    const n = String(cardIndex + 1).padStart(2, '0');
+    const total = String(cards.length).padStart(2, '0');
+    numEl.textContent = n + ' / ' + total;
+
+    overlay.hidden = false;
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    overlay.hidden = true;
+    document.body.style.overflow = '';
+  }
+
+  cards.forEach((card, i) => {
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', () => openModal(i));
+  });
+
+  closeBtn && closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', e => {
+    if (overlay.hidden) return;
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'ArrowRight') openModal((currentCardIndex + 1) % cards.length);
+    if (e.key === 'ArrowLeft')  openModal((currentCardIndex - 1 + cards.length) % cards.length);
+  });
+
+  prevBtn && prevBtn.addEventListener('click', () => openModal((currentCardIndex - 1 + cards.length) % cards.length));
+  nextBtn && nextBtn.addEventListener('click', () => openModal((currentCardIndex + 1) % cards.length));
+})();
 
 if (typeof window.gtag === "function") {
   gtag("event", "add_to_cart", {
