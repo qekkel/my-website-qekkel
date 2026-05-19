@@ -3,6 +3,7 @@
 let currentProduct = null;
 let productAdded = false;
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let renderCart;
 
 /* =========================
    BASIC PAGE LOAD
@@ -83,12 +84,10 @@ proj4_desc: "Logo design for a cozy café with a warm and modern visual identity
     about_title: "About",
     about_lead: "Hello, I’m Olga",
   about_text: [
-    "Hello, I’m Olga",
-    "I create visual worlds that live between fantasy and function.",
-    { accent: "Atmosphere. Depth. Presence." },
-    "Through painting, CG, and visual design, I explore emotional identity and symbolic communication.",
-    "Open to collaborations with brands and artists who care about meaning and aesthetics.",
-    "Based between Europe and Russia. Working worldwide."
+    "Hi, I’m Olga – visual artist and designer.",
+    "I work with oil, acrylic, digital illustration, and 2D animation. Original artworks, commissions, and creative collabs.",
+    "Open to brand collaborations: identity, illustration, concept art.",
+    "Based in Europe. Working worldwide."
   ],
     about_cta: "Contact",
     about_tags: [
@@ -99,6 +98,7 @@ proj4_desc: "Logo design for a cozy café with a warm and modern visual identity
     store_title: "Store",
     store_lead: "Original pieces, postcards, and limited drops.",
     badge_limited: "Original",
+    badge_new: "New",
     contact_title: "Contact",
     order_title: "Order request",
     send_tg: "Send via Telegram",
@@ -108,9 +108,9 @@ form_email: "Email",
 form_country: "Country",
 form_message: "Message (optional)",
 form_submit: "Send order request",
-    modal_price: "Price:",
-    modal_size: "Size:",
-    modal_medium: "Medium:",
+    modal_price: "Price",
+    modal_size: "Size",
+    modal_medium: "Medium",
     modal_inquire: "Inquire",
     form_ok: "Thanks! Your message was sent.",
     form_err: "Something went wrong. Try again.",
@@ -119,9 +119,30 @@ form_submit: "Send order request",
     cart_title: "Your cart",
     cart_empty: "Cart is empty",
     cart: "Cart",
+    form_firstname_label: "First name",
+    form_lastname_label: "Last name",
+    form_firstname_ph: "Marceline",
+    form_lastname_ph: "Vampire Queen",
+    form_email_label: "Email",
+    form_message_label: "Message",
     form_name_ph:"Name",
     form_email_ph:"Email",
-    form_msg_ph:"Message",
+    form_msg_ph:"Olga, love your work, let's collaborate!",
+    form_send: "Send",
+    form_address: "Full address (for shipping)",
+    form_gift: "Gift wrapping",
+    checkout_success: "Thank you. I will contact you shortly.",
+    checkout_shipping_note: "Shipping from €10, calculated separately and confirmed after order.",
+    projects_cta_text: "Need something?",
+    projects_cta_prices: "Prices →",
+    projects_cta_btn: "Get in touch →",
+    prices_title: "Prices",
+    prices_logo: "Logo",
+    prices_flyer: "Flyer",
+    prices_custom: "Bigger project?",
+    prices_talk: "Let's talk →",
+    prices_note: "Final price depends on complexity. I'll confirm after we discuss.",
+    contact_tg: "Write in Telegram",
   },
   ru: {
     hero_subtitle: "Независимый художник и дизайнер",
@@ -149,17 +170,16 @@ proj4_desc: "Разработка логотипа для уютного каф�
     about_title: "Обо мне",
     about_lead: "Привет! Я Ольга",
   about_text: [
-    "Привет! Я Ольга",
-    "Создаю визуальные миры на грани фантазии и функции.",
-    { accent: "Атмосфера. Глубина. Присутствие." },
-    "Через живопись, CG и визуальный дизайн исследую эмоциональную идентичность и символику.",
-    "Открыта к сотрудничеству с брендами и художниками, которым важны смысл и эстетика.",
-    "Между Европой и Россией. Работаю по всему миру."
+    "Привет, я Ольга – художник и дизайнер.",
+    "Работаю с маслом, акрилом, цифровой иллюстрацией и 2D анимацией. Оригинальные работы, заказы, коллаборации.",
+    "Открыта для брендовых коллабораций: айдентика, иллюстрация, концепт-арт.",
+    "Нахожусь в Европе. Работаю по всему миру."
   ],
     about_cta: "Связаться",
     store_title: "Магазин",
     store_lead: "Оригиналы, открытки и лимитированные дропы.",
     badge_limited: "Оригинал",
+    badge_new: "Новинка",
     contact_title: "Контакты",
     order_title: "Заказ",
     send_tg: "Через Telegram",
@@ -169,9 +189,9 @@ send_email: "Через Email",
     form_country: "Страна",
     form_message: "Сообщение (необязательно)",
     form_submit: "Отправить запрос",
-    modal_price: "Цена:",
-    modal_size: "Размер:",
-    modal_medium: "Техника:",
+    modal_price: "Цена",
+    modal_size: "Размер",
+    modal_medium: "Техника",
     modal_inquire: "Спросить",
     form_ok: "Спасибо! Сообщение отправлено.",
     form_err: "Ошибка. Попробуй ещё раз.",
@@ -180,9 +200,30 @@ send_email: "Через Email",
     cart_title: "Ваша корзина",
     cart_empty: "Корзина пуста",
     cart: "Корзина",
+    form_firstname_label: "Имя",
+    form_lastname_label: "Фамилия",
+    form_firstname_ph: "Марселин",
+    form_lastname_ph: "Королева Вампиров",
+    form_email_label: "Email",
+    form_message_label: "Сообщение",
     form_name_ph:"Имя",
     form_email_ph:"Почта",
-    form_msg_ph:"Сообщение",
+    form_msg_ph:"Ольга, нравятся твои работы, давай сотрудничать!",
+    form_send: "Отправить",
+    form_address: "Полный адрес (для доставки)",
+    form_gift: "Подарочная упаковка",
+    checkout_success: "Спасибо! Я свяжусь с тобой в ближайшее время.",
+    checkout_shipping_note: "Доставка от €10, рассчитывается отдельно и уточняется после заказа.",
+    projects_cta_text: "Нужен дизайн?",
+    projects_cta_prices: "Цены →",
+    projects_cta_btn: "Написать →",
+    prices_title: "Цены",
+    prices_logo: "Логотип",
+    prices_flyer: "Флайер",
+    prices_custom: "Большой проект?",
+    prices_talk: "Написать →",
+    prices_note: "Финальная цена зависит от сложности. Уточню после обсуждения.",
+    contact_tg: "Написать в Telegram",
   }
 };
 
@@ -197,7 +238,7 @@ if (savedLang) {
   // если пользователь уже выбирал язык
   currentLang = savedLang;
 } else {
-  // первый заход — определяем по браузеру
+  // первый заход – определяем по браузеру
   const browserLang = navigator.language || navigator.userLanguage;
 
   if (browserLang && browserLang.startsWith("ru")) {
@@ -289,10 +330,7 @@ if (aboutContainer) {
     btn.setAttribute("aria-pressed", btn.dataset.lang === currentLang);
   });
 
-  // ✅ ВОТ ЗДЕСЬ
-  if (typeof renderCart === "function") {
-    renderCart();
-  }
+  if (typeof renderCart === "function") renderCart();
 }
 
 
@@ -340,6 +378,13 @@ img.src = "";
 
     document.getElementById("store-status").textContent =
       currentLang === "ru" ? d.statusRu : d.statusEn;
+
+    const descEl = document.getElementById("store-desc");
+    if (descEl) {
+      const desc = currentLang === "ru" ? (d.descRu || "") : (d.descEn || "");
+      descEl.textContent = desc;
+      descEl.style.display = desc ? "" : "none";
+    }
 
     document.getElementById("store-size").textContent =
       currentLang === "ru" ? d.sizeRu : d.sizeEn;
@@ -474,6 +519,7 @@ if (addToCartBtn) {
   function close() {
     panel.hidden = true;
     document.body.style.overflow = "";
+    document.activeElement?.blur();
   }
 
  document.querySelectorAll(".store-card").forEach(card => {
@@ -552,6 +598,14 @@ document.addEventListener("DOMContentLoaded", () => {
     cart.push(item);
     saveCart();
     updateCartCounter();
+
+    if (typeof window.gtag === "function") {
+      gtag("event", "add_to_cart", {
+        currency: "EUR",
+        value: item.price || 0,
+        items: [{ item_name: item.title || "unknown" }]
+      });
+    }
   }
 
   // =========================
@@ -584,38 +638,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const sendEmailBtn = document.getElementById("send-email");
 
 // =========================
-// TELEGRAM (без формы)
+// TELEGRAM (через форму)
 // =========================
 sendTgBtn?.addEventListener("click", () => {
-
   if (!cart.length) {
     alert(currentLang === "ru" ? "Корзина пуста" : "Cart is empty");
     return;
   }
-
-  let orderText =
-    currentLang === "ru"
-      ? "Здравствуйте! Я хочу заказать:\n\n"
-      : "Hello! I would like to order:\n\n";
-
-  cart.forEach((item, i) => {
-    orderText += `${i + 1}. ${item.title}\n`;
-  });
-
-  const total = cart.reduce((s, i) => s + i.price, 0);
-
-  orderText +=
-    currentLang === "ru"
-      ? `\nИтого: €${total}`
-      : `\nTotal: €${total}`;
-
-  const tgUrl =
-    `https://t.me/qekkel?text=${encodeURIComponent(orderText)}`;
-
-  window.open(tgUrl, "_blank");
-
-  // Закрываем корзину
+  checkoutMethod = "tg";
   cartModal.classList.remove("open");
+  checkoutModal.hidden = false;
 });
 
 sendEmailBtn?.addEventListener("click", () => {
@@ -652,7 +684,7 @@ sendEmailBtn?.addEventListener("click", () => {
   // =========================
   // RENDER CART
   // =========================
-  function renderCart() {
+  renderCart = function() {
     cartItemsEl.innerHTML = "";
     let total = 0;
 
@@ -727,42 +759,10 @@ document.addEventListener("keydown", (e) => {
   // CHECKOUT
   // =========================
 
-  const checkoutBtn = document.getElementById("checkout");
   const checkoutModal = document.getElementById("checkout-modal");
   const checkoutClose = document.getElementById("checkout-close");
   const checkoutForm = document.getElementById("checkout-form");
   const checkoutSuccess = document.getElementById("checkout-success");
-
-  checkoutBtn?.addEventListener("click", () => {
-    if (!cart.length) {
-      alert(currentLang === "ru" ? "Корзина пуста" : "Cart is empty");
-      return;
-    }
-
-   checkoutForm.hidden = true;
-checkoutSuccess.hidden = false;
-
-cart = [];
-localStorage.setItem("cart", JSON.stringify(cart));
-updateCartCounter();
-renderCart();
-
-// Через 1.5 секунды закрываем всё
-setTimeout(() => {
-  checkoutModal.hidden = true;
-  cartModal.hidden = true;
-
-  checkoutForm.hidden = false;
-  checkoutSuccess.hidden = true;
-}, 1500);
-
-cart = [];
-saveCart();
-updateCartCounter();
-renderCart();
-
-    checkoutModal.hidden = false;
-  });
 
   checkoutClose?.addEventListener("click", () => {
     checkoutModal.hidden = true;
@@ -780,24 +780,30 @@ renderCart();
     const formData = new FormData(checkoutForm);
     const name = formData.get("name");
     const email = formData.get("email");
+    const address = formData.get("address");
     const country = formData.get("country");
+    const gift = formData.get("gift") === "on";
     const message = formData.get("message");
 
     const orderId = "ORD-" + Date.now();
+    const isRu = currentLang === "ru";
 
     let orderText =
-      `New Order ${orderId}\n\n` +
-      `Name: ${name}\n` +
-      `Email: ${email}\n` +
-      `Country: ${country}\n\n`;
+      (isRu ? `Новый заказ ${orderId}\n\n` : `New Order ${orderId}\n\n`) +
+      (isRu ? `Имя: ${name}\n` : `Name: ${name}\n`) +
+      (isRu ? `Email: ${email}\n` : `Email: ${email}\n`) +
+      (isRu ? `Адрес: ${address}\n` : `Address: ${address}\n`) +
+      (isRu ? `Страна: ${country}\n` : `Country: ${country}\n`) +
+      (gift ? (isRu ? `Подарочная упаковка: да\n` : `Gift wrapping: yes\n`) : "") +
+      "\n";
 
     cart.forEach((item, i) => {
-      orderText += `${i + 1}. ${item.title} — €${item.price}\n`;
+      orderText += `${i + 1}. ${item.title} – €${item.price}\n`;
     });
 
     const total = cart.reduce((s, i) => s + i.price, 0);
-    orderText += `\nTotal: €${total}\n\n`;
-    orderText += `Message:\n${message}`;
+    orderText += (isRu ? `\nИтого: €${total}` : `\nTotal: €${total}`);
+    if (message) orderText += (isRu ? `\n\nСообщение:\n${message}` : `\n\nMessage:\n${message}`);
 
    if (checkoutMethod === "tg") {
   const tgUrl =
@@ -807,7 +813,7 @@ renderCart();
 
 if (checkoutMethod === "email") {
   const mailUrl =
-    `mailto:your@email.com?subject=Artwork Order ${orderId}&body=${encodeURIComponent(orderText)}`;
+    `mailto:qekkel.olia@gmail.com?subject=Artwork Order ${orderId}&body=${encodeURIComponent(orderText)}`;
   window.location.href = mailUrl;
 }
 
@@ -821,6 +827,27 @@ if (checkoutMethod === "email") {
   });
 
   // =========================
+  // =========================
+  // PRICES MODAL
+  // =========================
+  const pricesModal = document.getElementById("prices-modal");
+  const openPricesBtn = document.getElementById("open-prices");
+  const pricesClose = document.getElementById("prices-close");
+
+  openPricesBtn?.addEventListener("click", () => {
+    pricesModal.hidden = false;
+  });
+
+  pricesClose?.addEventListener("click", () => {
+    pricesModal.hidden = true;
+  });
+
+  pricesModal?.addEventListener("click", (e) => {
+    if (e.target.classList.contains("prices-overlay")) {
+      pricesModal.hidden = true;
+    }
+  });
+
   // INIT
   // =========================
   cartModal.hidden = true;
@@ -896,195 +923,140 @@ if (cursor) {
   const metaEl = document.getElementById("art-meta");
   const processTitleEl = document.getElementById("art-process-title");
   const processListEl = document.getElementById("art-process-list");
+  const counterEl = document.getElementById("art-counter");
+  const prevBtn = document.getElementById("art-prev");
+  const nextBtn = document.getElementById("art-next");
 
   if (!modal || !imgEl || !titleEl || !descEl || !metaEl || !processTitleEl || !processListEl) return;
 
   const ARTS = {
-art1: {
-  titleEn: "Adventure Time in an alternate reality",
-  titleRu: "Adventure Time в реальной реальности",
-  year: "2023",
-  mediumEn: "Animated GIF, Digital Illustration",
-  mediumRu: "GIF, цифровая иллюстрация",
-  descEn: "Cartoon characters placed into a reality that feels slightly too real",
-  descRu: "ерои мультика помещены в реальность, которая кажется слишком уж реалистичной",
-  process: {
-    en: [
-      "Adobe Photoshop",
-    ],
-    ru: [
-      "Adobe Photoshop",
-    ]
-  }
-},
-  art2: {
-    titleEn: "BMO",
-    titleRu: "Бимо",
-    year: "2023",
-    mediumEn: "Digital Illustration",
-    mediumRu: "Цифровая иллюстрация",
-    descEn: "BMO Cross-Section: a tiny heart sleeping among the wires",
-    descRu: "Бимо в разрезе: среди проводов можно заметить сладко спящее сердечко",
-   process: {
-    en: [
-      "Adobe Photoshop",
-    ],
-    ru: [
-      "Adobe Photoshop",
-    ]
-  }
-  },
+    art1: {
+      titleEn: "Adventure Time in an alternate reality",
+      titleRu: "Adventure Time в реальной реальности",
+      year: "2023",
+      mediumEn: "Animated GIF, Digital Illustration",
+      mediumRu: "GIF, цифровая иллюстрация",
+      descEn: "Cartoon characters placed into a reality that feels slightly too real",
+      descRu: "Герои мультика помещены в реальность, которая кажется слишком уж реалистичной",
+      process: { en: ["Adobe Photoshop"], ru: ["Adobe Photoshop"] }
+    },
+    art2: {
+      titleEn: "BMO",
+      titleRu: "Бимо",
+      year: "2023",
+      mediumEn: "Digital Illustration",
+      mediumRu: "Цифровая иллюстрация",
+      descEn: "BMO Cross-Section: a tiny heart sleeping among the wires",
+      descRu: "Бимо в разрезе: среди проводов можно заметить сладко спящее сердечко",
+      process: { en: ["Adobe Photoshop"], ru: ["Adobe Photoshop"] }
+    },
+    art3: {
+      titleEn: "Vampire Queen",
+      titleRu: "Королева вампиров",
+      year: "2025",
+      mediumEn: "Animated GIF, Digital Illustration",
+      mediumRu: "GIF, цифровая иллюстрация",
+      descEn: "Marceline has spotted her next victim",
+      descRu: "Марселин заметила новую жертву",
+      process: { en: ["Procreate"], ru: ["Procreate"] }
+    },
+    art4: {
+      titleEn: "Over the Garden Wall",
+      titleRu: "По ту сторону Изгороди",
+      year: "2023",
+      mediumEn: "Watercolor on Paper",
+      mediumRu: "Акварель на бумаге",
+      descEn: "Greg and Wirt preparing for Halloween",
+      descRu: "Грег и Вирт готовятся к Хэллоуину",
+      process: { en: ["Watercolor painting", "A5"], ru: ["Акварельная живопись", "A5"] }
+    },
+    art5: {
+      titleEn: "Sagittarius",
+      titleRu: "Стрелец",
+      year: "2024",
+      mediumEn: "Digital Illustration",
+      mediumRu: "Цифровая иллюстрация",
+      descEn: "Huntress releasing her arrow",
+      descRu: "Охотница выпускает стрелу",
+      process: { en: ["Adobe Photoshop"], ru: ["Adobe Photoshop"] }
+    },
+    art6: {
+      titleEn: "Sing Street",
+      titleRu: "Рок-н-рольщики",
+      year: "2018",
+      mediumEn: "Ink on Paper",
+      mediumRu: "Тушь на бумаге",
+      descEn: "Boys imagine their first song together",
+      descRu: "Мальчики придумывают свою первую песню",
+      process: { en: ["Ink drawing"], ru: ["Рисунок тушью"] }
+    },
+    art7: {
+      titleEn: "Surreal Bouquet",
+      titleRu: "Сюрреалистический букет",
+      year: "2024",
+      mediumEn: "Acrylic on Canvas",
+      mediumRu: "Акрил на холсте",
+      descEn: "Flowers growing from my hands",
+      descRu: "Из рук моих вырастут цветы",
+      process: { en: ["Acryl"], ru: ["Акрил"] }
+    },
+    art8: {
+      titleEn: "Marceline",
+      titleRu: "Марселин",
+      year: "2023",
+      mediumEn: "Oil on Canvas",
+      mediumRu: "Масло на холсте",
+      descEn: "A small tribute to Marcy – painted as a way of expressing my love for her.",
+      descRu: "Небольшая дань Марси – картина, через которую я выражаю свою любовь к ней.",
+      process: { en: ["Oil painting"], ru: ["Живопись маслом"] }
+    }
+  };
 
-  art3: {
-    titleEn: "Vampire Queen",
-    titleRu: "Королева вампиров",
-    year: "2025",
-    mediumEn: "Animated GIF, Digital Illustration",
-    mediumRu: "GIF, цифровая иллюстрация",
-    descEn: "Marceline has spotted her next victim",
-    descRu: "Марселин заметила новую жертву",
-   process: {
-    en: [
-      "Procreate",
-    ],
-    ru: [
-      "Procreate",
-    ]
-  }
-  },
-
-art4: {
-  titleEn: "Over the Garden Wall",
-  titleRu: "По ту сторону Изгороди",
-  year: "2023",
-  mediumEn: "Watercolor on Paper",
-  mediumRu: "Акварель на бумаге",
-  descEn: "Greg and Wirt preparing for Halloween",
-  descRu: "Грег и Вирт готовятся к Хэллоуину",
-  process: {
-    en: [
-      "Watercolor painting",
-      "A5",
-    ],
-    ru: [
-      "Акварельная живопись",
-      "A5",
-    ]
-  }
-},
-
-art5: {
-  titleEn: "Sagittarius",
-  titleRu: "Стрелец",
-  year: "2024",
-  mediumEn: "Digital Illustration",
-  mediumRu: "Цифровая иллюстрация",
-  descEn: "Huntress releasing her arrow",
-  descRu: "Охотница выпускает стрелу",
-  process: {
-    en: [
-      "Adobe Photoshop"
-    ],
-    ru: [
-      "Adobe Photoshop"
-    ]
-  }
-},
-
-art6: {
-  titleEn: "Sing Street",
-  titleRu: "Рок-н-рольщики",
-  year: "2018",
-  mediumEn: "Ink on Paper",
-  mediumRu: "Тушь на бумаге",
-  descEn: "Boys imagine their first song together",
-  descRu: "Мальчики придумывают свою первую песню",
-  process: {
-    en: [
-      "Ink drawing"
-    ],
-    ru: [
-      "Рисунок тушью"
-    ]
-  }
-},
-
-art7: {
-  titleEn: "Surreal Bouquet",
-  titleRu: "Сюрреалистический букет",
-  year: "2024",
-  mediumEn: "Acrylic on Canvas",
-  mediumRu: "Акрил на холсте",
-  descEn: "Flowers growing from my hands",
-  descRu: "Из рук моих вырастут цветы",
-  process: {
-    en: [
-      "Acryl"
-    ],
-    ru: [
-      "Акрил"
-    ]
-  }
-},
-
-art8: {
-  titleEn: "Marceline",
-  titleRu: "Марселин",
-  year: "2023",
-  mediumEn: "Oil on Canvas",
-  mediumRu: "Масло на холсте",
-  descEn: "A small tribute to Marcy – painted as a way of expressing my love for her.",
-  descRu: "Небольшая дань Марси – картина, через которую я выражаю свою любовь к ней.",
-  process: {
-    en: [
-      "Oil painting"
-    ],
-    ru: [
-      "Живопись маслом"
-    ]
-  }
-},
-
-};
+  const artItems = Array.from(document.querySelectorAll(".art-item[data-art-id]"));
+  let currentIndex = 0;
 
   function getLang() {
     return typeof currentLang === "string" ? currentLang : "en";
   }
 
-  function openFromItem(item) {
+  function getTitle(art, L) {
+    return (L === "ru" ? art.titleRu : art.titleEn) || "";
+  }
+
+  function openAtIndex(i) {
+    currentIndex = ((i % artItems.length) + artItems.length) % artItems.length;
+    showArt(artItems[currentIndex]);
+  }
+
+  function showArt(item) {
     const id = item.dataset.artId;
     const img = item.querySelector("img");
     const src = img?.getAttribute("src") || "";
-    const alt = img?.getAttribute("alt") || "";
-
     const L = getLang();
     const art = ARTS[id] || {};
 
-    const title =
-      (L === "ru" ? art.titleRu : art.titleEn) ||
-      alt ||
-      id ||
-      "Artwork";
-
+    const title = getTitle(art, L) || img?.getAttribute("alt") || id || "Artwork";
     titleEl.textContent = title;
 
-    // meta
+    if (counterEl) {
+      counterEl.textContent =
+        String(currentIndex + 1).padStart(2, "0") + " / " +
+        String(artItems.length).padStart(2, "0");
+    }
+
     const year = art.year ? String(art.year) : "";
     const medium = (L === "ru" ? art.mediumRu : art.mediumEn) || "";
-    const meta = [year, medium].filter(Boolean).join(" • ");
+    const meta = [year, medium].filter(Boolean).join(" · ");
     metaEl.textContent = meta;
     metaEl.style.display = meta ? "" : "none";
 
-    // desc
     const desc = (L === "ru" ? art.descRu : art.descEn) || "";
     descEl.textContent = desc;
     descEl.style.display = desc ? "" : "none";
 
-    // process
     processTitleEl.textContent = L === "ru" ? "Техника" : "Medium";
     processListEl.innerHTML = "";
-    const steps = (art.process && (L === "ru" ? art.process.ru : art.process.en)) || [];
-
+    const steps = art.process?.[L] || [];
     if (steps.length) {
       steps.forEach(s => {
         const li = document.createElement("li");
@@ -1096,10 +1068,8 @@ art8: {
       processListEl.parentElement.style.display = "none";
     }
 
-    // image
-    imgEl.src = src || art.image || "";
+    imgEl.src = src;
     imgEl.alt = title;
-
     modal.hidden = false;
     document.body.style.overflow = "hidden";
   }
@@ -1109,19 +1079,23 @@ art8: {
     document.body.style.overflow = "";
   }
 
-  document.querySelectorAll(".art-item[data-art-id]").forEach(item => {
-    item.addEventListener("click", () => openFromItem(item));
-    item.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        openFromItem(item);
-      }
+  artItems.forEach((item, i) => {
+    item.addEventListener("click", () => { currentIndex = i; showArt(item); });
+    item.addEventListener("keydown", e => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); currentIndex = i; showArt(item); }
     });
   });
 
+  prevBtn?.addEventListener("click", () => openAtIndex(currentIndex - 1));
+  nextBtn?.addEventListener("click", () => openAtIndex(currentIndex + 1));
   closeBtn?.addEventListener("click", closeArt);
   modal.addEventListener("click", e => { if (e.target === modal) closeArt(); });
-  document.addEventListener("keydown", e => { if (e.key === "Escape" && !modal.hidden) closeArt(); });
+  document.addEventListener("keydown", e => {
+    if (modal.hidden) return;
+    if (e.key === "Escape") closeArt();
+    if (e.key === "ArrowRight") openAtIndex(currentIndex + 1);
+    if (e.key === "ArrowLeft") openAtIndex(currentIndex - 1);
+  });
 })();
 
 
@@ -1228,10 +1202,3 @@ art8: {
   nextBtn && nextBtn.addEventListener('click', () => openModal((currentCardIndex + 1) % cards.length));
 })();
 
-if (typeof window.gtag === "function") {
-  gtag("event", "add_to_cart", {
-    currency: "EUR",
-    value: currentProduct?.price || 0,
-    items: [{ item_name: currentProduct?.title || "unknown" }]
-  });
-}
