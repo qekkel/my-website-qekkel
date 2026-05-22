@@ -991,6 +991,17 @@ if (cursor) {
   const counterEl = document.getElementById("art-counter");
   const prevBtn = document.getElementById("art-prev");
   const nextBtn = document.getElementById("art-next");
+  const expandBtn = document.getElementById("art-expand");
+
+  // Fullscreen elements
+  const fsOverlay  = document.getElementById("art-fs");
+  const fsImg      = document.getElementById("art-fs-img");
+  const fsClose    = document.getElementById("art-fs-close");
+  const fsPrevBtn  = document.getElementById("art-fs-prev");
+  const fsNextBtn  = document.getElementById("art-fs-next");
+  const fsCounterEl = document.getElementById("art-fs-counter");
+  const fsHint     = document.getElementById("art-fs-hint");
+  const fsWrap     = document.getElementById("art-fs-wrap");
 
   if (!modal || !imgEl || !titleEl || !descEl || !metaEl || !processTitleEl || !processListEl) return;
 
@@ -1144,6 +1155,82 @@ if (cursor) {
     document.body.style.overflow = "";
   }
 
+  // ===== FULLSCREEN =====
+  let fsZoomed = false;
+  let fsHintTimer = null;
+
+  function syncFsCounter() {
+    if (fsCounterEl) {
+      fsCounterEl.textContent =
+        String(currentIndex + 1).padStart(2, "0") + " / " +
+        String(artItems.length).padStart(2, "0");
+    }
+  }
+
+  function resetFsZoom() {
+    fsZoomed = false;
+    if (fsWrap) fsWrap.classList.remove("zoomed");
+    if (fsImg) fsImg.style.transform = "";
+  }
+
+  function openFS() {
+    if (!fsOverlay || !fsImg) return;
+    resetFsZoom();
+    fsImg.src = imgEl.src;
+    fsImg.alt = imgEl.alt;
+    syncFsCounter();
+    fsOverlay.hidden = false;
+    // Hint: show then fade out
+    if (fsHint) {
+      const L = getLang();
+      fsHint.textContent = L === "ru"
+        ? "Нажми для увеличения · ESC — закрыть"
+        : "Click to zoom · ESC to close";
+      fsHint.classList.remove("fade-out");
+      clearTimeout(fsHintTimer);
+      fsHintTimer = setTimeout(() => fsHint.classList.add("fade-out"), 2200);
+    }
+  }
+
+  function closeFS() {
+    if (!fsOverlay) return;
+    fsOverlay.hidden = true;
+    resetFsZoom();
+  }
+
+  // Click on image or expand button → open fullscreen
+  imgEl.addEventListener("click", openFS);
+  expandBtn?.addEventListener("click", (e) => { e.stopPropagation(); openFS(); });
+
+  // Zoom toggle inside fullscreen
+  if (fsWrap) {
+    fsWrap.addEventListener("click", () => {
+      fsZoomed = !fsZoomed;
+      fsWrap.classList.toggle("zoomed", fsZoomed);
+    });
+  }
+
+  // Fullscreen navigation
+  fsPrevBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    openAtIndex(currentIndex - 1);
+    resetFsZoom();
+    if (fsImg) { fsImg.src = imgEl.src; fsImg.alt = imgEl.alt; }
+    syncFsCounter();
+  });
+  fsNextBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    openAtIndex(currentIndex + 1);
+    resetFsZoom();
+    if (fsImg) { fsImg.src = imgEl.src; fsImg.alt = imgEl.alt; }
+    syncFsCounter();
+  });
+
+  fsClose?.addEventListener("click", closeFS);
+  fsOverlay?.addEventListener("click", (e) => {
+    if (e.target === fsOverlay) closeFS();
+  });
+
   artItems.forEach((item, i) => {
     item.addEventListener("click", () => { currentIndex = i; showArt(item); });
     item.addEventListener("keydown", e => {
@@ -1156,6 +1243,24 @@ if (cursor) {
   closeBtn?.addEventListener("click", closeArt);
   modal.addEventListener("click", e => { if (e.target === modal) closeArt(); });
   document.addEventListener("keydown", e => {
+    // Fullscreen takes priority
+    if (fsOverlay && !fsOverlay.hidden) {
+      if (e.key === "Escape") { closeFS(); return; }
+      if (e.key === "ArrowRight") {
+        openAtIndex(currentIndex + 1);
+        resetFsZoom();
+        if (fsImg) { fsImg.src = imgEl.src; fsImg.alt = imgEl.alt; }
+        syncFsCounter();
+        return;
+      }
+      if (e.key === "ArrowLeft") {
+        openAtIndex(currentIndex - 1);
+        resetFsZoom();
+        if (fsImg) { fsImg.src = imgEl.src; fsImg.alt = imgEl.alt; }
+        syncFsCounter();
+        return;
+      }
+    }
     if (modal.hidden) return;
     if (e.key === "Escape") closeArt();
     if (e.key === "ArrowRight") openAtIndex(currentIndex + 1);
