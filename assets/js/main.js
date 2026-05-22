@@ -514,9 +514,20 @@ if (imgs.length) {
 // сброс состояния кнопки
 const addToCartBtn = document.getElementById("add-to-cart");
 
-
 if (addToCartBtn) {
-  addToCartBtn.style.display = "inline-block";
+  const isSold = card?.dataset?.sold === "true";
+  if (isSold) {
+    addToCartBtn.textContent = currentLang === "ru" ? "Продано" : "Sold out";
+    addToCartBtn.disabled = true;
+    addToCartBtn.style.opacity = "0.4";
+    addToCartBtn.style.cursor = "default";
+  } else {
+    addToCartBtn.textContent = currentLang === "ru" ? "В корзину" : "Add to cart";
+    addToCartBtn.disabled = false;
+    addToCartBtn.style.opacity = "";
+    addToCartBtn.style.cursor = "";
+    addToCartBtn.style.display = "inline-block";
+  }
 }
 
 
@@ -574,6 +585,31 @@ if (addToCartBtn) {
 ========================= */
 const year = document.getElementById("year");
 if (year) year.textContent = new Date().getFullYear();
+
+/* =========================
+   BACK TO TOP
+========================= */
+const backToTopBtn = document.getElementById("back-to-top");
+if (backToTopBtn) {
+  window.addEventListener("scroll", () => {
+    backToTopBtn.classList.toggle("visible", window.scrollY > 400);
+  });
+  backToTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+/* =========================
+   SOLD OUT — отметить карточки
+========================= */
+document.querySelectorAll(".store-card[data-sold='true']").forEach(card => {
+  card.classList.add("is-sold");
+  const priceEl = card.querySelector(".store-price");
+  if (priceEl) {
+    priceEl.textContent = currentLang === "ru" ? "Продано" : "Sold";
+    priceEl.classList.add("sold-label");
+  }
+});
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -836,6 +872,27 @@ if (checkoutMethod === "email") {
 
   // =========================
   // =========================
+  // =========================
+  // STORE SHARE BUTTON
+  // =========================
+  const storeShareBtn = document.getElementById("store-share");
+  storeShareBtn?.addEventListener("click", () => {
+    const title = document.getElementById("store-title")?.textContent || "qekkel";
+    const url = "https://qekkel.org";
+    const text = currentLang === "ru"
+      ? `«${title}» — оригинальная работа Ольги Qekkel`
+      : `"${title}" — original artwork by Qekkel`;
+
+    if (navigator.share) {
+      navigator.share({ title, text, url });
+    } else {
+      navigator.clipboard.writeText(url).then(() => {
+        storeShareBtn.classList.add("copied");
+        setTimeout(() => storeShareBtn.classList.remove("copied"), 2000);
+      });
+    }
+  });
+
   // PRICES MODAL
   // =========================
   const pricesModal = document.getElementById("prices-modal");
