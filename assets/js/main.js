@@ -141,6 +141,14 @@ form_submit: "Send order request",
     projects_cta_text: "Need something?",
     projects_cta_prices: "Prices →",
     projects_cta_btn: "Get in touch →",
+    ptype_logo: "Logo", ptype_flyer: "Flyer", ptype_branding: "Branding",
+    ptype_illustration: "Illustration", ptype_other: "Other",
+    porder_name_ph: "Your name",
+    porder_contact_ph: "Email or @telegram",
+    porder_brief_ph: "Brief description of the project...",
+    porder_send: "Send via Telegram",
+    porder_required: "Please fill in your name and contact.",
+    porder_ok: "Opening Telegram… See you there!",
     prices_title: "Prices",
     prices_logo: "Logo",
     prices_flyer: "Flyer",
@@ -148,6 +156,16 @@ form_submit: "Send order request",
     prices_talk: "Let's talk →",
     prices_note: "Final price depends on complexity. I'll confirm after we discuss.",
     contact_tg: "Write in Telegram",
+    notify_card_title: "New arrivals",
+    notify_card_sub: "Notify me",
+    notify_title: "Be the first to know",
+    notify_sub: "New works, limited drops and restocks — straight to your inbox.",
+    notify_placeholder: "your@email.com",
+    notify_btn: "Notify me",
+    notify_privacy: "No spam. Unsubscribe anytime.",
+    notify_ok: "You're in! I'll let you know when something drops ✦",
+    notify_err: "Something went wrong. Try again or write me directly.",
+    notify_invalid: "Please enter a valid email address.",
   },
   ru: {
     hero_subtitle: "Независимый художник и дизайнер",
@@ -226,7 +244,15 @@ send_email: "Через Email",
     checkout_shipping_note: "Доставка от €10, рассчитывается отдельно и уточняется после заказа.",
     projects_cta_text: "Нужен дизайн?",
     projects_cta_prices: "Цены →",
-    projects_cta_btn: "Написать →",
+    projects_cta_btn: "Оставить заявку →",
+    ptype_logo: "Лого", ptype_flyer: "Флайер", ptype_branding: "Брендинг",
+    ptype_illustration: "Иллюстрация", ptype_other: "Другое",
+    porder_name_ph: "Твоё имя",
+    porder_contact_ph: "Email или @telegram",
+    porder_brief_ph: "Коротко о проекте...",
+    porder_send: "Отправить в Telegram",
+    porder_required: "Заполни имя и контакт.",
+    porder_ok: "Открываем Telegram… Скоро напишу!",
     prices_title: "Цены",
     prices_logo: "Логотип",
     prices_flyer: "Флайер",
@@ -234,6 +260,16 @@ send_email: "Через Email",
     prices_talk: "Написать →",
     prices_note: "Финальная цена зависит от сложности. Уточню после обсуждения.",
     contact_tg: "Написать в Telegram",
+    notify_card_title: "Новые работы",
+    notify_card_sub: "Уведомить меня",
+    notify_title: "Узнай первой",
+    notify_sub: "Новые работы, лимитированные дропы и пополнение — прямо на почту.",
+    notify_placeholder: "твой@email.com",
+    notify_btn: "Уведомить меня",
+    notify_privacy: "Никакого спама. Отписаться можно в любой момент.",
+    notify_ok: "Готово! Напишу, как только появится что-то новое ✦",
+    notify_err: "Что-то пошло не так. Попробуй ещё раз или напиши мне напрямую.",
+    notify_invalid: "Введи корректный email-адрес.",
   }
 };
 
@@ -318,7 +354,7 @@ if (aboutContainer) {
   }
 }
 
-  document.querySelectorAll(".store-card").forEach(card => {
+  document.querySelectorAll(".store-card:not(.store-notify-card)").forEach(card => {
     const title = card.querySelector(".store-title");
     if (!title) return;
     title.textContent =
@@ -559,7 +595,7 @@ if (addToCartBtn) {
     document.activeElement?.blur();
   }
 
- document.querySelectorAll(".store-card").forEach(card => {
+ document.querySelectorAll(".store-card:not(.store-notify-card)").forEach(card => {
   card.addEventListener("click", () => open(card));
 });
 
@@ -964,6 +1000,48 @@ if (checkoutMethod === "email") {
     if (e.target.classList.contains("prices-overlay")) {
       pricesModal.hidden = true;
     }
+  });
+
+  // QUICK ORDER FORM (Projects section)
+  // =========================
+  const projOrderToggle = document.getElementById("proj-order-toggle");
+  const projOrderWrap   = document.getElementById("proj-order-wrap");
+  const projOrderForm   = document.getElementById("proj-order-form");
+  const projOrderNote   = document.getElementById("proj-order-note");
+
+  projOrderToggle?.addEventListener("click", () => {
+    const isOpen = !projOrderWrap.hidden;
+    projOrderWrap.hidden = isOpen;
+    projOrderToggle.classList.toggle("active", !isOpen);
+    if (!isOpen) {
+      // scroll into view smoothly
+      setTimeout(() => projOrderWrap.scrollIntoView({ behavior: "smooth", block: "nearest" }), 50);
+    }
+  });
+
+  projOrderForm?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name    = document.getElementById("proj-order-name")?.value.trim();
+    const contact = document.getElementById("proj-order-contact")?.value.trim();
+    const brief   = document.getElementById("proj-order-brief")?.value.trim();
+    const ptype   = projOrderForm.querySelector("input[name='ptype']:checked")?.value || "";
+
+    if (!name || !contact) {
+      projOrderNote.textContent = t("porder_required");
+      projOrderNote.style.color = "#e8826a";
+      return;
+    }
+
+    const isRu = currentLang === "ru";
+    const msg = isRu
+      ? `Привет! Хочу заказать: ${ptype}\nИмя: ${name}\nКонтакт: ${contact}${brief ? "\nО проекте: " + brief : ""}`
+      : `Hi! I'd like to order: ${ptype}\nName: ${name}\nContact: ${contact}${brief ? "\nAbout: " + brief : ""}`;
+
+    window.open(`https://t.me/qekkel?text=${encodeURIComponent(msg)}`, "_blank");
+
+    projOrderNote.textContent = t("porder_ok");
+    projOrderNote.style.color = "#7ecf8e";
+    projOrderForm.reset();
   });
 
   // INIT
@@ -1518,5 +1596,139 @@ if (cursor) {
 
   prevBtn && prevBtn.addEventListener('click', () => openModal((currentCardIndex - 1 + cards.length) % cards.length));
   nextBtn && nextBtn.addEventListener('click', () => openModal((currentCardIndex + 1) % cards.length));
+})();
+
+
+/* =========================
+   SWIPE GESTURES (mobile)
+========================= */
+(function () {
+  const THRESHOLD = 45; // min px to count as swipe
+
+  function addSwipe(el, onLeft, onRight) {
+    if (!el) return;
+    let startX = 0;
+    let startY = 0;
+    let tracking = false;
+
+    el.addEventListener('touchstart', e => {
+      const t = e.touches[0];
+      startX = t.clientX;
+      startY = t.clientY;
+      tracking = true;
+    }, { passive: true });
+
+    el.addEventListener('touchend', e => {
+      if (!tracking) return;
+      tracking = false;
+      const t = e.changedTouches[0];
+      const dx = t.clientX - startX;
+      const dy = t.clientY - startY;
+      // Ignore mostly-vertical swipes (scrolling)
+      if (Math.abs(dx) < THRESHOLD || Math.abs(dy) > Math.abs(dx)) return;
+      if (dx < 0) onLeft();   // swipe left  → next
+      else        onRight();  // swipe right → prev
+    }, { passive: true });
+  }
+
+  // 1. Art modal — swipe between artworks
+  const artModal   = document.getElementById('art-modal');
+  const artPrev    = document.getElementById('art-prev');
+  const artNext    = document.getElementById('art-next');
+  addSwipe(artModal, () => artNext?.click(), () => artPrev?.click());
+
+  // 2. Art fullscreen — swipe between artworks
+  const artFS      = document.getElementById('art-fs');
+  const artFSPrev  = document.getElementById('art-fs-prev');
+  const artFSNext  = document.getElementById('art-fs-next');
+  addSwipe(artFS, () => artFSNext?.click(), () => artFSPrev?.click());
+
+  // 3. Project fullscreen — swipe between project images
+  const projFS     = document.getElementById('proj-fs');
+  const projFSPrev = document.getElementById('proj-fs-prev');
+  const projFSNext = document.getElementById('proj-fs-next');
+  addSwipe(projFS, () => projFSNext?.click(), () => projFSPrev?.click());
+
+  // 4. Project modal — swipe between projects
+  const projModal  = document.getElementById('project-modal');
+  const projPrev   = document.getElementById('project-prev');
+  const projNext   = document.getElementById('project-next');
+  addSwipe(projModal, () => projNext?.click(), () => projPrev?.click());
+})();
+
+/* =========================
+   NOTIFY ME MODAL
+========================= */
+(function () {
+  const openBtn   = document.getElementById('open-notify');
+  const modal     = document.getElementById('notify-modal');
+  const closeBtn  = document.getElementById('notify-close');
+  const form      = document.getElementById('notify-form');
+  const emailEl   = document.getElementById('notify-email');
+  const note      = document.getElementById('notify-note');
+  if (!openBtn || !modal || !form) return;
+
+  function openNotify() {
+    note.textContent = '';
+    note.className = 'notify-note';
+    emailEl.value = '';
+    emailEl.classList.remove('field-error');
+    modal.hidden = false;
+    document.body.classList.add('modal-open');
+    requestAnimationFrame(() => emailEl.focus());
+  }
+
+  function closeNotify() {
+    modal.hidden = true;
+    document.body.classList.remove('modal-open');
+  }
+
+  openBtn.addEventListener('click', openNotify);
+  closeBtn?.addEventListener('click', closeNotify);
+  modal.addEventListener('click', e => { if (e.target === modal) closeNotify(); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && !modal.hidden) closeNotify();
+  });
+
+  emailEl?.addEventListener('input', () => emailEl.classList.remove('field-error'));
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    note.textContent = '';
+    note.className = 'notify-note';
+
+    const email = emailEl.value.trim();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      emailEl.classList.add('field-error');
+      note.textContent = t('notify_invalid');
+      note.classList.add('note-error');
+      return;
+    }
+
+    const submitBtn = form.querySelector('[type="submit"]');
+    submitBtn.disabled = true;
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' }
+      });
+      if (res.ok) {
+        note.textContent = t('notify_ok');
+        note.classList.add('note-ok');
+        form.reset();
+        submitBtn.disabled = false;
+        // Auto-close after 3s
+        setTimeout(closeNotify, 3200);
+      } else {
+        throw new Error('bad response');
+      }
+    } catch {
+      note.textContent = t('notify_err');
+      note.classList.add('note-error');
+      submitBtn.disabled = false;
+    }
+  });
 })();
 
