@@ -53,7 +53,8 @@
       "https://www.instagram.com/qekkel/",
       "https://t.me/qekkel",
       "https://www.youtube.com/@qekkel",
-      "https://www.pinterest.com/qekkel26/"
+      "https://www.pinterest.com/qekkel26/",
+      "https://t.me/qekkel26"
     ],
     "knowsAbout": ["Oil Painting", "Acrylic", "CG Art", "2D Animation", "Illustration", "Logo Design", "Branding"],
     "offers": {
@@ -70,13 +71,19 @@
 
   <link rel="stylesheet" href="assets/css/main.css" />
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-39BNBDPZNP"></script>
+<!-- Google Analytics — загружается только после согласия -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-39BNBDPZNP');
+  function loadGA() {
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-39BNBDPZNP';
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', 'G-39BNBDPZNP');
+  }
+  if (localStorage.getItem('cookie_consent') === 'accepted') loadGA();
 </script>
 
 <style>
@@ -453,9 +460,9 @@
     </div>
 
     <div class="about-right">
-      <img src="images/fotos/me-3.JPG" alt="">
-      <img src="images/fotos/olga-baum-1.gif" alt="">
-      <img src="images/fotos/olga-me.gif" alt="">
+      <img src="images/fotos/me-3.JPG" alt="Olga Qekkel – visual artist and designer">
+      <img src="images/fotos/olga-baum-1.gif" alt="Olga Qekkel painting in the studio">
+      <img src="images/fotos/olga-me.gif" alt="Olga Qekkel – artist portrait">
     </div>
 
   </div>
@@ -469,7 +476,7 @@
 
           <div class="store-grid">
             <button class="store-card" type="button"
-              aria-label="View item"
+              aria-label="View Sakura – original oil painting"
               aria-expanded="false"
               aria-controls="store-listing"
               data-id="original-05"
@@ -487,7 +494,7 @@
               data-desc-ru="Сакура, синее небо, первый вздох весны. Натянутый холст, доставляется в защитной коробке."
               data-price-eur="65">
               <div class="store-thumb">
-                <img loading="lazy" src="images/spring/sacura00.png" alt="Sakura">
+                <img loading="lazy" src="images/spring/sacura00.png" alt="Sakura – original oil painting on stretched canvas, 10×10 cm, by Qekkel">
                 <span class="store-badge store-badge-new" data-i18n="badge_new">New</span>
               </div>
               <div class="store-info">
@@ -497,7 +504,7 @@
             </button>
 
             <button class="store-card" type="button"
-              aria-label="View item"
+              aria-label="View Spring Park – original oil painting"
               aria-expanded="false"
               aria-controls="store-listing"
               data-id="original-06"
@@ -515,7 +522,7 @@
               data-desc-ru="Золотой закат сквозь цветущие деревья – весенний свет и первые тёплые лучи солнца. Натянутый холст, доставляется в защитной коробке."
               data-price-eur="65">
               <div class="store-thumb">
-                <img loading="lazy" src="images/spring/park2.png" alt="Spring Park">
+                <img loading="lazy" src="images/spring/park2.png" alt="Spring Park – original oil painting on stretched canvas, 10×10 cm, by Qekkel">
                 <span class="store-badge store-badge-new" data-i18n="badge_new">New</span>
               </div>
               <div class="store-info">
@@ -525,7 +532,7 @@
             </button>
 
             <button class="store-card" type="button"
-              aria-label="View item"
+              aria-label="View Sakura II – original oil painting"
               aria-expanded="false"
               aria-controls="store-listing"
               data-id="original-07"
@@ -543,7 +550,7 @@
               data-desc-ru="Цветы сакуры и первая зелень – самые первые дни весны. Натянутый холст, доставляется в защитной коробке."
               data-price-eur="65">
               <div class="store-thumb">
-                <img loading="lazy" src="images/spring/spring5.png" alt="Sakura II">
+                <img loading="lazy" src="images/spring/spring5.png" alt="Sakura II – original oil painting on stretched canvas, 10×10 cm, by Qekkel">
                 <span class="store-badge store-badge-new" data-i18n="badge_new">New</span>
               </div>
               <div class="store-info">
@@ -553,7 +560,7 @@
             </button>
 
             <button class="store-card" type="button"
-              aria-label="View item"
+              aria-label="View Abstract Explosion – original oil painting"
               aria-expanded="false"
               aria-controls="store-listing"
               data-id="original-01"
@@ -571,7 +578,7 @@
               data-desc-ru="Абстрактная масляная работа – хаос и структура через фактуру и цвет. Доставляется свёрнутым в защитной тубе."
               data-price-eur="220">
               <div class="store-thumb">
-                <img loading="lazy" src="images/art11.jpg" alt="Original #01">
+                <img loading="lazy" src="images/art11.jpg" alt="Abstract Explosion – original oil painting A2, by Qekkel">
                 <span class="store-badge" data-i18n="badge_limited">Limited</span>
               </div>
               <div class="store-info">
@@ -581,7 +588,7 @@
             </button>
 
             <button class="store-card" type="button"
-              aria-label="View item"
+              aria-label="View Surreal Bouquet – original acrylic painting"
               aria-expanded="false"
               aria-controls="store-listing"
               data-id="original-02"
@@ -600,7 +607,7 @@
               data-price-eur="160"
               data-sale-eur="140">
               <div class="store-thumb">
-                <img loading="lazy" src="images/art7.jpg" alt="flower arrangementt">
+                <img loading="lazy" src="images/art7.jpg" alt="Surreal Bouquet – flowers growing from hands, surrealist acrylic painting A2, by Qekkel">
                 <span class="store-badge" data-i18n="badge_limited">Limited</span>
               </div>
               <div class="store-info">
@@ -610,7 +617,7 @@
             </button>
 
             <button class="store-card" type="button"
-              aria-label="View item"
+              aria-label="View Tropical Vortex – original acrylic painting"
               aria-expanded="false"
               aria-controls="store-listing"
               data-id="original-03"
@@ -628,7 +635,7 @@
               data-desc-ru="Тропический вихрь в акриле – насыщенные цвета и динамика на квадратном холсте. Натянутый холст, доставляется в защитной коробке."
               data-price-eur="165">
               <div class="store-thumb">
-                <img loading="lazy" src="images/art02.png" alt= "Mini Originals">
+                <img loading="lazy" src="images/art02.png" alt="Tropical Vortex – vibrant acrylic painting 40×40 cm on canvas, by Qekkel">
                 <span class="store-badge" data-i18n="badge_limited">Limited</span>
               </div>
               <div class="store-info">
@@ -638,7 +645,7 @@
             </button>
 
             <button class="store-card" type="button"
-              aria-label="View item"
+              aria-label="View Siesta – original acrylic painting"
               aria-expanded="false"
               aria-controls="store-listing"
               data-id="original-04"
@@ -656,7 +663,7 @@
               data-desc-ru="Две кошки в объятиях – акрил в контрастных цветах на холсте. Натянутый холст, доставляется в защитной коробке."
               data-price-eur="120">
               <div class="store-thumb">
-                <img loading="lazy" src="images/art01/detail4.webp" alt="Art Prints">
+                <img loading="lazy" src="images/art01/detail4.webp" alt="Siesta – two cats acrylic painting 35×30 cm on canvas, by Qekkel">
                 <span class="store-badge" data-i18n="badge_limited">Limited</span>
               </div>
               <div class="store-info">
@@ -742,6 +749,19 @@
         <path d="M4 2L2 6v14h6v4l4-4h4l6-6V2H4zm16 10l-3 3h-4l-3 3v-3H6V4h14v8zM9 7h2v5H9V7zm5 0h2v5h-2V7z"/>
       </svg>
 
+    </a>
+  </li>
+            <li>
+    <a class="icon"
+       href="https://t.me/qekkel26"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Telegram Channel"
+       data-tooltip="@qekkel26">
+      <!-- Telegram SVG -->
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8l-1.7 8c-.12.58-.46.72-.93.45l-2.57-1.9-1.24 1.19c-.14.14-.26.26-.53.26l.19-2.63 4.84-4.37c.21-.19-.05-.29-.32-.1L7.9 14.6l-2.53-.79c-.55-.17-.56-.55.12-.81l9.9-3.82c.46-.17.86.11.71.82z"/>
+      </svg>
     </a>
   </li>
             <li>
@@ -964,6 +984,37 @@
 
 
 <script src="assets/js/main.js"></script>
+
+<!-- COOKIE BANNER -->
+<div id="cookie-banner" class="cookie-banner" hidden>
+  <div class="cookie-text">
+    <span data-i18n="cookie_text">This site uses cookies to analyse traffic (Google Analytics). No personal data is sold.</span>
+    <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" class="cookie-link" data-i18n="cookie_link">Learn more</a>
+  </div>
+  <div class="cookie-actions">
+    <button id="cookie-decline" class="cookie-btn cookie-btn-decline" data-i18n="cookie_decline">Decline</button>
+    <button id="cookie-accept" class="cookie-btn cookie-btn-accept" data-i18n="cookie_accept">Accept</button>
+  </div>
+</div>
+
+<script>
+(function() {
+  var consent = localStorage.getItem('cookie_consent');
+  if (!consent) {
+    var banner = document.getElementById('cookie-banner');
+    banner.hidden = false;
+    document.getElementById('cookie-accept').addEventListener('click', function() {
+      localStorage.setItem('cookie_consent', 'accepted');
+      banner.hidden = true;
+      loadGA();
+    });
+    document.getElementById('cookie-decline').addEventListener('click', function() {
+      localStorage.setItem('cookie_consent', 'declined');
+      banner.hidden = true;
+    });
+  }
+})();
+</script>
 </body>
 </html>
 
