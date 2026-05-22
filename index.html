@@ -330,7 +330,10 @@
 </head>
 
 <body>
-  
+
+  <!-- blur overlay: activated when any modal is open -->
+  <div id="bg-blur" class="bg-blur"></div>
+
   <div id="wrapper">
 
     <!-- HERO / HEADER -->
@@ -452,7 +455,7 @@
 
   <div class="project-card tall"
     data-img="projects/2/preview1.jpg"
-    data-images="projects/2/preview1.jpg,projects/2/preview2.jpg,projects/2/olia-qekkel-1.jpg,projects/2/olia-qekkel-2.jpg,projects/2/olia-qekkel-3.jpg,projects/2/olia-qekkel-4.jpg,projects/2/olia-qekkel-5.jpg,projects/2/olia-qekkel-7.jpg,projects/2/olia-qekkel-8.jpg"
+    data-images="projects/2/preview1.jpg,projects/2/olia-qekkel-1.jpg,projects/2/olia-qekkel-2.jpg,projects/2/olia-qekkel-3.jpg,projects/2/olia-qekkel-4.jpg,projects/2/olia-qekkel-5.jpg,projects/2/olia-qekkel-8.jpg,projects/2/olia-qekkel-7.jpg"
     data-title-en="CG Home Project"
     data-title-ru="CG проект дома"
     data-desc-en="Interior and exterior visualization project. 3D modeling, lighting, and CG rendering of a fantasy-style home environment."
@@ -943,6 +946,13 @@
             </svg>
           </button>
         </div>
+
+        <a id="store-ask-tg" class="store-ask-tg" href="https://t.me/qekkel" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.932z"/>
+          </svg>
+          <span id="store-ask-tg-text">Ask in Telegram</span>
+        </a>
       </div>
     </div>
   </div>
@@ -1090,7 +1100,14 @@
     <button id="project-close" class="project-modal-close">×</button>
 
     <div class="project-modal-left">
-      <img id="project-modal-img" src="" alt="" class="project-modal-mainimg">
+      <div class="proj-img-wrap">
+        <img id="project-modal-img" src="" alt="" class="project-modal-mainimg">
+        <button id="proj-expand" class="art-expand-btn" aria-label="View fullscreen" title="View fullscreen">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 6V1H6M10 1H15V6M15 10V15H10M6 15H1V10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
       <div class="project-modal-thumbs" id="project-modal-thumbs"></div>
     </div>
 
@@ -1110,6 +1127,18 @@
   </div>
 </div>
 
+
+<!-- PROJECT FULLSCREEN VIEWER -->
+<div id="proj-fs" class="art-fs" hidden>
+  <button id="proj-fs-close" class="art-fs-close" aria-label="Close fullscreen">×</button>
+  <button id="proj-fs-prev" class="art-fs-nav art-fs-prev" aria-label="Previous image">‹</button>
+  <button id="proj-fs-next" class="art-fs-nav art-fs-next" aria-label="Next image">›</button>
+  <div class="art-fs-wrap" id="proj-fs-wrap">
+    <img id="proj-fs-img" src="" alt="">
+  </div>
+  <div class="art-fs-counter" id="proj-fs-counter"></div>
+  <div class="art-fs-hint" id="proj-fs-hint">Click to zoom · ESC to close</div>
+</div>
 
 <script src="assets/js/main.js"></script>
 
