@@ -18,17 +18,20 @@
   <link rel="alternate" hreflang="ru" href="https://qekkel.org/" />
   <link rel="alternate" hreflang="x-default" href="https://qekkel.org/" />
 
-  <!-- Open Graph -->
+  <!-- Open Graph (Facebook, Telegram, VK, WhatsApp) -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Qekkel">
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="ru_RU">
   <meta property="og:title" content="Qekkel | Visual Artist & Designer">
   <meta property="og:description" content="Original artworks, CG projects and limited art drops by Qekkel.">
+  <meta property="og:url" content="https://qekkel.org/">
   <meta property="og:image" content="https://qekkel.org/images/preview.jpg">
+  <meta property="og:image:secure_url" content="https://qekkel.org/images/preview.jpg">
+  <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:url" content="https://qekkel.org/">
+  <meta property="og:image:alt" content="Qekkel – Visual Artist & Designer. Original paintings and CG art.">
 
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image">
@@ -37,6 +40,10 @@
   <meta name="twitter:title" content="Qekkel | Visual Artist & Designer">
   <meta name="twitter:description" content="Original artworks & CG art by Qekkel.">
   <meta name="twitter:image" content="https://qekkel.org/images/preview.jpg">
+  <meta name="twitter:image:alt" content="Qekkel – Visual Artist & Designer">
+
+  <!-- VK -->
+  <meta property="vk:image" content="https://qekkel.org/images/preview.jpg">
 
   <!-- JSON-LD structured data -->
   <script type="application/ld+json">
@@ -556,9 +563,9 @@
     </div>
 
     <div class="about-right">
-      <img src="images/fotos/me-3.JPG" alt="Olga Qekkel – visual artist and designer">
-      <img src="images/fotos/olga-baum-1.gif" alt="Olga Qekkel painting in the studio">
-      <img src="images/fotos/olga-me.gif" alt="Olga Qekkel – artist portrait">
+      <img loading="lazy" decoding="async" src="images/fotos/me-3.JPG" alt="Olga Qekkel – visual artist and designer">
+      <img loading="lazy" decoding="async" src="images/fotos/olga-baum-1.gif" alt="Olga Qekkel painting in the studio">
+      <img loading="lazy" decoding="async" src="images/fotos/olga-me.gif" alt="Olga Qekkel – artist portrait">
     </div>
 
   </div>
@@ -789,7 +796,7 @@
             </a>
           </div>
 
-          <form id="contact-form" method="post" action="https://formspree.io/f/xovdeodl">
+          <form id="contact-form" method="post" action="https://formspree.io/f/xovdeodl" novalidate>
             <div class="fields">
               <div class="field half">
                 <label for="firstname" data-i18n="form_firstname_label">First name</label>
@@ -799,7 +806,7 @@
 
               <div class="field half">
                 <label for="lastname" data-i18n="form_lastname_label">Last name</label>
-                <input id="lastname" type="text" name="lastname" required
+                <input id="lastname" type="text" name="lastname"
                   data-i18n-placeholder="form_lastname_ph" placeholder="Last name" />
               </div>
 
@@ -1011,7 +1018,7 @@
 
    <h2 data-i18n="order_title">Order request</h2>
 
-<form id="checkout-form">
+<form id="checkout-form" novalidate>
   <input type="text" name="name"
          data-i18n-placeholder="form_name"
          placeholder="Name" required />
