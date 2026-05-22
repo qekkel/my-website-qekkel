@@ -482,17 +482,155 @@ body.scrolled #header .content{
   color: #888;
 }
 
-.projects-cta-text a {
+.projects-cta-btn {
+  background: none;
+  border: none;
   color: #fff;
   margin-left: 0.4rem;
-  text-decoration: none;
+  cursor: pointer;
+  font-size: inherit;
+  font-family: inherit;
+  padding: 0;
   border-bottom: 1px solid rgba(255,255,255,0.3);
   padding-bottom: 1px;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, color 0.2s;
+  letter-spacing: inherit;
 }
 
-.projects-cta-text a:hover {
+.projects-cta-btn:hover,
+.projects-cta-btn.active {
   border-color: #fff;
+  color: #fff;
+}
+
+/* ============================
+   QUICK ORDER FORM
+============================ */
+.proj-order-wrap[hidden] { display: none; }
+
+.proj-order-wrap {
+  margin-top: 1.5rem;
+  animation: fadeSlideDown 0.25s ease;
+}
+
+@keyframes fadeSlideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.proj-order-form {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  padding: 1.4rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 560px;
+}
+
+/* type selector pills */
+.proj-order-types {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.ptype-label {
+  cursor: pointer;
+}
+
+.ptype-label input[type="radio"] {
+  display: none;
+}
+
+.ptype-label span {
+  display: block;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 20px;
+  font-size: 0.78rem;
+  color: #999;
+  letter-spacing: 0.04em;
+  transition: background 0.18s, color 0.18s, border-color 0.18s;
+}
+
+.ptype-label input:checked + span {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.5);
+  color: #fff;
+}
+
+.ptype-label:hover span {
+  border-color: rgba(255,255,255,0.35);
+  color: #ccc;
+}
+
+/* inputs */
+.proj-order-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.proj-order-input {
+  width: 100%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  color: #fff;
+  font-size: 0.85rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+  resize: none;
+}
+
+.proj-order-input::placeholder { color: rgba(255,255,255,0.3); }
+.proj-order-input:focus { border-color: rgba(255,255,255,0.35); }
+
+.proj-order-textarea {
+  min-height: 72px;
+  line-height: 1.5;
+}
+
+/* footer */
+.proj-order-footer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.proj-order-send {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 999px;
+  color: #fff;
+  font-size: 0.82rem;
+  padding: 0.5rem 1.2rem;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.proj-order-send:hover {
+  background: rgba(255,255,255,0.14);
+  border-color: rgba(255,255,255,0.4);
+}
+
+.proj-order-note {
+  font-size: 0.8rem;
+  margin: 0;
+  color: #aaa;
+}
+
+@media (max-width: 600px) {
+  .proj-order-form { padding: 1rem 1rem; }
 }
 
 .projects-cta-prices {
@@ -2164,6 +2302,14 @@ input:focus, textarea:focus{
   .project-modal-left { min-height: 220px; max-height: 40vh; }
   .project-modal-right { padding: 20px 18px; }
   .project-modal-title { font-size: 22px; }
+
+  /* Bigger tap targets for project modal nav buttons */
+  .project-modal-navbtn {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+  }
 }
 
 /* ============================
@@ -2171,20 +2317,50 @@ input:focus, textarea:focus{
 ============================ */
 @media (max-width: 600px) {
 
-  /* Навигация */
+  /* Навигация — горизонтальный скролл, большие тап-зоны */
   .site-nav ul {
-    gap: 4px;
-    padding: 8px;
-    border-radius: 16px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 2px;
+    padding: 6px;
+    border-radius: 999px;
+    justify-content: flex-start;
   }
+  .site-nav ul::-webkit-scrollbar { display: none; }
+
+  .site-nav li { flex-shrink: 0; }
+
   .site-nav a {
-    padding: 8px 10px;
-    font-size: 10px;
+    padding: 12px 14px;
+    font-size: 11px;
     letter-spacing: 0.1em;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
   }
+
+  /* Язык — больше тап-зона */
+  .lang-btn {
+    padding: 10px 16px;
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Закреплённый nav — полная ширина, скроллится */
   body.scrolled .site-nav {
-    width: calc(100% - 32px);
-    top: 10px;
+    width: calc(100% - 24px);
+    top: 8px;
+  }
+
+  /* Art modal стрелки — крупнее тап-зона */
+  .art-modal-nav-btn {
+    padding: 12px 16px;
+    font-size: 1.3rem;
+    min-height: 44px;
+    min-width: 44px;
   }
 
   /* Hero */
@@ -2270,8 +2446,8 @@ input:focus, textarea:focus{
 ============================ */
 @media (max-width: 400px) {
   .site-nav a {
-    padding: 7px 8px;
-    font-size: 9px;
+    padding: 11px 11px;
+    font-size: 10px;
   }
   #about .about-right img:first-child { height: 180px; }
   #about .about-right img:not(:first-child) { height: 110px; }
@@ -2702,5 +2878,232 @@ body.modal-open .bg-blur {
 
 .store-ask-tg:hover svg {
   opacity: 1;
+}
+
+/* ============================
+   NOTIFY ME — CARD
+============================ */
+.store-notify-card {
+  align-self: start;
+}
+
+.store-notify-thumb {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.store-notify-gif {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  /* no zoom on hover — GIFs look bad when scaled */
+}
+
+/* Full overlay: gradient bottom + bell center */
+.store-notify-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.28);
+  transition: background 0.25s;
+}
+
+.store-notify-card:hover .store-notify-overlay {
+  background: rgba(0,0,0,0.42);
+}
+
+/* Bell icon — centered */
+.store-notify-bell {
+  color: rgba(255,255,255,0.8);
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.6));
+  transition: transform 0.25s, color 0.25s;
+  flex-shrink: 0;
+}
+
+.store-notify-card:hover .store-notify-bell {
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+/* Text block — pinned to bottom with gradient */
+.store-notify-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem 1rem 0.9rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left;
+}
+
+.store-notify-label {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.store-notify-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  transition: color 0.2s;
+}
+
+.store-notify-cta::after {
+  content: "→";
+  font-size: 11px;
+  transition: transform 0.2s;
+}
+
+.store-notify-card:hover .store-notify-cta {
+  color: rgba(255,255,255,0.9);
+}
+
+.store-notify-card:hover .store-notify-cta::after {
+  transform: translateX(3px);
+}
+
+/* ============================
+   NOTIFY ME — MODAL
+============================ */
+.notify-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(6px);
+  animation: notifyFadeIn 0.2s ease;
+}
+
+.notify-modal[hidden] { display: none; }
+
+@keyframes notifyFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.notify-box {
+  position: relative;
+  background: #161616;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 18px;
+  padding: 2.5rem 2rem 2rem;
+  max-width: 380px;
+  width: 100%;
+  text-align: center;
+  animation: notifySlideUp 0.25s ease;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.6);
+}
+
+@keyframes notifySlideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.notify-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.3);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 8px;
+  transition: color 0.2s;
+}
+.notify-close:hover { color: rgba(255,255,255,0.8); }
+
+.notify-bell {
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 1rem;
+}
+
+.notify-title {
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.notify-sub {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.notify-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.notify-input {
+  width: 100%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.9rem;
+  padding: 0.75rem 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.notify-input::placeholder { color: rgba(255,255,255,0.25); }
+.notify-input:focus { border-color: rgba(255,255,255,0.4); }
+.notify-input.field-error { border-color: rgba(232,130,106,0.7) !important; box-shadow: 0 0 0 2px rgba(232,130,106,0.18); }
+
+.notify-submit {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.notify-submit:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.35); }
+.notify-submit:disabled { opacity: 0.5; cursor: default; }
+
+.notify-note {
+  font-size: 0.82rem;
+  min-height: 1.2em;
+  margin-top: 0.4rem;
+}
+.notify-note.note-ok    { color: #7ecf8e; }
+.notify-note.note-error { color: #e8826a; }
+
+.notify-privacy {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.2);
+  margin-top: 1rem;
+  letter-spacing: 0.02em;
 }
 
