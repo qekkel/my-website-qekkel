@@ -1086,10 +1086,11 @@ input:focus, textarea:focus{
 }
 
 
-.icons .icon:hover{
-  background: rgba(255,255,255,0.08);
-  color: var(--text);
-  transform: scale(1.15);
+.icons .icon:hover {
+  background: none;
+  color: #fff;
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.4));
 }
 
 
