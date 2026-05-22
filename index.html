@@ -133,8 +133,12 @@
 
   <link rel="icon" type="image/png" href="images/favicon.PNG">
 
-  <!-- Fonts (объединены в один запрос) -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Manrope:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Fonts — preconnect + async load (не блокирует отрисовку) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Manrope:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;600&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Manrope:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Manrope:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
 
   <link rel="stylesheet" href="assets/css/main.css" />
 
@@ -371,7 +375,7 @@
       "@type": "VisualArtwork",
       "name": "Tropical Vortex",
       "description": "Swirling tropical energy in acrylic – vivid colours, bold movement on a square canvas.",
-      "image": "https://qekkel.org/images/art02.png",
+      "image": "https://qekkel.org/images/art02.jpg",
       "artMedium": "Acrylic",
       "artworkSurface": "Canvas",
       "width": { "@type": "Distance", "name": "40 cm" },
@@ -831,14 +835,14 @@
               data-size-ru="40x40 см"
               data-medium-en="Acryl"
               data-medium-ru="Акрил"
-              data-img="images/art02.png,images/art02/detail2.webp,images/art02/detail5.webp,images/art02/detail6.webp"
+              data-img="images/art02.jpg,images/art02/detail2.webp,images/art02/detail5.webp,images/art02/detail6.webp"
               data-extras=""
               data-desc-en="Swirling tropical energy in acrylic – vivid colours, bold movement on a square canvas. Stretched canvas, ships in a protective box."
               data-desc-ru="Тропический вихрь в акриле – насыщенные цвета и динамика на квадратном холсте. Натянутый холст, доставляется в защитной коробке."
               data-price-eur="165"
               data-sold="false">
               <div class="store-thumb">
-                <img loading="lazy" src="images/art02.png" alt="Tropical Vortex – vibrant acrylic painting 40×40 cm on canvas, by Qekkel">
+                <img loading="lazy" src="images/art02.jpg" alt="Tropical Vortex – vibrant acrylic painting 40×40 cm on canvas, by Qekkel">
                 <span class="store-badge" data-i18n="badge_limited">Limited</span>
               </div>
               <div class="store-info">
