@@ -114,6 +114,7 @@ form_submit: "Send order request",
     modal_inquire: "Inquire",
     form_ok: "Thanks! Your message was sent.",
     form_err: "Something went wrong. Try again.",
+    form_required: "Please fill in all required fields.",
     cart_total: "Total:",
     cart_checkout: "Checkout",
     cart_title: "Your cart",
@@ -199,6 +200,7 @@ send_email: "Через Email",
     modal_inquire: "Спросить",
     form_ok: "Спасибо! Сообщение отправлено.",
     form_err: "Ошибка. Попробуй ещё раз.",
+    form_required: "Пожалуйста, заполни все обязательные поля.",
     cart_total: "Итого:",
     cart_checkout: "Оформить заказ",
     cart_title: "Ваша корзина",
@@ -581,6 +583,22 @@ if (addToCartBtn) {
   form.addEventListener("submit", async e => {
     e.preventDefault();
     note.textContent = "";
+    note.className = "";
+
+    // Client-side validation
+    const required = form.querySelectorAll("[required]");
+    let hasEmpty = false;
+    required.forEach(field => {
+      const empty = !field.value.trim();
+      field.classList.toggle("field-error", empty);
+      if (empty) hasEmpty = true;
+    });
+
+    if (hasEmpty) {
+      note.textContent = t("form_required");
+      note.classList.add("note-error");
+      return;
+    }
 
     try {
       const res = await fetch(form.action, {
@@ -589,11 +607,24 @@ if (addToCartBtn) {
         headers: { Accept: "application/json" }
       });
 
-      note.textContent = res.ok ? t("form_ok") : t("form_err");
-      if (res.ok) form.reset();
+      if (res.ok) {
+        note.textContent = t("form_ok");
+        note.classList.add("note-ok");
+        form.reset();
+        required.forEach(f => f.classList.remove("field-error"));
+      } else {
+        note.textContent = t("form_err");
+        note.classList.add("note-error");
+      }
     } catch {
       note.textContent = t("form_err");
+      note.classList.add("note-error");
     }
+  });
+
+  // Remove error highlight as user types
+  form.querySelectorAll("[required]").forEach(field => {
+    field.addEventListener("input", () => field.classList.remove("field-error"));
   });
 })();
 /* =========================
