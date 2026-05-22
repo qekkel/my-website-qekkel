@@ -934,7 +934,15 @@
           </div>
         </div>
 
-        <button id="add-to-cart" class="store-add-btn">Add to cart</button>
+        <div class="store-btn-row">
+          <button id="add-to-cart" class="store-add-btn">Add to cart</button>
+          <button id="store-share" class="store-share-btn" aria-label="Share">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -1038,6 +1046,11 @@
 
     <div class="art-modal-media">
       <img id="art-img" src="" alt="">
+      <button id="art-expand" class="art-expand-btn" aria-label="View fullscreen" title="View fullscreen">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 6V1H6M10 1H15V6M15 10V15H10M6 15H1V10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
     </div>
 
     <div class="art-modal-text">
@@ -1057,6 +1070,18 @@
       </div>
     </div>
   </div>
+</div>
+
+<!-- FULLSCREEN ART GALLERY -->
+<div id="art-fs" class="art-fs" hidden>
+  <button id="art-fs-close" class="art-fs-close" aria-label="Close fullscreen">×</button>
+  <button id="art-fs-prev" class="art-fs-nav art-fs-prev" aria-label="Previous artwork">‹</button>
+  <button id="art-fs-next" class="art-fs-nav art-fs-next" aria-label="Next artwork">›</button>
+  <div class="art-fs-wrap" id="art-fs-wrap">
+    <img id="art-fs-img" src="" alt="">
+  </div>
+  <div class="art-fs-counter" id="art-fs-counter"></div>
+  <div class="art-fs-hint" id="art-fs-hint">Click to zoom · ESC to close</div>
 </div>
 
 <!-- МОДАЛЬНОЕ ОКНО ПРОЕКТОВ -->
