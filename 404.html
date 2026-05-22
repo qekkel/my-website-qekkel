@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>404 — qekkel</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="images/favicon.PNG">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0e0e0e;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url("images/bg.jpg");
+      background-size: cover;
+      background-position: center;
+      filter: blur(3px) brightness(0.35);
+      transform: scale(1.05);
+      z-index: 0;
+    }
+
+    body > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .code {
+      font-size: clamp(6rem, 20vw, 10rem);
+      font-weight: 300;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: rgba(255,255,255,0.08);
+      user-select: none;
+    }
+
+    .title {
+      font-size: clamp(1rem, 3vw, 1.3rem);
+      font-weight: 300;
+      color: rgba(255,255,255,0.5);
+      margin-top: 1rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: rgba(255,255,255,0.15);
+      margin: 2rem auto;
+    }
+
+    .message {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.35);
+      line-height: 1.7;
+      max-width: 320px;
+    }
+
+    .home-link {
+      display: inline-block;
+      margin-top: 2.5rem;
+      padding: 0.65rem 1.8rem;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 999px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .home-link:hover {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(255,255,255,0.4);
+    }
+
+    .sig {
+      position: fixed;
+      bottom: 1.5rem;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.15);
+      letter-spacing: 0.1em;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="code">404</div>
+  <p class="title">Page not found</p>
+  <div class="divider"></div>
+  <p class="message">Looks like this page got lost somewhere between the canvases. Let's go back.</p>
+  <a href="/" class="home-link">← Back to qekkel.org</a>
+
+  <span class="sig">qekkel.org</span>
+
+</body>
+</html>
