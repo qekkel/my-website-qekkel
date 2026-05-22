@@ -1033,7 +1033,16 @@ input:focus, textarea:focus{
   border-color: rgba(255,255,255,0.28);
   background: rgba(255,255,255,0.06);
 }
-.form-note{ color: var(--muted); margin-top: 10px; min-height: 20px; }
+.form-note{ color: var(--muted); margin-top: 10px; min-height: 20px; font-size: 0.85rem; transition: color 0.2s; }
+.form-note.note-ok    { color: #7ecf8e; }
+.form-note.note-error { color: #e8826a; }
+
+.field-error {
+  border-color: rgba(232, 130, 106, 0.7) !important;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(232, 130, 106, 0.18);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
 
 /* Icons */
 .icons{
