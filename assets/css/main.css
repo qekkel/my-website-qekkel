@@ -2134,3 +2134,114 @@ input:focus, textarea:focus{
   .project-modal-title { font-size: 22px; }
 }
 
+/* ============================
+   MOBILE (≤ 600px)
+============================ */
+@media (max-width: 600px) {
+
+  /* Навигация */
+  .site-nav ul {
+    gap: 4px;
+    padding: 8px;
+    border-radius: 16px;
+  }
+  .site-nav a {
+    padding: 8px 10px;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+  }
+  body.scrolled .site-nav {
+    width: calc(100% - 32px);
+    top: 10px;
+  }
+
+  /* Hero */
+  #header {
+    padding: 2rem 1.2rem 1.5rem;
+  }
+
+  /* Contact header */
+  .contact-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+
+  /* Checkout form — поля half в один столбец */
+  .field.half {
+    width: 100% !important;
+    flex: none !important;
+  }
+  .fields {
+    flex-direction: column;
+  }
+
+  /* Store specs — в столбец */
+  .store-specs-row {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  /* Cart — полноэкранный на мобильном */
+  .cart-content {
+    width: 100vw !important;
+    max-width: 100% !important;
+    border-radius: 0;
+    padding: 24px 18px;
+  }
+
+  /* Checkout modal */
+  .checkout-box {
+    padding: 1.5rem 1.2rem;
+    border-radius: 12px 12px 0 0;
+  }
+  .checkout-modal {
+    align-items: flex-end;
+  }
+
+  /* Prices modal */
+  .prices-box {
+    padding: 1.5rem 1.2rem;
+    border-radius: 12px 12px 0 0;
+  }
+  .prices-modal {
+    align-items: flex-end;
+  }
+
+  /* Art modal */
+  .art-modal {
+    padding: 10px;
+    align-items: flex-end;
+  }
+  .art-modal-inner {
+    max-height: 92vh;
+    border-radius: 16px 16px 0 0;
+  }
+
+  /* Projects CTA */
+  .projects-cta-tags {
+    gap: 0.4rem;
+  }
+  .projects-cta-text {
+    font-size: 0.85rem;
+  }
+
+  /* Иконки соцсетей — крупнее для тапа */
+  .icons .icon {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+/* ============================
+   MOBILE (≤ 400px) — очень маленькие
+============================ */
+@media (max-width: 400px) {
+  .site-nav a {
+    padding: 7px 8px;
+    font-size: 9px;
+  }
+  #about .about-right img:first-child { height: 180px; }
+  #about .about-right img:not(:first-child) { height: 110px; }
+}
+
