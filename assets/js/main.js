@@ -531,13 +531,29 @@ if (addToCartBtn) {
 }
 
 
+    // Telegram "Ask" link — prefill message with product title
+    const askTgLink = document.getElementById("store-ask-tg");
+    const askTgText = document.getElementById("store-ask-tg-text");
+    if (askTgLink) {
+      const title = currentLang === "ru" ? (card.dataset.titleRu || "") : (card.dataset.titleEn || "");
+      const msg = currentLang === "ru"
+        ? `Привет! Меня интересует «${title}»`
+        : `Hi! I'm interested in "${title}"`;
+      askTgLink.href = `https://t.me/qekkel?text=${encodeURIComponent(msg)}`;
+      if (askTgText) {
+        askTgText.textContent = currentLang === "ru" ? "Написать в Telegram" : "Ask in Telegram";
+      }
+    }
+
     panel.hidden = false;
     document.body.style.overflow = "hidden";
+    document.body.classList.add("modal-open");
   }
 
   function close() {
     panel.hidden = true;
     document.body.style.overflow = "";
+    document.body.classList.remove("modal-open");
     document.activeElement?.blur();
   }
 
@@ -619,12 +635,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
  document.querySelectorAll(".lang-btn").forEach(btn => {
   btn.addEventListener("click", () => {
-    currentLang = btn.dataset.lang;
-
-    // сохраняем выбор
-    localStorage.setItem("siteLang", currentLang);
-
-    applyI18n();
+    const wrapper = document.getElementById("wrapper");
+    wrapper?.classList.add("lang-fading");
+    setTimeout(() => {
+      currentLang = btn.dataset.lang;
+      localStorage.setItem("siteLang", currentLang);
+      applyI18n();
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        wrapper?.classList.remove("lang-fading");
+      }));
+    }, 180);
   });
 });
 
@@ -661,11 +681,14 @@ document.addEventListener("DOMContentLoaded", () => {
     counters.forEach(c => {
       c.textContent = cart.length;
       c.classList.add("bump");
-
-      setTimeout(() => {
-        c.classList.remove("bump");
-      }, 300);
+      setTimeout(() => c.classList.remove("bump"), 300);
     });
+
+    // Show cart button only when cart has items
+    const cartBtn = document.getElementById("open-cart");
+    if (cartBtn) {
+      cartBtn.classList.toggle("has-items", cart.length > 0);
+    }
   }
 
   // =========================
@@ -715,9 +738,7 @@ sendEmailBtn?.addEventListener("click", () => {
 
         productAdded = true;
       } else {
-        renderCart();
-        cartModal.hidden = false;
-
+        openCart();
         requestAnimationFrame(() => {
           cartModal.classList.add("open");
         });
@@ -777,27 +798,28 @@ sendEmailBtn?.addEventListener("click", () => {
 // OPEN / CLOSE CART
 // =========================
 
-openCartBtn?.addEventListener("click", () => {
+function openCart() {
   renderCart();
   cartModal.hidden = false;
-});
+  document.body.classList.add("modal-open");
+}
 
-closeCartBtn?.addEventListener("click", () => {
+function closeCart() {
   cartModal.hidden = true;
-});
+  document.body.classList.remove("modal-open");
+}
+
+openCartBtn?.addEventListener("click", openCart);
+closeCartBtn?.addEventListener("click", closeCart);
 
 // Закрытие по клику вне содержимого
 cartModal?.addEventListener("click", (e) => {
-  if (!e.target.closest(".cart-content")) {
-    cartModal.hidden = true;
-  }
+  if (!e.target.closest(".cart-content")) closeCart();
 });
 
 // Закрытие по ESC
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
-    cartModal.hidden = true;
-  }
+  if (e.key === "Escape") closeCart();
 });
   // =====================
   // CHECKOUT
@@ -1148,11 +1170,13 @@ if (cursor) {
     imgEl.alt = title;
     modal.hidden = false;
     document.body.style.overflow = "hidden";
+    document.body.classList.add("modal-open");
   }
 
   function closeArt() {
     modal.hidden = true;
     document.body.style.overflow = "";
+    document.body.classList.remove("modal-open");
   }
 
   // ===== FULLSCREEN =====
@@ -1288,16 +1312,86 @@ if (cursor) {
   const cards = Array.from(document.querySelectorAll('.project-card'));
   let currentCardIndex = 0;
   let images = [];
+  let currentImageIndex = 0;
+
+  // Fullscreen elements (reuse art-fs CSS classes)
+  const projFS       = document.getElementById('proj-fs');
+  const projFSImg    = document.getElementById('proj-fs-img');
+  const projFSClose  = document.getElementById('proj-fs-close');
+  const projFSPrev   = document.getElementById('proj-fs-prev');
+  const projFSNext   = document.getElementById('proj-fs-next');
+  const projFSWrap   = document.getElementById('proj-fs-wrap');
+  const projFSCounter = document.getElementById('proj-fs-counter');
+  const projFSHint   = document.getElementById('proj-fs-hint');
+  const projExpand   = document.getElementById('proj-expand');
+  let projFSZoomed   = false;
+  let projFSHintTimer = null;
 
   function getLang() {
     return (typeof currentLang === 'string' ? currentLang : 'en');
   }
 
   function setThumb(i) {
+    currentImageIndex = i;
     mainImg.src = images[i];
+    mainImg.alt = mainImg.alt; // keep existing alt
     thumbsEl.querySelectorAll('.pm-thumb').forEach((t, idx) => {
       t.classList.toggle('active', idx === i);
     });
+  }
+
+  // ===== PROJECT FULLSCREEN =====
+  function resetProjZoom() {
+    projFSZoomed = false;
+    if (projFSWrap) projFSWrap.classList.remove('zoomed');
+  }
+
+  function syncProjFSCounter() {
+    if (projFSCounter && images.length > 0) {
+      projFSCounter.textContent =
+        String(currentImageIndex + 1).padStart(2, '0') + ' / ' +
+        String(images.length).padStart(2, '0');
+    }
+  }
+
+  function openProjFS(i) {
+    if (!projFS || !projFSImg || images.length === 0) return;
+    currentImageIndex = i;
+    resetProjZoom();
+    projFSImg.src = images[i];
+    projFSImg.alt = mainImg.alt || '';
+    syncProjFSCounter();
+
+    // show/hide nav arrows depending on image count
+    if (projFSPrev) projFSPrev.style.display = images.length > 1 ? '' : 'none';
+    if (projFSNext) projFSNext.style.display = images.length > 1 ? '' : 'none';
+
+    projFS.hidden = false;
+
+    if (projFSHint) {
+      const L = typeof currentLang === 'string' ? currentLang : 'en';
+      projFSHint.textContent = L === 'ru'
+        ? 'Нажми для увеличения · ESC — закрыть'
+        : 'Click to zoom · ESC to close';
+      projFSHint.classList.remove('fade-out');
+      clearTimeout(projFSHintTimer);
+      projFSHintTimer = setTimeout(() => projFSHint.classList.add('fade-out'), 2200);
+    }
+  }
+
+  function closeProjFS() {
+    if (!projFS) return;
+    projFS.hidden = true;
+    resetProjZoom();
+  }
+
+  function projFSNavigate(dir) {
+    if (images.length === 0) return;
+    currentImageIndex = ((currentImageIndex + dir) % images.length + images.length) % images.length;
+    resetProjZoom();
+    projFSImg.src = images[currentImageIndex];
+    setThumb(currentImageIndex);
+    syncProjFSCounter();
   }
 
   function openModal(cardIndex) {
@@ -1307,6 +1401,7 @@ if (cursor) {
     const isRu = lang === 'ru';
 
     images = (card.dataset.images || card.dataset.img || '').split(',').map(s => s.trim()).filter(Boolean);
+    currentImageIndex = 0;
 
     mainImg.src = images[0] || '';
     mainImg.alt = (isRu ? card.dataset.titleRu : card.dataset.titleEn) || '';
@@ -1354,6 +1449,22 @@ if (cursor) {
     document.body.style.overflow = '';
   }
 
+  // Fullscreen event listeners
+  mainImg.addEventListener('click', () => openProjFS(currentImageIndex));
+  projExpand?.addEventListener('click', (e) => { e.stopPropagation(); openProjFS(currentImageIndex); });
+
+  if (projFSWrap) {
+    projFSWrap.addEventListener('click', () => {
+      projFSZoomed = !projFSZoomed;
+      projFSWrap.classList.toggle('zoomed', projFSZoomed);
+    });
+  }
+
+  projFSPrev?.addEventListener('click', (e) => { e.stopPropagation(); projFSNavigate(-1); });
+  projFSNext?.addEventListener('click', (e) => { e.stopPropagation(); projFSNavigate(1); });
+  projFSClose?.addEventListener('click', closeProjFS);
+  projFS?.addEventListener('click', (e) => { if (e.target === projFS) closeProjFS(); });
+
   cards.forEach((card, i) => {
     card.style.cursor = 'pointer';
     card.addEventListener('click', () => openModal(i));
@@ -1362,6 +1473,12 @@ if (cursor) {
   closeBtn && closeBtn.addEventListener('click', closeModal);
   overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
   document.addEventListener('keydown', e => {
+    // Project fullscreen takes priority
+    if (projFS && !projFS.hidden) {
+      if (e.key === 'Escape') { closeProjFS(); return; }
+      if (e.key === 'ArrowRight') { projFSNavigate(1); return; }
+      if (e.key === 'ArrowLeft')  { projFSNavigate(-1); return; }
+    }
     if (overlay.hidden) return;
     if (e.key === 'Escape') closeModal();
     if (e.key === 'ArrowRight') openModal((currentCardIndex + 1) % cards.length);
