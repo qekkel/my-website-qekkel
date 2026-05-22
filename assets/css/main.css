@@ -1424,12 +1424,20 @@ input:focus, textarea:focus{
 
   z-index: 1000;
 
-   opacity: 0.85;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  /* hidden by default — appears when cart has items */
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
+.cart-btn.has-items {
+  opacity: 0.85;
+  pointer-events: auto;
+  transform: translateY(0);
+}
 
-.cart-btn:hover {
+.cart-btn.has-items:hover {
   opacity: 1;
   transform: translateY(-2px);
 }
@@ -1990,8 +1998,22 @@ input:focus, textarea:focus{
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  min-height: 0;
+  min-height: 360px;
 }
+/* wrapper for expand button positioning */
+.proj-img-wrap {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.proj-img-wrap:hover .art-expand-btn {
+  opacity: 1;
+}
+
 .project-modal-mainimg {
   flex: 1;
   min-height: 0;
@@ -2000,6 +2022,7 @@ input:focus, textarea:focus{
   object-position: center;
   display: block;
   padding: 12px;
+  cursor: zoom-in;
 }
 .project-modal-thumbs {
   display: flex;
@@ -2610,5 +2633,65 @@ input:focus, textarea:focus{
   .art-fs-nav { display: none; }
   .art-fs-hint { bottom: 50px; font-size: 0.68rem; }
   .art-expand-btn { opacity: 0.7; }
+}
+
+/* ============================
+   LANGUAGE FADE TRANSITION
+============================ */
+#wrapper {
+  transition: opacity 0.18s ease;
+}
+#wrapper.lang-fading {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ============================
+   MODAL BACKGROUND BLUR
+============================ */
+.bg-blur {
+  position: fixed;
+  inset: 0;
+  z-index: 998;
+  pointer-events: none;
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  background: transparent;
+  transition: backdrop-filter 0.3s ease, background 0.3s ease;
+}
+
+body.modal-open .bg-blur {
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.18);
+}
+
+/* ============================
+   STORE ASK IN TELEGRAM
+============================ */
+.store-ask-tg {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  color: rgba(255,255,255,0.45);
+  font-size: 0.8rem;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+}
+
+.store-ask-tg svg {
+  flex-shrink: 0;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.store-ask-tg:hover {
+  color: rgba(255,255,255,0.85);
+}
+
+.store-ask-tg:hover svg {
+  opacity: 1;
 }
 
