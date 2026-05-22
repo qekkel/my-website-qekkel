@@ -159,7 +159,7 @@ form_submit: "Send order request",
     notify_card_title: "New arrivals",
     notify_card_sub: "Notify me",
     notify_title: "Be the first to know",
-    notify_sub: "New works, limited drops and restocks — straight to your inbox.",
+    notify_sub: "New works, limited drops and restocks – straight to your inbox.",
     notify_placeholder: "your@email.com",
     notify_btn: "Notify me",
     notify_privacy: "No spam. Unsubscribe anytime.",
@@ -263,7 +263,7 @@ send_email: "Через Email",
     notify_card_title: "Новые работы",
     notify_card_sub: "Уведомить меня",
     notify_title: "Узнай первой",
-    notify_sub: "Новые работы, лимитированные дропы и пополнение — прямо на почту.",
+    notify_sub: "Новые работы, лимитированные дропы и пополнение – прямо на почту.",
     notify_placeholder: "твой@email.com",
     notify_btn: "Уведомить меня",
     notify_privacy: "Никакого спама. Отписаться можно в любой момент.",
@@ -969,8 +969,8 @@ if (checkoutMethod === "email") {
     const title = document.getElementById("store-title")?.textContent || "qekkel";
     const url = "https://qekkel.org";
     const text = currentLang === "ru"
-      ? `«${title}» — оригинальная работа Ольги Qekkel`
-      : `"${title}" — original artwork by Qekkel`;
+      ? `«${title}» – оригинальная работа Ольги Qekkel`
+      : `"${title}" – original artwork by Qekkel`;
 
     if (navigator.share) {
       navigator.share({ title, text, url });
@@ -1317,7 +1317,7 @@ if (cursor) {
     if (fsHint) {
       const L = getLang();
       fsHint.textContent = L === "ru"
-        ? "Нажми для увеличения · ESC — закрыть"
+        ? "Нажми для увеличения · ESC – закрыть"
         : "Click to zoom · ESC to close";
       fsHint.classList.remove("fade-out");
       clearTimeout(fsHintTimer);
@@ -1709,20 +1709,19 @@ if (cursor) {
     submitBtn.disabled = true;
 
     try {
-      const res = await fetch(form.action, {
+      const res = await fetch('https://formspree.io/f/xovdeodl', {
         method: 'POST',
-        body: new FormData(form),
-        headers: { Accept: 'application/json' }
+        body: JSON.stringify({ email, type: 'notify_signup', _subject: 'New arrival signup — qekkel.org' }),
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }
       });
       if (res.ok) {
         note.textContent = t('notify_ok');
         note.classList.add('note-ok');
         form.reset();
         submitBtn.disabled = false;
-        // Auto-close after 3s
         setTimeout(closeNotify, 3200);
       } else {
-        throw new Error('bad response');
+        throw new Error();
       }
     } catch {
       note.textContent = t('notify_err');
