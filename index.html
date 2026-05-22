@@ -49,25 +49,85 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Olga Qekkel",
-    "alternateName": "qekkel",
-    "url": "https://qekkel.org",
-    "image": "https://qekkel.org/images/preview.jpg",
-    "jobTitle": "Visual Artist & Designer",
-    "description": "Independent contemporary visual artist working between oil painting, acrylic, CG art and 2D animation. Open for commissions worldwide.",
-    "sameAs": [
-      "https://www.instagram.com/qekkel/",
-      "https://t.me/qekkel",
-      "https://www.youtube.com/@qekkel",
-      "https://www.pinterest.com/qekkel26/",
-      "https://t.me/qekkel26"
-    ],
-    "knowsAbout": ["Oil Painting", "Acrylic", "CG Art", "2D Animation", "Illustration", "Logo Design", "Branding"],
-    "offers": {
-      "@type": "Offer",
-      "description": "Original artworks, logo design, flyers, branding and illustration commissions"
-    }
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://qekkel.org/#website",
+        "url": "https://qekkel.org/",
+        "name": "Qekkel",
+        "description": "Original artworks, CG projects and limited art drops by Qekkel.",
+        "publisher": { "@id": "https://qekkel.org/#person" },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": { "@type": "EntryPoint", "urlTemplate": "https://qekkel.org/?s={search_term_string}" },
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://qekkel.org/#person",
+        "name": "Olga Qekkel",
+        "alternateName": "Qekkel",
+        "url": "https://qekkel.org/",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://qekkel.org/images/preview.jpg"
+        },
+        "jobTitle": "Visual Artist & Designer",
+        "description": "Independent contemporary visual artist working between oil painting, acrylic, CG art and illustration. Open for commissions worldwide.",
+        "email": "mailto:qekkel.olia@gmail.com",
+        "sameAs": [
+          "https://www.instagram.com/qekkel/",
+          "https://t.me/qekkel",
+          "https://www.youtube.com/@qekkel",
+          "https://www.pinterest.com/qekkel26/"
+        ],
+        "knowsAbout": ["Oil Painting", "Acrylic Painting", "CG Art", "Illustration", "Logo Design", "Branding", "Cover Art"]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://qekkel.org/#webpage",
+        "url": "https://qekkel.org/",
+        "name": "Qekkel | Visual Artist & Designer",
+        "isPartOf": { "@id": "https://qekkel.org/#website" },
+        "about": { "@id": "https://qekkel.org/#person" },
+        "description": "Portfolio and store of Qekkel – original oil and acrylic paintings, CG projects, illustration and design commissions.",
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://qekkel.org/" }]
+        }
+      },
+      {
+        "@type": "Product",
+        "name": "Sakura – Original Oil Painting",
+        "url": "https://qekkel.org/",
+        "image": "https://qekkel.org/images/art05/main.webp",
+        "description": "Original oil painting on canvas by Qekkel.",
+        "brand": { "@id": "https://qekkel.org/#person" },
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "EUR",
+          "price": "120",
+          "availability": "https://schema.org/InStock",
+          "seller": { "@id": "https://qekkel.org/#person" }
+        }
+      },
+      {
+        "@type": "Product",
+        "name": "Surreal Bouquet – Original Acrylic Painting",
+        "url": "https://qekkel.org/",
+        "image": "https://qekkel.org/images/art02/main.webp",
+        "description": "Original acrylic painting on canvas by Qekkel.",
+        "brand": { "@id": "https://qekkel.org/#person" },
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "RUB",
+          "price": "16000",
+          "availability": "https://schema.org/InStock",
+          "seller": { "@id": "https://qekkel.org/#person" }
+        }
+      }
+    ]
   }
   </script>
 
@@ -507,13 +567,13 @@
     data-images="projects/4/hmirov-1.jpg,projects/4/hmirov-2.JPG"
     data-title-en="Hmirov Pole"
     data-title-ru="Хмыров поле"
-    data-desc-en="Game art and visual concept for Hmirov Pole – a top-down indie game set in a lush field environment."
-    data-desc-ru="Геймарт и визуальный концепт для Хмыров поле – инди-игры с видом сверху в атмосфере зелёного поля."
-    data-category-en="Game Art · 2024"
-    data-category-ru="Геймарт · 2024"
-    data-meta-en="Type|Game Art|Format|Top-down|Year|2024"
-    data-meta-ru="Тип|Геймарт|Формат|Вид сверху|Год|2024"
-    data-tags="Game Art,Concept,Illustration">
+    data-desc-en="Cover art for the Hmirov Pole music single – illustration for an indie musician."
+    data-desc-ru="Обложка для музыкального сингла Хмыров поле – иллюстрация для инди-музыканта."
+    data-category-en="Cover Art · 2024"
+    data-category-ru="Обложка · 2024"
+    data-meta-en="Type|Cover Art|Format|Single|Year|2024"
+    data-meta-ru="Тип|Обложка сингла|Формат|Сингл|Год|2024"
+    data-tags="Illustration,Cover Art,Music">
     <div class="project-thumb">
       <img loading="lazy" src="projects/4/hmirov-1.jpg" alt="Hmirov Pole">
     </div>
@@ -1210,10 +1270,8 @@
       </svg>
     </div>
     <h3 id="notify-modal-title" class="notify-title" data-i18n="notify_title">Be the first to know</h3>
-    <p class="notify-sub" data-i18n="notify_sub">New works, limited drops and restocks — straight to your inbox.</p>
-    <form id="notify-form" class="notify-form" novalidate action="https://formspree.io/f/xovdeodl" method="POST">
-      <input type="hidden" name="_subject" value="New arrival notification request — qekkel.org">
-      <input type="hidden" name="type" value="notify_signup">
+    <p class="notify-sub" data-i18n="notify_sub">New works, limited drops and restocks – straight to your inbox.</p>
+    <form id="notify-form" class="notify-form" novalidate>
       <input
         id="notify-email"
         name="email"
