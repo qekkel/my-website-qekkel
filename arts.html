@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Arts – qekkel</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Full gallery of original artworks by Qekkel – oil paintings, digital illustrations and animated works. Contemporary visual art by independent artist Olga.">
+  <meta name="author" content="Olga Qekkel">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://qekkel.org/arts" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Qekkel">
+  <meta property="og:title" content="Arts – Qekkel | Visual Artist">
+  <meta property="og:description" content="Full gallery of original artworks by Qekkel – oil paintings, illustrations and animated works.">
+  <meta property="og:url" content="https://qekkel.org/arts">
+  <meta property="og:image" content="https://qekkel.org/images/preview.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet"></noscript>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/main.css" />
+
+  <style>
+    /* Arts page overrides */
+    body { overflow-x: hidden; }
+
+    .arts-page-wrap {
+      min-height: 100vh;
+      background: #1a1a1a;
+      padding: 0 0 80px;
+    }
+
+    .arts-page-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 40px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .arts-page-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .arts-page-back:hover { color: #fff; }
+    .arts-page-back::before { content: "←"; font-size: 1.1rem; }
+
+    .arts-page-title {
+      font-size: 1rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      font-weight: 300;
+      margin: 0;
+    }
+
+    .arts-page-lang {
+      display: flex;
+      gap: 6px;
+    }
+    .arts-page-lang .lang-btn {
+      background: none;
+      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.45);
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 0.78rem;
+      cursor: pointer;
+      letter-spacing: 0.08em;
+      transition: all 0.2s;
+    }
+    .arts-page-lang .lang-btn[aria-pressed="true"],
+    .arts-page-lang .lang-btn:hover {
+      border-color: rgba(255,255,255,0.5);
+      color: #fff;
+    }
+
+    .arts-full-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      padding: 32px 40px 0;
+    }
+
+    @media (max-width: 900px) {
+      .arts-full-grid {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 24px 16px 0;
+        gap: 4px;
+      }
+      .arts-page-header { padding: 20px 16px 16px; }
+    }
+
+    @media (max-width: 500px) {
+      .arts-full-grid { grid-template-columns: 1fr; }
+    }
+
+    .arts-full-grid .art-item {
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      border-radius: 6px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .arts-full-grid .art-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .arts-full-grid .art-item:hover img {
+      transform: scale(1.04);
+    }
+
+    .arts-full-grid .art-item::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0);
+      transition: background 0.3s;
+    }
+    .arts-full-grid .art-item:hover::after {
+      background: rgba(0,0,0,0.12);
+    }
+  </style>
+</head>
+
+<body class="is-preload">
+
+  <div id="bg-blur" class="bg-blur"></div>
+
+  <div class="arts-page-wrap">
+
+    <header class="arts-page-header">
+      <a href="/" class="arts-page-back" data-i18n-arts-back>qekkel.org</a>
+      <p class="arts-page-title" data-i18n="arts_title">Arts</p>
+      <div class="arts-page-lang lang-toggle" role="group" aria-label="Language switch">
+        <button type="button" class="lang-btn" data-lang="ru" aria-pressed="false">RU</button>
+        <button type="button" class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
+      </div>
+    </header>
+
+    <div class="arts-full-grid">
+
+      <div class="art-item" role="button" tabindex="0" data-art-id="art1">
+        <img loading="lazy" src="images/art1.gif"
+          alt="Abstract contemporary digital artwork by Qekkel">
+      </div>
+
+      <div class="art-item" role="button" tabindex="0" data-art-id="art2">
+        <img loading="lazy" src="images/art2.webp"
+          alt="Surreal oil painting with expressive brush strokes by Qekkel">
+      </div>
+
+      <div class="art-item" role="button" tabindex="0" data-art-id="art3">
+        <img loading="lazy" src="images/art3.gif"
+          alt="Dark atmospheric digital illustration by Qekkel">
+      </div>
+
+      <div class="art-item" role="button" tabindex="0" data-art-id="art4">
+        <img loading="lazy" src="images/art4.webp"
+          alt="Abstract oil painting exploring texture and depth by Qekkel">
+      </div>
+
+      <div class="art-item" role="button" tabindex="0" data-art-id="art5">
+        <img loading="lazy" src="images/art5.webp"
+          alt="Contemporary visual art composition in muted tones by Qekkel">
+      </div>
+
+      <div class="art-item" role="button" tabindex="0" data-art-id="art6">
+        <img loading="lazy" src="images/art6.webp"
+          alt="Expressive acrylic painting with dynamic movement by Qekkel">
+      </div>
+
+      <div class="art-item" role="button" tabindex="0" data-art-id="art7">
+        <img loading="lazy" src="images/art7.jpg"
+          alt="Minimalist conceptual artwork by Qekkel">
+      </div>
+
+      <div class="art-item" role="button" tabindex="0" data-art-id="art8">
+        <img loading="lazy" src="images/art8.jpg"
+          alt="Experimental visual art piece combining fantasy and abstraction by Qekkel">
+      </div>
+
+      <div class="art-item" role="button" tabindex="0" data-art-id="art9">
+        <img loading="lazy" src="images/art09/art9.jpg"
+          alt="Two Become One – surreal oil portrait with four eyes, red and blue hair, by Qekkel">
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ART MODAL -->
+  <div id="art-modal" class="art-modal" hidden>
+    <div class="art-modal-inner">
+      <button id="art-close" class="art-close">×</button>
+
+      <div class="art-modal-media">
+        <img id="art-img" src="" alt="">
+        <button id="art-expand" class="art-expand-btn" aria-label="View fullscreen" title="View fullscreen">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 6V1H6M10 1H15V6M15 10V15H10M6 15H1V10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="art-modal-text">
+        <p id="art-meta" class="art-meta"></p>
+        <h3 id="art-title"></h3>
+        <p id="art-desc" class="art-desc"></p>
+
+        <div class="art-process">
+          <h4 id="art-process-title">Medium</h4>
+          <ul id="art-process-list"></ul>
+        </div>
+
+        <div class="art-modal-footer">
+          <button id="art-prev" class="art-modal-nav-btn" aria-label="Previous artwork">←</button>
+          <span id="art-counter" class="art-modal-counter"></span>
+          <button id="art-next" class="art-modal-nav-btn" aria-label="Next artwork">→</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FULLSCREEN -->
+  <div id="art-fs" class="art-fs" hidden>
+    <button id="art-fs-close" class="art-fs-close" aria-label="Close fullscreen">×</button>
+    <button id="art-fs-prev" class="art-fs-nav art-fs-prev" aria-label="Previous artwork">‹</button>
+    <button id="art-fs-next" class="art-fs-nav art-fs-next" aria-label="Next artwork">›</button>
+    <div class="art-fs-wrap" id="art-fs-wrap">
+      <img id="art-fs-img" src="" alt="">
+    </div>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+
+</body>
+</html>
