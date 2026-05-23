@@ -1880,8 +1880,8 @@ if (cursor) {
     try {
       const res = await fetch('https://formspree.io/f/xgoqzngy', {
         method: 'POST',
-        body: JSON.stringify({ email, type: 'notify_signup', _subject: 'New arrival signup — qekkel.org' }),
-        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }
+        body: new URLSearchParams({ email, type: 'notify_signup', _subject: 'New arrival signup — qekkel.org' }),
+        headers: { 'Accept': 'application/json' }
       });
       if (res.ok) {
         note.textContent = t('notify_ok');
