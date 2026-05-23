@@ -606,6 +606,17 @@ if (addToCartBtn) {
     document.body.style.overflow = "hidden";
     document.body.style.top = `-${window.scrollY}px`;
     document.body.classList.add("modal-open");
+
+    // GA4 event: store item view
+    if (typeof gtag === "function") {
+      gtag("event", "store_item_view", {
+        item_id: card.dataset.id || "",
+        item_title: card.dataset.titleEn || "",
+        item_price_eur: card.dataset.priceEur || "",
+        item_medium: card.dataset.mediumEn || "",
+        item_size: card.dataset.sizeEn || ""
+      });
+    }
   }
 
   function close() {
@@ -1330,6 +1341,17 @@ if (cursor) {
     if (art.slug) {
       history.replaceState(null, "", "#" + art.slug);
     }
+
+    // GA4 event: artwork view
+    if (typeof gtag === "function") {
+      gtag("event", "artwork_view", {
+        artwork_id: id,
+        artwork_title: art.titleEn || id,
+        artwork_slug: art.slug || id,
+        artwork_year: art.year || "",
+        artwork_medium: art.mediumEn || ""
+      });
+    }
   }
 
   function closeArt() {
@@ -1616,6 +1638,15 @@ if (cursor) {
 
     overlay.hidden = false;
     document.body.style.overflow = 'hidden';
+
+    // GA4 event: project view
+    if (typeof gtag === "function") {
+      gtag("event", "project_view", {
+        project_title: card.dataset.titleEn || "",
+        project_category: card.dataset.categoryEn || "",
+        project_tags: card.dataset.tags || ""
+      });
+    }
   }
 
   function closeModal() {
