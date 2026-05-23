@@ -712,12 +712,21 @@ if (addToCartBtn) {
         form.reset();
         required.forEach(f => f.classList.remove("field-error"));
       } else {
-        note.textContent = t("form_err");
+        let errMsg = t("form_err");
+        try {
+          const data = await res.json();
+          if (data && data.errors && data.errors.length) {
+            errMsg += " (" + data.errors.map(e => e.message).join(", ") + ")";
+          }
+        } catch {}
+        note.textContent = errMsg;
         note.classList.add("note-error");
+        console.error("[contact-form] Formspree error", res.status, res.statusText);
       }
-    } catch {
+    } catch (err) {
       note.textContent = t("form_err");
       note.classList.add("note-error");
+      console.error("[contact-form] Network error", err);
     }
   });
 

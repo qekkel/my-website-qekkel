@@ -348,6 +348,10 @@
   border-top: 1px solid rgba(255,255,255,0.05);
   padding: 22px 40px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
 }
 .product-copyright {
   font-size: 0.68rem;
@@ -355,6 +359,20 @@
   text-transform: uppercase;
   color: rgba(255,255,255,0.2);
   margin: 0;
+}
+.product-footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.product-footer-socials a {
+  color: rgba(255,255,255,0.22);
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+}
+.product-footer-socials a:hover {
+  color: rgba(255,255,255,0.7);
 }
 
 /* ── Responsive ── */

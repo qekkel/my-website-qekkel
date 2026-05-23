@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Homepage -->
   <url>
     <loc>https://qekkel.org/</loc>
     <lastmod>2025-05-22</lastmod>
@@ -9,4 +11,79 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://qekkel.org/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://qekkel.org/"/>
   </url>
+
+  <!-- Store listing -->
+  <url>
+    <loc>https://qekkel.org/store</loc>
+    <lastmod>2025-05-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://qekkel.org/store"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://qekkel.org/store"/>
+  </url>
+
+  <!-- Product pages -->
+  <url>
+    <loc>https://qekkel.org/store/aerial</loc>
+    <lastmod>2025-05-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://qekkel.org/store/aerial"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://qekkel.org/store/aerial"/>
+  </url>
+
+  <url>
+    <loc>https://qekkel.org/store/surreal-bouquet</loc>
+    <lastmod>2025-05-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://qekkel.org/store/surreal-bouquet"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://qekkel.org/store/surreal-bouquet"/>
+  </url>
+
+  <url>
+    <loc>https://qekkel.org/store/tropical-vortex</loc>
+    <lastmod>2025-05-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://qekkel.org/store/tropical-vortex"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://qekkel.org/store/tropical-vortex"/>
+  </url>
+
+  <url>
+    <loc>https://qekkel.org/store/siesta</loc>
+    <lastmod>2025-05-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://qekkel.org/store/siesta"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://qekkel.org/store/siesta"/>
+  </url>
+
+  <url>
+    <loc>https://qekkel.org/store/sakura</loc>
+    <lastmod>2025-05-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://qekkel.org/store/sakura"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://qekkel.org/store/sakura"/>
+  </url>
+
+  <url>
+    <loc>https://qekkel.org/store/sakura-ii</loc>
+    <lastmod>2025-05-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://qekkel.org/store/sakura-ii"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://qekkel.org/store/sakura-ii"/>
+  </url>
+
+  <url>
+    <loc>https://qekkel.org/store/spring-park</loc>
+    <lastmod>2025-05-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://qekkel.org/store/spring-park"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://qekkel.org/store/spring-park"/>
+  </url>
+
 </urlset>
