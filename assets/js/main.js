@@ -1164,6 +1164,7 @@ if (cursor) {
 
   const ARTS = {
     art1: {
+      slug: "adventure-time",
       titleEn: "Adventure Time in an alternate reality",
       titleRu: "Adventure Time в реальной реальности",
       year: "2023",
@@ -1174,6 +1175,7 @@ if (cursor) {
       process: { en: ["Adobe Photoshop"], ru: ["Adobe Photoshop"] }
     },
     art2: {
+      slug: "bmo",
       titleEn: "BMO",
       titleRu: "Бимо",
       year: "2023",
@@ -1184,6 +1186,7 @@ if (cursor) {
       process: { en: ["Adobe Photoshop"], ru: ["Adobe Photoshop"] }
     },
     art3: {
+      slug: "vampire-queen",
       titleEn: "Vampire Queen",
       titleRu: "Королева вампиров",
       year: "2025",
@@ -1194,6 +1197,7 @@ if (cursor) {
       process: { en: ["Procreate"], ru: ["Procreate"] }
     },
     art4: {
+      slug: "over-the-garden-wall",
       titleEn: "Over the Garden Wall",
       titleRu: "По ту сторону Изгороди",
       year: "2023",
@@ -1204,6 +1208,7 @@ if (cursor) {
       process: { en: ["Watercolor painting", "A5"], ru: ["Акварельная живопись", "A5"] }
     },
     art5: {
+      slug: "sagittarius",
       titleEn: "Sagittarius",
       titleRu: "Стрелец",
       year: "2024",
@@ -1214,6 +1219,7 @@ if (cursor) {
       process: { en: ["Adobe Photoshop"], ru: ["Adobe Photoshop"] }
     },
     art6: {
+      slug: "sing-street",
       titleEn: "Sing Street",
       titleRu: "Рок-н-рольщики",
       year: "2018",
@@ -1224,6 +1230,7 @@ if (cursor) {
       process: { en: ["Ink drawing"], ru: ["Рисунок тушью"] }
     },
     art7: {
+      slug: "surreal-bouquet",
       titleEn: "Surreal Bouquet",
       titleRu: "Сюрреалистический букет",
       year: "2024",
@@ -1234,6 +1241,7 @@ if (cursor) {
       process: { en: ["Acryl"], ru: ["Акрил"] }
     },
     art8: {
+      slug: "marceline",
       titleEn: "Marceline",
       titleRu: "Марселин",
       year: "2023",
@@ -1244,6 +1252,7 @@ if (cursor) {
       process: { en: ["Oil painting"], ru: ["Живопись маслом"] }
     },
     art9: {
+      slug: "two-become-one",
       titleEn: "Two Become One",
       titleRu: "Two Become One",
       year: "2024",
@@ -1316,12 +1325,19 @@ if (cursor) {
     modal.hidden = false;
     document.body.style.overflow = "hidden";
     document.body.classList.add("modal-open");
+
+    // Update URL hash
+    if (art.slug) {
+      history.replaceState(null, "", "#" + art.slug);
+    }
   }
 
   function closeArt() {
     modal.hidden = true;
     document.body.style.overflow = "";
     document.body.classList.remove("modal-open");
+    // Remove hash from URL
+    history.replaceState(null, "", window.location.pathname + window.location.search);
   }
 
   // ===== FULLSCREEN =====
@@ -1411,6 +1427,19 @@ if (cursor) {
   nextBtn?.addEventListener("click", () => openAtIndex(currentIndex + 1));
   closeBtn?.addEventListener("click", closeArt);
   modal.addEventListener("click", e => { if (e.target === modal) closeArt(); });
+
+  // Auto-open artwork by URL hash on page load
+  const initHash = window.location.hash.slice(1);
+  if (initHash) {
+    const matchIndex = artItems.findIndex(item => {
+      const art = ARTS[item.dataset.artId];
+      return art && art.slug === initHash;
+    });
+    if (matchIndex !== -1) {
+      currentIndex = matchIndex;
+      showArt(artItems[matchIndex]);
+    }
+  }
   document.addEventListener("keydown", e => {
     // Fullscreen takes priority
     if (fsOverlay && !fsOverlay.hidden) {
