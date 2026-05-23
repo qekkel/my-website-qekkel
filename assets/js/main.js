@@ -1854,6 +1854,37 @@ if (cursor) {
 })();
 
 /* =========================
+   PRODUCT PAGE – DIRECT ADD TO CART
+   Pre-fill currentProduct from the hidden .store-card so the cart
+   system works with a single click — no modal detour.
+========================= */
+(function () {
+  if (!document.body.classList.contains("product-page")) return;
+
+  const card = document.querySelector(".store-card");
+  if (!card) return;
+
+  const d = card.dataset;
+
+  currentProduct = {
+    id: d.id,
+    title: currentLang === "ru" ? (d.titleRu || d.titleEn) : d.titleEn,
+    price: Number(d.priceEur),
+    img: (d.img || "").split(",")[0]
+  };
+  productAdded = cart.some(i => i.id === d.id);
+
+  // Remove the onclick that was opening the store modal
+  const addBtn = document.getElementById("add-to-cart");
+  if (addBtn && !addBtn.closest("#store-listing")) {
+    addBtn.removeAttribute("onclick");
+    if (productAdded) {
+      addBtn.textContent = currentLang === "ru" ? "Открыть корзину" : "Open cart";
+    }
+  }
+})();
+
+/* =========================
    PAGE OVERLAY (store product pages)
 ========================= */
 (function () {
