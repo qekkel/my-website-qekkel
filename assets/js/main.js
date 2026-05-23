@@ -602,13 +602,20 @@ if (addToCartBtn) {
 
     panel.hidden = false;
     document.body.style.overflow = "hidden";
+    document.body.style.top = `-${window.scrollY}px`;
     document.body.classList.add("modal-open");
   }
 
   function close() {
     panel.hidden = true;
+    const scrollY = parseInt(document.body.style.top || '0') * -1;
     document.body.style.overflow = "";
+    document.body.style.top = "";
     document.body.classList.remove("modal-open");
+    // Мгновенный скролл без анимации
+    document.documentElement.style.scrollBehavior = "auto";
+    window.scrollTo(0, scrollY);
+    requestAnimationFrame(() => { document.documentElement.style.scrollBehavior = ""; });
     document.activeElement?.blur();
   }
 
