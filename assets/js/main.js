@@ -1883,11 +1883,6 @@ if (cursor) {
     }
   }
 
-  // backdrop-filter on .product-header creates a new containing block,
-  // which breaks position:fixed on its children. Move the cart FAB to
-  // <body> so it's truly fixed to the viewport.
-  const cartFab = document.getElementById("open-cart");
-  if (cartFab) document.body.appendChild(cartFab);
 })();
 
 /* =========================
