@@ -1878,7 +1878,7 @@ if (cursor) {
     submitBtn.disabled = true;
 
     try {
-      const res = await fetch('https://formspree.io/f/xovdeodl', {
+      const res = await fetch('https://formspree.io/f/xgoqzngy', {
         method: 'POST',
         body: JSON.stringify({ email, type: 'notify_signup', _subject: 'New arrival signup — qekkel.org' }),
         headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }
