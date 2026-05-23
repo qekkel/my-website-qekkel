@@ -2426,7 +2426,30 @@ input:focus, textarea:focus{
 
   .store-listing-media {
     aspect-ratio: 1 / 1;
-    max-height: 60vw;
+    max-height: none;
+    width: 100%;
+  }
+
+  /* Картинка — на всю ширину */
+  .store-listing-media .zoom-wrap {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+  }
+
+  .store-listing-media .zoom-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Скрываем стрелки — свайп вместо них */
+  .store-listing-media .gallery-arrow {
+    display: none;
+  }
+
+  /* Свайп-подсказка */
+  .store-swipe-hint {
+    display: flex !important;
   }
 
   /* Cart — полноэкранный на мобильном */
@@ -2917,6 +2940,43 @@ body.modal-open .bg-blur {
 
 .store-ask-tg:hover svg {
   opacity: 1;
+}
+
+/* ============================
+   SWIPE HINT (store modal mobile)
+============================ */
+.store-swipe-hint {
+  display: none;
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  align-items: center;
+  gap: 6px;
+  color: rgba(255,255,255,0.6);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  pointer-events: none;
+  animation: swipeHintFade 2.5s ease 0.8s forwards;
+  z-index: 6;
+}
+
+.store-swipe-hint-icon {
+  font-size: 16px;
+  animation: swipeHintMove 1.2s ease-in-out 0.8s 2;
+}
+
+@keyframes swipeHintMove {
+  0%   { transform: translateX(0); }
+  40%  { transform: translateX(-8px); }
+  60%  { transform: translateX(8px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes swipeHintFade {
+  0%   { opacity: 1; }
+  70%  { opacity: 1; }
+  100% { opacity: 0; }
 }
 
 /* ============================
