@@ -682,6 +682,8 @@
           <p class="store-lead" data-i18n="store_lead">Original pieces, postcards, and limited drops.</p>
 
           <div class="store-grid">
+            <div class="store-card-wrap">
+            <a class="store-view-page" href="/store/sakura">View page →</a>
             <button class="store-card" type="button"
               aria-label="View Sakura – original oil painting"
               aria-expanded="false"
@@ -710,7 +712,10 @@
                 <p class="store-price" data-price></p>
               </div>
             </button>
+            </div>
 
+            <div class="store-card-wrap">
+            <a class="store-view-page" href="/store/spring-park">View page →</a>
             <button class="store-card" type="button"
               aria-label="View Spring Park – original oil painting"
               aria-expanded="false"
@@ -739,7 +744,10 @@
                 <p class="store-price" data-price></p>
               </div>
             </button>
+            </div>
 
+            <div class="store-card-wrap">
+            <a class="store-view-page" href="/store/sakura-ii">View page →</a>
             <button class="store-card" type="button"
               aria-label="View Sakura II – original oil painting"
               aria-expanded="false"
@@ -768,7 +776,10 @@
                 <p class="store-price" data-price></p>
               </div>
             </button>
+            </div>
 
+            <div class="store-card-wrap">
+            <a class="store-view-page" href="/store/aerial">View page →</a>
             <button class="store-card" type="button"
               aria-label="View Aerial – original oil painting"
               aria-expanded="false"
@@ -797,7 +808,10 @@
                 <p class="store-price" data-price></p>
               </div>
             </button>
+            </div>
 
+            <div class="store-card-wrap">
+            <a class="store-view-page" href="/store/surreal-bouquet">View page →</a>
             <button class="store-card" type="button"
               aria-label="View Surreal Bouquet – original acrylic painting"
               aria-expanded="false"
@@ -827,6 +841,7 @@
                 <p class="store-price" data-price></p>
               </div>
             </button>
+            </div>
 
             <!-- Notify card -->
             <button class="store-card store-notify-card" id="open-notify" type="button" aria-label="Get notified about new arrivals">
@@ -1248,6 +1263,12 @@
     <p id="notify-note" class="notify-note"></p>
     <p class="notify-privacy" data-i18n="notify_privacy">No spam. Unsubscribe anytime.</p>
   </div>
+</div>
+
+<!-- Page overlay for product pages -->
+<div id="page-overlay" class="page-overlay" role="dialog" aria-modal="true" aria-label="Product page">
+  <button id="close-page-overlay" class="page-overlay-close" aria-label="Close">×</button>
+  <iframe id="page-overlay-frame" src="" title="Product page" loading="lazy"></iframe>
 </div>
 
 <script src="assets/js/main.js"></script>
