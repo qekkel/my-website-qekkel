@@ -43,8 +43,11 @@ window.addEventListener("resize", revealSections);
   const header = document.getElementById("header");
   if (!header) return;
 
+  // Кэшируем высоту один раз — не читаем offsetHeight при каждом скролле
+  let cut = header.offsetHeight * 0.35;
+  window.addEventListener("resize", () => { cut = header.offsetHeight * 0.35; }, { passive: true });
+
   function onScroll() {
-    const cut = header.offsetHeight * 0.35;
     document.body.classList.toggle("scrolled", window.scrollY > cut);
   }
 
@@ -156,6 +159,7 @@ form_submit: "Send order request",
     prices_talk: "Let's talk →",
     prices_note: "Final price depends on complexity. I'll confirm after we discuss.",
     contact_tg: "Write in Telegram",
+    swipe_hint: "Swipe to browse",
     notify_card_title: "New arrivals",
     notify_card_sub: "Notify me",
     notify_title: "Be the first to know",
@@ -260,6 +264,7 @@ send_email: "Через Email",
     prices_talk: "Написать →",
     prices_note: "Финальная цена зависит от сложности. Уточню после обсуждения.",
     contact_tg: "Написать в Telegram",
+    swipe_hint: "Листай пальцем",
     notify_card_title: "Новые работы",
     notify_card_sub: "Уведомить меня",
     notify_title: "Узнай первой",
@@ -547,6 +552,18 @@ if (imgs.length) {
       currentIndex = (currentIndex + 1) % imgs.length;
       img.src = imgs[currentIndex];
     };
+
+    // Свайп для store-модалки на мобильном
+    const zoomWrap = panel.querySelector('.zoom-wrap');
+    if (zoomWrap) {
+      let sx = 0;
+      zoomWrap.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
+      zoomWrap.addEventListener('touchend', e => {
+        const dx = e.changedTouches[0].clientX - sx;
+        if (Math.abs(dx) < 45) return;
+        if (dx < 0) nextBtn.click(); else prevBtn.click();
+      }, { passive: true });
+    }
   }
 }
 // сброс состояния кнопки
