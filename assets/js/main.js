@@ -170,6 +170,7 @@ form_submit: "Send order request",
     notify_ok: "You're in! I'll let you know when something drops ✦",
     notify_err: "Something went wrong. Try again or write me directly.",
     notify_invalid: "Please enter a valid email address.",
+    see_all_arts: "See all artworks →",
   },
   ru: {
     hero_subtitle: "Независимый художник и дизайнер",
@@ -275,6 +276,7 @@ send_email: "Через Email",
     notify_ok: "Готово! Напишу, как только появится что-то новое ✦",
     notify_err: "Что-то пошло не так. Попробуй ещё раз или напиши мне напрямую.",
     notify_invalid: "Введи корректный email-адрес.",
+    see_all_arts: "Все работы →",
   }
 };
 
@@ -1240,6 +1242,16 @@ if (cursor) {
       descEn: "A small tribute to Marcy – painted as a way of expressing my love for her.",
       descRu: "Небольшая дань Марси – картина, через которую я выражаю свою любовь к ней.",
       process: { en: ["Oil painting"], ru: ["Живопись маслом"] }
+    },
+    art9: {
+      titleEn: "Two Become One",
+      titleRu: "Two Become One",
+      year: "2024",
+      mediumEn: "Oil on Canvas",
+      mediumRu: "Масло на холсте",
+      descEn: "A surreal portrait exploring duality and perception – a woman with four eyes, hair split between red and cobalt blue, against a vivid yellow background.",
+      descRu: "Сюрреалистический портрет о двойственности и восприятии – женщина с четырьмя глазами, волосы разделены между красным и кобальтовым синим на ярком жёлтом фоне.",
+      process: { en: ["Oil painting", "30×40 cm"], ru: ["Живопись маслом", "30×40 см"] }
     }
   };
 
