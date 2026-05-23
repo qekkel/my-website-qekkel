@@ -1829,3 +1829,54 @@ if (cursor) {
   });
 })();
 
+/* =========================
+   PAGE OVERLAY (store product pages)
+========================= */
+(function () {
+  const overlay = document.getElementById('page-overlay');
+  const frame   = document.getElementById('page-overlay-frame');
+  const closeBtn = document.getElementById('close-page-overlay');
+  if (!overlay || !frame) return;
+
+  let prevUrl = location.href;
+
+  function openOverlay(url) {
+    prevUrl = location.href;
+    frame.src = url;
+    overlay.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    history.pushState({ pageOverlay: true }, '', url);
+  }
+
+  function closeOverlay() {
+    overlay.classList.remove('is-open');
+    document.body.style.overflow = '';
+    frame.src = '';
+    history.pushState(null, '', prevUrl);
+  }
+
+  // Intercept clicks on store-view-page links
+  document.addEventListener('click', function (e) {
+    const link = e.target.closest('.store-view-page');
+    if (!link) return;
+    e.preventDefault();
+    openOverlay(link.href);
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', closeOverlay);
+
+  // Browser back button
+  window.addEventListener('popstate', function (e) {
+    if (overlay.classList.contains('is-open')) {
+      overlay.classList.remove('is-open');
+      document.body.style.overflow = '';
+      frame.src = '';
+    }
+  });
+
+  // Escape key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeOverlay();
+  });
+})();
+
