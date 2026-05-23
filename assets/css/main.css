@@ -342,6 +342,23 @@ body.scrolled #header .content{
   .art-grid{ grid-template-columns: 1fr; }
 }
 
+.see-all-btn {
+  display: inline-block;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 30px;
+  padding: 10px 24px;
+  transition: all 0.25s;
+}
+.see-all-btn:hover {
+  color: #fff;
+  border-color: rgba(255,255,255,0.45);
+}
+
 [data-i18n="about_text"] {
   white-space: pre-line;
 }
