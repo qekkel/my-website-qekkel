@@ -171,6 +171,7 @@ form_submit: "Send order request",
     notify_err: "Something went wrong. Try again or write me directly.",
     notify_invalid: "Please enter a valid email address.",
     see_all_arts: "See all artworks →",
+    see_all_store: "See all works for sale →",
   },
   ru: {
     hero_subtitle: "Независимый художник и дизайнер",
@@ -277,6 +278,7 @@ send_email: "Через Email",
     notify_err: "Что-то пошло не так. Попробуй ещё раз или напиши мне напрямую.",
     notify_invalid: "Введи корректный email-адрес.",
     see_all_arts: "Все работы →",
+    see_all_store: "Все работы в продаже →",
   }
 };
 
