@@ -635,6 +635,7 @@ if (addToCartBtn) {
   }
 
  document.querySelectorAll(".store-card:not(.store-notify-card)").forEach(card => {
+  if (card.tagName.toLowerCase() === "a") return; // link cards navigate directly
   card.addEventListener("click", () => open(card));
 });
 

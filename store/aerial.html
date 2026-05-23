@@ -9,11 +9,17 @@
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://qekkel.org/store/aerial" />
   <meta property="og:type" content="product">
+  <meta property="og:locale" content="en_US">
   <meta property="og:site_name" content="Qekkel">
   <meta property="og:title" content="Aerial – Original Oil Painting | Qekkel">
   <meta property="og:description" content="Original oil painting by Olga Qekkel. Abstract city seen from above. 42×59 cm. Worldwide shipping.">
   <meta property="og:url" content="https://qekkel.org/store/aerial">
   <meta property="og:image" content="https://qekkel.org/images/art11.jpg">
+  <meta property="og:image:alt" content="Aerial – abstract oil painting, city seen from above, by Olga Qekkel">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Aerial – Original Oil Painting | Qekkel">
+  <meta name="twitter:description" content="Original oil painting by Olga Qekkel. Abstract city seen from above in pink, red and cobalt blue. 42×59 cm. Worldwide shipping.">
+  <meta name="twitter:image" content="https://qekkel.org/images/art11.jpg">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -22,10 +28,20 @@
         "@type": "Product",
         "name": "Aerial – Original Oil Painting",
         "description": "An abstract oil painting inspired by a city seen from above – geometric forms, sweeping arcs and bold colour in pink, red and cobalt blue.",
-        "image": "https://qekkel.org/images/art11.jpg",
+        "image": ["https://qekkel.org/images/art11.jpg", "https://qekkel.org/images/art11/detail4.webp", "https://qekkel.org/images/art11/detail2.webp"],
         "url": "https://qekkel.org/store/aerial",
-        "brand": { "@type": "Person", "name": "Olga Qekkel" },
-        "offers": { "@type": "Offer", "price": "220", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" }
+        "sku": "original-01",
+        "material": "Oil on Canvas",
+        "brand": { "@type": "Person", "name": "Olga Qekkel", "url": "https://qekkel.org" },
+        "offers": {
+          "@type": "Offer",
+          "price": "220",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "seller": { "@type": "Person", "name": "Olga Qekkel", "url": "https://qekkel.org" },
+          "url": "https://qekkel.org/store/aerial"
+        }
       },
       {
         "@type": "BreadcrumbList",
@@ -72,17 +88,21 @@
   </header>
 
   <main class="product-main">
-    <div class="product-gallery">
-      <img id="product-img" src="../images/art11.jpg" alt="Aerial – original oil painting by Qekkel" class="product-main-img">
-      <div class="product-thumbs">
-        <img src="../images/art11.jpg" alt="Aerial" onclick="setImg(this.src)" class="product-thumb active">
-        <img src="../images/art11/detail4.webp" alt="Aerial detail" onclick="setImg(this.src)" class="product-thumb">
-        <img src="../images/art11/detail2.webp" alt="Aerial detail 2" onclick="setImg(this.src)" class="product-thumb">
-        <img src="../images/art11/detail7.webp" alt="Aerial detail 3" onclick="setImg(this.src)" class="product-thumb">
+    <div class="product-stage">
+      <div class="product-stage-bg" style="background-image:url('../images/art11.jpg')"></div>
+      <div class="product-canvas-wrap">
+        <img id="product-img" src="../images/art11.jpg" alt="Aerial – original oil painting by Qekkel" class="product-main-img">
+        <div class="product-thumbs">
+          <img src="../images/art11.jpg" alt="Aerial" onclick="setImg(this.src)" class="product-thumb active">
+          <img src="../images/art11/detail4.webp" alt="Aerial detail" onclick="setImg(this.src)" class="product-thumb">
+          <img src="../images/art11/detail2.webp" alt="Aerial detail 2" onclick="setImg(this.src)" class="product-thumb">
+          <img src="../images/art11/detail7.webp" alt="Aerial detail 3" onclick="setImg(this.src)" class="product-thumb">
+        </div>
       </div>
     </div>
 
     <div class="product-info">
+      <span class="product-num">01</span>
       <p class="product-status" data-i18n="badge_limited">Limited</p>
       <h1 class="product-title">Aerial</h1>
       <p class="product-price">€220</p>
@@ -163,8 +183,23 @@
     function setImg(src) {
       document.getElementById('product-img').src = src;
       document.querySelectorAll('.product-thumb').forEach(t => t.classList.toggle('active', t.src === src));
+      const bg = document.querySelector('.product-stage-bg');
+      if (bg) bg.style.backgroundImage = 'url(' + src + ')';
     }
   </script>
+  <section class="more-works">
+    <div class="more-works-inner">
+      <p class="more-works-label">More works</p>
+      <div class="more-works-grid">
+        <a href="/store/sakura" class="more-work-card"><div class="more-work-img"><img loading="lazy" src="../images/spring/sacura00.png" alt="Sakura"></div><p class="more-work-title">Sakura</p><p class="more-work-price">€65</p></a>
+        <a href="/store/spring-park" class="more-work-card"><div class="more-work-img"><img loading="lazy" src="../images/spring/park2.png" alt="Spring Park"></div><p class="more-work-title">Spring Park</p><p class="more-work-price">€65</p></a>
+        <a href="/store/sakura-ii" class="more-work-card"><div class="more-work-img"><img loading="lazy" src="../images/spring/spring5.webp" alt="Sakura II"></div><p class="more-work-title">Sakura II</p><p class="more-work-price">€65</p></a>
+        <a href="/store/surreal-bouquet" class="more-work-card"><div class="more-work-img"><img loading="lazy" src="../images/art7.jpg" alt="Surreal Bouquet"></div><p class="more-work-title">Surreal Bouquet</p><p class="more-work-price">€160</p></a>
+        <a href="/store/tropical-vortex" class="more-work-card"><div class="more-work-img"><img loading="lazy" src="../images/art02.jpg" alt="Tropical Vortex"></div><p class="more-work-title">Tropical Vortex</p><p class="more-work-price">€165</p></a>
+        <a href="/store/siesta" class="more-work-card"><div class="more-work-img"><img loading="lazy" src="../images/art01/detail4.webp" alt="Siesta"></div><p class="more-work-title">Siesta</p><p class="more-work-price">€120</p></a>
+      </div>
+    </div>
+  </section>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>
