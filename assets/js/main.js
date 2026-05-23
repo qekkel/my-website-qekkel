@@ -731,6 +731,10 @@ if (addToCartBtn) {
 ========================= */
 const year = document.getElementById("year");
 if (year) year.textContent = new Date().getFullYear();
+// Product page footer year
+document.querySelectorAll(".js-year").forEach(el => {
+  el.textContent = new Date().getFullYear();
+});
 
 /* =========================
    BACK TO TOP
@@ -842,12 +846,46 @@ sendTgBtn?.addEventListener("click", () => {
     alert(currentLang === "ru" ? "Корзина пуста" : "Cart is empty");
     return;
   }
+
+  // Product pages don't have a checkout form — send directly to Telegram
+  if (!checkoutModal) {
+    const isRu = currentLang === "ru";
+    const orderId = "ORD-" + Date.now();
+    let msg = isRu
+      ? `Привет! Хочу заказать (${orderId}):\n\n`
+      : `Hi! I'd like to order (${orderId}):\n\n`;
+    cart.forEach((item, i) => {
+      msg += `${i + 1}. ${item.title} – €${item.price}\n`;
+    });
+    const total = cart.reduce((s, i) => s + i.price, 0);
+    msg += isRu ? `\nИтого: €${total}` : `\nTotal: €${total}`;
+    window.open(`https://t.me/qekkel?text=${encodeURIComponent(msg)}`, "_blank");
+    return;
+  }
+
   checkoutMethod = "tg";
   cartModal.classList.remove("open");
   checkoutModal.hidden = false;
 });
 
 sendEmailBtn?.addEventListener("click", () => {
+  // Product pages: send directly via mailto
+  if (!checkoutModal) {
+    const isRu = currentLang === "ru";
+    const orderId = "ORD-" + Date.now();
+    let body = isRu
+      ? `Привет! Хочу заказать (${orderId}):\n\n`
+      : `Hi! I'd like to order (${orderId}):\n\n`;
+    cart.forEach((item, i) => {
+      body += `${i + 1}. ${item.title} – €${item.price}\n`;
+    });
+    const total = cart.reduce((s, i) => s + i.price, 0);
+    body += isRu ? `\nИтого: €${total}` : `\nTotal: €${total}`;
+    window.location.href =
+      `mailto:qekkel.olia@gmail.com?subject=Artwork Order ${orderId}&body=${encodeURIComponent(body)}`;
+    return;
+  }
+
   checkoutMethod = "email";
   checkoutModal.hidden = false;
 });
@@ -1854,9 +1892,11 @@ if (cursor) {
 })();
 
 /* =========================
-   PRODUCT PAGE – DIRECT ADD TO CART
+   PRODUCT PAGE – DIRECT ADD TO CART + i18n
    Pre-fill currentProduct from the hidden .store-card so the cart
    system works with a single click — no modal detour.
+   Also keeps button text, description and Telegram link in sync
+   when the user switches language.
 ========================= */
 (function () {
   if (!document.body.classList.contains("product-page")) return;
@@ -1878,11 +1918,47 @@ if (cursor) {
   const addBtn = document.getElementById("add-to-cart");
   if (addBtn && !addBtn.closest("#store-listing")) {
     addBtn.removeAttribute("onclick");
-    if (productAdded) {
-      addBtn.textContent = currentLang === "ru" ? "Открыть корзину" : "Open cart";
+  }
+
+  // ── Sync all translatable elements on the product page ──
+  function syncLang() {
+    const isRu = currentLang === "ru";
+
+    // 1. Add-to-cart / Open-cart button
+    const btn = document.getElementById("add-to-cart");
+    if (btn && !btn.closest("#store-listing")) {
+      btn.textContent = productAdded
+        ? (isRu ? "Открыть корзину" : "Open cart")
+        : (isRu ? "В корзину"       : "Add to cart");
+    }
+
+    // 2. Product description
+    const descEl = document.querySelector(".product-desc");
+    if (descEl) {
+      const desc = isRu ? (d.descRu || d.descEn || "") : (d.descEn || "");
+      if (desc) descEl.textContent = desc;
+    }
+
+    // 3. Telegram link — prefilled message in the right language
+    const tgLink = document.querySelector(".product-actions .store-ask-tg");
+    if (tgLink) {
+      const title = isRu ? (d.titleRu || d.titleEn) : d.titleEn;
+      const msg = isRu
+        ? `Привет! Меня интересует «${title}»`
+        : `Hi! I'm interested in "${title}"`;
+      tgLink.href = `https://t.me/qekkel?text=${encodeURIComponent(msg)}`;
+    }
+
+    // Keep currentProduct.title in sync for cart display
+    if (currentProduct) {
+      currentProduct.title = isRu ? (d.titleRu || d.titleEn) : d.titleEn;
     }
   }
 
+  // Run once on load, then on every language switch
+  syncLang();
+  const _orig = applyI18n;
+  applyI18n = function () { _orig(); syncLang(); };
 })();
 
 /* =========================

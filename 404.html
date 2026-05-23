@@ -3,121 +3,83 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>404 — qekkel</title>
-  <meta name="robots" content="noindex">
-  <link rel="icon" type="image/png" href="images/favicon.PNG">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <title>Page Not Found | Qekkel</title>
+  <meta name="robots" content="noindex, follow">
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
-      background: #0e0e0e;
-      color: #fff;
-      font-family: 'Inter', sans-serif;
+      background: #111;
+      color: #faf8f4;
+      font-family: 'Source Sans 3', sans-serif;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 2rem;
-      position: relative;
-      overflow: hidden;
+      padding: 40px 24px;
+      gap: 28px;
     }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background-image: url("images/bg.jpg");
-      background-size: cover;
-      background-position: center;
-      filter: blur(3px) brightness(0.35);
-      transform: scale(1.05);
-      z-index: 0;
-    }
-
-    body > * {
-      position: relative;
-      z-index: 1;
-    }
-
-    .code {
-      font-size: clamp(6rem, 20vw, 10rem);
-      font-weight: 300;
-      letter-spacing: -0.04em;
+    .err-num {
+      font-size: clamp(6rem, 20vw, 14rem);
+      font-weight: 800;
       line-height: 1;
-      color: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.04);
+      letter-spacing: -0.04em;
       user-select: none;
     }
-
-    .title {
-      font-size: clamp(1rem, 3vw, 1.3rem);
-      font-weight: 300;
-      color: rgba(255,255,255,0.5);
-      margin-top: 1rem;
-      letter-spacing: 0.1em;
+    .err-title {
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      font-weight: 200;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.55);
       text-transform: uppercase;
     }
-
-    .divider {
-      width: 40px;
-      height: 1px;
-      background: rgba(255,255,255,0.15);
-      margin: 2rem auto;
-    }
-
-    .message {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.35);
+    .err-sub {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.28);
       line-height: 1.7;
-      max-width: 320px;
+      max-width: 36ch;
     }
-
-    .home-link {
+    .err-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 8px;
+    }
+    .err-link {
       display: inline-block;
-      margin-top: 2.5rem;
-      padding: 0.65rem 1.8rem;
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 999px;
-      color: #fff;
+      padding: 11px 26px;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 30px;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
       text-decoration: none;
-      font-size: 0.85rem;
-      letter-spacing: 0.08em;
-      transition: background 0.2s, border-color 0.2s;
+      transition: border-color 0.2s, color 0.2s;
     }
-
-    .home-link:hover {
+    .err-link:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
+    .err-link.primary {
       background: rgba(255,255,255,0.07);
-      border-color: rgba(255,255,255,0.4);
+      border-color: rgba(255,255,255,0.28);
+      color: rgba(255,255,255,0.8);
     }
-
-    .sig {
-      position: fixed;
-      bottom: 1.5rem;
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.15);
-      letter-spacing: 0.1em;
-    }
+    .err-link.primary:hover { background: rgba(255,255,255,0.12); color: #fff; }
   </style>
 </head>
 <body>
-
-  <div class="code">404</div>
-  <p class="title" id="t-title">Page not found</p>
-  <div class="divider"></div>
-  <p class="message" id="t-message">Looks like this page got lost somewhere between the canvases. Let's go back.</p>
-  <a href="/" class="home-link" id="t-link">← Back to qekkel.org</a>
-
-  <span class="sig">qekkel.org</span>
-
-  <script>
-    if (localStorage.getItem('siteLang') === 'ru') {
-      document.getElementById('t-title').textContent   = 'Страница не найдена';
-      document.getElementById('t-message').textContent = 'Похоже, эта страница потерялась где-то между холстами. Вернёмся назад.';
-      document.getElementById('t-link').textContent    = '← На главную';
-    }
-  </script>
-
+  <p class="err-num">404</p>
+  <p class="err-title">Page not found</p>
+  <p class="err-sub">The page you're looking for doesn't exist or has been moved.</p>
+  <div class="err-links">
+    <a href="/" class="err-link primary">← Home</a>
+    <a href="/store" class="err-link">Store</a>
+  </div>
 </body>
 </html>

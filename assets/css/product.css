@@ -321,6 +321,21 @@
   margin: 0;
 }
 
+/* ── Footer ── */
+.product-footer {
+  background: #0a0a0a;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 22px 40px;
+  text-align: center;
+}
+.product-copyright {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+  margin: 0;
+}
+
 /* ── Responsive ── */
 @media (max-width: 960px) {
   .more-works-grid { grid-template-columns: repeat(3, 1fr); }
