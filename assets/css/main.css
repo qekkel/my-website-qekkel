@@ -3053,6 +3053,26 @@ body.modal-open .bg-blur {
 }
 
 /* ============================
+   STORE MORE ABOUT THIS WORK
+============================ */
+.store-more-btn {
+  display: block;
+  text-align: center;
+  margin-top: 4px;
+  padding: 10px 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  text-decoration: none;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  transition: color 0.2s;
+}
+.store-more-btn:hover {
+  color: rgba(255,255,255,0.7);
+}
+
+/* ============================
    SWIPE HINT (store modal mobile)
 ============================ */
 .store-swipe-hint {

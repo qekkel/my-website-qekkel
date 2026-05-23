@@ -172,6 +172,7 @@ form_submit: "Send order request",
     notify_invalid: "Please enter a valid email address.",
     see_all_arts: "See all artworks →",
     see_all_store: "See all works for sale →",
+    store_more: "More about this work →",
   },
   ru: {
     hero_subtitle: "Независимый художник и дизайнер",
@@ -279,6 +280,7 @@ send_email: "Через Email",
     notify_invalid: "Введи корректный email-адрес.",
     see_all_arts: "Все работы →",
     see_all_store: "Все работы в продаже →",
+    store_more: "Подробнее о работе →",
   }
 };
 
@@ -402,8 +404,16 @@ if (aboutContainer) {
 
   if (!panel || !img || !thumbs || !media) return;
 
+  const PAGE_SLUGS = {
+    "original-01": "/store/aerial",
+    "original-02": "/store/surreal-bouquet",
+    "original-03": "/store/tropical-vortex",
+    "original-04": "/store/siesta",
+    "original-05": "/store/sakura",
+    "original-06": "/store/spring-park",
+    "original-07": "/store/sakura-ii",
+  };
 
-  
   function open(card) {
    
 const btn = document.getElementById("add-to-cart");
@@ -601,6 +611,19 @@ if (addToCartBtn) {
       askTgLink.href = `https://t.me/qekkel?text=${encodeURIComponent(msg)}`;
       if (askTgText) {
         askTgText.textContent = currentLang === "ru" ? "Написать в Telegram" : "Ask in Telegram";
+      }
+    }
+
+    // "More about this work" link — product page
+    const moreBtn = document.getElementById("store-more-btn");
+    if (moreBtn) {
+      const slug = PAGE_SLUGS[card.dataset.id];
+      if (slug) {
+        moreBtn.href = slug;
+        moreBtn.textContent = currentLang === "ru" ? "Подробнее о работе →" : "More about this work →";
+        moreBtn.style.display = "";
+      } else {
+        moreBtn.style.display = "none";
       }
     }
 
