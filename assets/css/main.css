@@ -466,6 +466,45 @@ body.scrolled #header .content{
 .art-process ul{ margin: 0; padding-left: 18px; }
 .art-process li{ margin: 6px 0; opacity: 0.9; }
 
+/* ── Art modal footer nav ── */
+.art-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+.art-modal-nav-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: none;
+  color: rgba(255,255,255,0.5);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  padding: 0;
+  line-height: 1;
+}
+.art-modal-nav-btn:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.35);
+  color: #fff;
+}
+.art-modal-counter {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.3);
+  min-width: 48px;
+  text-align: center;
+}
+
 
 
 
