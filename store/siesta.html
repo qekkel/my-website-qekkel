@@ -32,7 +32,7 @@
         "url": "https://qekkel.org/store/siesta",
         "sku": "original-04",
         "material": "Acrylic on Canvas",
-        "brand": { "@type": "Person", "name": "Olga Qekkel", "url": "https://qekkel.org" },
+        "brand": { "@type": "Brand", "name": "Qekkel" },
         "offers": {
           "@type": "Offer",
           "price": "120",
@@ -40,8 +40,126 @@
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition",
           "seller": { "@type": "Person", "name": "Olga Qekkel", "url": "https://qekkel.org" },
-          "url": "https://qekkel.org/store/siesta"
+          "url": "https://qekkel.org/store/siesta",
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "DE",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/FreeReturn"
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": { "@type": "MonetaryAmount", "value": "15", "currency": "EUR" },
+            "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "DE" },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 3, "unitCode": "DAY" },
+              "transitTime": { "@type": "QuantitativeValue", "minValue": 3, "maxValue": 14, "unitCode": "DAY" }
+            }
+          }
         }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Qekkel", "item": "https://qekkel.org/" },
+          { "@type": "ListItem", "position": 2, "name": "Store", "item": "https://qekkel.org/store" },
+          { "@type": "ListItem", "position": 3, "name": "Siesta", "item": "https://qekkel.org/store/siesta" }
+        ]
+      }
+    ]
+  }
+  </script>
+  <link rel="icon" type="image/png" href="../images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-39BNBDPZNP';document.head.appendChild(s);gtag('js',new Date());gtag('config','G-39BNBDPZNP');})();</script>
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/product.css" />
+</head>
+<body class="is-preload product-page">
+  <div id="bg-blur" class="bg-blur"></div>
+  <header class="product-header">
+    <a href="/store" class="product-back">← Store</a>
+    <div class="product-header-right">
+      <button id="open-cart" class="nav-btn cart-btn"><span data-i18n="cart">Cart</span><span class="cart-count">0</span></button>
+      <div class="lang-toggle" role="group" aria-label="Language switch">
+        <button type="button" class="lang-btn" data-lang="ru" aria-pressed="false">RU</button>
+        <button type="button" class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
+      </div>
+    </div>
+  </header>
+  <main class="product-main">
+    <div class="product-stage">
+      <div class="product-stage-bg" style="background-image:url('../images/art01/detail4.webp')"></div>
+      <div class="product-canvas-wrap">
+        <img id="product-img" src="../images/art01/detail4.webp" alt="Siesta – original acrylic painting by Qekkel" class="product-main-img">
+        <div class="product-thumbs">
+          <img src="../images/art01/detail4.webp" alt="Siesta" onclick="setImg(this.src)" class="product-thumb active">
+          <img src="../images/art01/detail1.webp" alt="Siesta detail" onclick="setImg(this.src)" class="product-thumb">
+          <img src="../images/art01/detail2.webp" alt="Siesta detail 2" onclick="setImg(this.src)" class="product-thumb">
+          <img src="../images/art01/detail3.webp" alt="Siesta detail 3" onclick="setImg(this.src)" class="product-thumb">
+        </div>
+      </div>
+    </div>
+    <div class="product-info">
+      <span class="product-num">04</span>
+      <p class="product-status" data-i18n="badge_limited">Limited</p>
+      <h1 class="product-title">Siesta</h1>
+      <p class="product-price">€120</p>
+      <div class="product-specs">
+        <div class="product-spec"><span data-i18n="modal_size">Size</span><strong>35×30 cm</strong></div>
+        <div class="product-spec"><span data-i18n="modal_medium">Medium</span><strong>Acrylic on Canvas</strong></div>
+      </div>
+      <p class="product-desc">Two cats in a dreamy embrace – painted in bold complementary colours on canvas. Stretched canvas, ships in a protective box.</p>
+      <div class="product-actions">
+        <button class="store-add-btn" id="add-to-cart" onclick="document.querySelector('.store-card').click()">Add to cart</button>
+        <a class="store-ask-tg" href="https://t.me/qekkel?text=Hi!%20I'm%20interested%20in%20%22Siesta%22" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.932z"/></svg>
+          <span data-i18n="ask_tg">Ask in Telegram</span>
+        </a>
+      </div>
+    </div>
+  </main>
+  <button class="store-card" style="display:none" data-id="original-04" data-title-en="Siesta" data-title-ru="Сиеста" data-status-en="Original Artwork" data-status-ru="Оригинал" data-size-en="35×30 cm" data-size-ru="35×30 см" data-medium-en="Acryl" data-medium-ru="Акрил" data-img="../images/art01/detail4.webp,../images/art01/detail1.webp,../images/art01/detail2.webp,../images/art01/detail3.webp" data-desc-en="Two cats in a dreamy embrace – painted in bold complementary colours on canvas. Stretched canvas, ships in a protective box." data-desc-ru="Две кошки в объятиях – акрил в контрастных цветах на холсте. Натянутый холст, доставляется в защитной коробке." data-price-eur="120" data-sold="false" aria-controls="store-listing"></button>
+  <div id="cart-modal" class="cart-modal" hidden><div class="cart-content"><h2 data-i18n="cart_title">Your cart</h2><div id="cart-items"></div><p><strong data-i18n="cart_total">Total:</strong> <span id="cart-total">0</span></p><div class="checkout-options"><button id="send-tg" data-i18n="send_tg">Send via Telegram</button><button id="send-email" data-i18n="send_email">Send via Email</button></div></div></div>
+  <script>function setImg(src){document.getElementById('product-img').src=src;document.querySelectorAll('.product-thumb').forEach(t=>t.classList.toggle('active',t.src===src));const bg=document.querySelector('.product-stage-bg');if(bg)bg.style.backgroundImage='url('+src+')';}</script>
+  <section class="more-works">
+    <div class="more-works-inner">
+      <p class="more-works-label">More works</p>
+      <div class="more-works-grid">
+        <a href="/store/sakura" class="more-work-card"><div class="more-work-img"><img loading="lazy" src="../images/spring/sacura00.png" alt="Sakura"></div><p class="more-work-title">Sakura</p><p class="more-work-price">€65</p></a>
+        <a href="/store/spring-park" class="more-work-card"><div class="more-work-img"><img loading="lazy" src="../images/spring/park2.png" alt="Spring Park"></div><p class="more-work-title">Spring Park</p><p class="more-work-price">€65</p></a>
+        <a href="/store/sakura-ii" class="more-work-card"><div class="more-work-img"><img loading="lazy" src="../images/spring/spring5.webp" alt="Sakura II"></div><p class="more-work-title">Sakura II</p><p class="more-work-price">€65</p></a>
+        <a href="/store/aerial" class="more-work-card"><div class="more-work-img"><img loading="lazy" src="../images/art11.jpg" alt="Aerial"></div><p class="more-work-title">Aerial</p><p class="more-work-price">€220</p></a>
+        <a href="/store/surreal-bouquet" class="more-work-card"><div class="more-work-img"><img loading="lazy" src="../images/art7.jpg" alt="Surreal Bouquet"></div><p class="more-work-title">Surreal Bouquet</p><p class="more-work-price">€160</p></a>
+        <a href="/store/tropical-vortex" class="more-work-card"><div class="more-work-img"><img loading="lazy" src="../images/art02.jpg" alt="Tropical Vortex"></div><p class="more-work-title">Tropical Vortex</p><p class="more-work-price">€165</p></a>
+      </div>
+    </div>
+  </section>
+  <footer class="product-footer">
+    <div class="product-footer-socials">
+      <a href="https://www.instagram.com/qekkel/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.975.975 1.246 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.975.975-2.242 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.975-.975-1.246-2.242-1.308-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608.975-.975 2.242-1.246 3.608-1.308C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.014 7.052.072 5.197.157 3.355.673 2.014 2.014.673 3.355.157 5.197.072 7.052.014 8.332 0 8.741 0 12c0 3.259.014 3.668.072 4.948.085 1.855.601 3.697 1.942 5.038 1.341 1.341 3.183 1.857 5.038 1.942C8.332 23.986 8.741 24 12 24s3.668-.014 4.948-.072c1.855-.085 3.697-.601 5.038-1.942 1.341-1.341 1.857-3.183 1.942-5.038.058-1.28.072-1.689.072-4.948s-.014-3.668-.072-4.948c-.085-1.855-.601-3.697-1.942-5.038C20.645.673 18.803.157 16.948.072 15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+      </a>
+      <a href="https://t.me/qekkel" target="_blank" rel="noopener" aria-label="Telegram">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.932z"/></svg>
+      </a>
+      <a href="https://www.youtube.com/@qekkel" target="_blank" rel="noopener" aria-label="YouTube">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      </a>
+    </div>
+    <p class="product-copyright">© <span class="js-year">2025</span> Olga Qekkel</p>
+  </footer>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
+, ''
+            $url + $newFields
+        
       },
       {
         "@type": "BreadcrumbList",
