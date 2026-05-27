@@ -291,19 +291,8 @@ let currentLang;
 
 const savedLang = localStorage.getItem("siteLang");
 
-if (savedLang) {
-  // если пользователь уже выбирал язык
-  currentLang = savedLang;
-} else {
-  // первый заход – определяем по браузеру
-  const browserLang = navigator.language || navigator.userLanguage;
-
-  if (browserLang && browserLang.startsWith("ru")) {
-    currentLang = "ru";
-  } else {
-    currentLang = "en";
-  }
-}
+// первый заход — всегда английский; русский только если пользователь выбрал сам
+currentLang = savedLang || "en";
 
 
 
