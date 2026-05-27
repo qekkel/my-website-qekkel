@@ -28,7 +28,7 @@
         "@type": "Product",
         "name": "Spring Park – Original Oil Painting",
         "description": "A golden sunset through blooming trees – spring light and the first warm rays of sun. Original mini oil painting on stretched canvas.",
-        "image": ["https://qekkel.org/images/spring/park2.png", "https://qekkel.org/images/spring/park1.webp", "https://qekkel.org/images/spring/spring4.png"],
+        "image": ["https://qekkel.org/images/spring/park2.png", "https://qekkel.org/images/spring/park1.webp", "https://qekkel.org/images/spring/spring4.png", "https://qekkel.org/images/spring/park-big2.png", "https://qekkel.org/images/spring/park-big3.png", "https://qekkel.org/images/spring/park-big4.png", "https://qekkel.org/images/spring/spring3-big.png", "https://qekkel.org/images/spring/spring4-big.png"],
         "url": "https://qekkel.org/store/spring-park",
         "sku": "original-06",
         "material": "Oil on Canvas",
@@ -101,6 +101,11 @@
           <img src="../images/spring/park2.png" alt="Spring Park" onclick="setImg(this.src)" class="product-thumb active">
           <img src="../images/spring/park1.webp" alt="Spring Park 2" onclick="setImg(this.src)" class="product-thumb">
           <img src="../images/spring/spring4.png" alt="Spring Park 3" onclick="setImg(this.src)" class="product-thumb">
+          <img src="../images/spring/park-big2.png" alt="Spring Park – original oil painting by Olga Qekkel displayed in warm home interior" onclick="setImg(this.src)" class="product-thumb">
+          <img src="../images/spring/park-big3.png" alt="Spring Park – mini oil painting on wall in modern living room interior" onclick="setImg(this.src)" class="product-thumb">
+          <img src="../images/spring/park-big4.png" alt="Spring Park – spring sunset painting in cozy Scandinavian interior setting" onclick="setImg(this.src)" class="product-thumb">
+          <img src="../images/spring/spring3-big.png" alt="Spring Park – golden spring landscape painting displayed in minimalist home decor" onclick="setImg(this.src)" class="product-thumb">
+          <img src="../images/spring/spring4-big.png" alt="Spring Park – 10×10 cm oil on canvas painting in bright modern interior" onclick="setImg(this.src)" class="product-thumb">
         </div>
       </div>
     </div>
@@ -123,7 +128,7 @@
       </div>
     </div>
   </main>
-  <button class="store-card" style="display:none" data-id="original-06" data-title-en="Spring Park" data-title-ru="Весенний парк" data-status-en="Original Artwork" data-status-ru="Оригинал" data-size-en="10×10 cm" data-size-ru="10×10 см" data-medium-en="Oil" data-medium-ru="Масло" data-img="../images/spring/park2.png,../images/spring/park1.webp,../images/spring/spring4.png" data-desc-en="A golden sunset through blooming trees – spring light and the first warm rays of sun. Stretched canvas, ships in a protective box." data-desc-ru="Золотой закат сквозь цветущие деревья – весенний свет и первые тёплые лучи солнца." data-price-eur="65" data-sold="false" aria-controls="store-listing"></button>
+  <button class="store-card" style="display:none" data-id="original-06" data-title-en="Spring Park" data-title-ru="Весенний парк" data-status-en="Original Artwork" data-status-ru="Оригинал" data-size-en="10×10 cm" data-size-ru="10×10 см" data-medium-en="Oil" data-medium-ru="Масло" data-img="../images/spring/park2.png,../images/spring/park1.webp,../images/spring/spring4.png,../images/spring/park-big2.png,../images/spring/park-big3.png,../images/spring/park-big4.png,../images/spring/spring3-big.png,../images/spring/spring4-big.png" data-desc-en="A golden sunset through blooming trees – spring light and the first warm rays of sun. Stretched canvas, ships in a protective box." data-desc-ru="Золотой закат сквозь цветущие деревья – весенний свет и первые тёплые лучи солнца." data-price-eur="65" data-sold="false" aria-controls="store-listing"></button>
   <div id="cart-modal" class="cart-modal" hidden><div class="cart-content"><h2 data-i18n="cart_title">Your cart</h2><div id="cart-items"></div><p><strong data-i18n="cart_total">Total:</strong> <span id="cart-total">0</span></p><div class="checkout-options"><button id="send-tg" data-i18n="send_tg">Send via Telegram</button><button id="send-email" data-i18n="send_email">Send via Email</button></div></div></div>
   <script>function setImg(src){document.getElementById('product-img').src=src;document.querySelectorAll('.product-thumb').forEach(t=>t.classList.toggle('active',t.src===src));const bg=document.querySelector('.product-stage-bg');if(bg)bg.style.backgroundImage='url('+src+')';}</script>
   <section class="more-works">

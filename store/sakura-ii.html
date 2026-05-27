@@ -28,7 +28,7 @@
         "@type": "Product",
         "name": "Sakura II – Original Oil Painting",
         "description": "Cherry blossoms and fresh green shoots – the very first days of spring. Original mini oil painting on stretched canvas.",
-        "image": ["https://qekkel.org/images/spring/spring5.webp", "https://qekkel.org/images/spring/spring2.png"],
+        "image": ["https://qekkel.org/images/spring/spring5.webp", "https://qekkel.org/images/spring/spring2.png", "https://qekkel.org/images/spring/spring5-big.png", "https://qekkel.org/images/spring/spring5-big1.png", "https://qekkel.org/images/spring/spring5-big2.png", "https://qekkel.org/images/spring/spring2-big.png"],
         "url": "https://qekkel.org/store/sakura-ii",
         "sku": "original-07",
         "material": "Oil on Canvas",
@@ -100,6 +100,10 @@
         <div class="product-thumbs">
           <img src="../images/spring/spring5.webp" alt="Sakura II" onclick="setImg(this.src)" class="product-thumb active">
           <img src="../images/spring/spring2.png" alt="Sakura II 2" onclick="setImg(this.src)" class="product-thumb">
+          <img src="../images/spring/spring5-big.png" alt="Sakura II – cherry blossom oil painting displayed in bright living room interior" onclick="setImg(this.src)" class="product-thumb">
+          <img src="../images/spring/spring5-big1.png" alt="Sakura II – mini oil painting on light wall in modern Scandinavian interior" onclick="setImg(this.src)" class="product-thumb">
+          <img src="../images/spring/spring5-big2.png" alt="Sakura II – original spring painting by Olga Qekkel in cozy home setting" onclick="setImg(this.src)" class="product-thumb">
+          <img src="../images/spring/spring2-big.png" alt="Sakura II – cherry blossom painting in minimalist interior, 10×10 cm oil on canvas" onclick="setImg(this.src)" class="product-thumb">
         </div>
       </div>
     </div>
@@ -122,7 +126,7 @@
       </div>
     </div>
   </main>
-  <button class="store-card" style="display:none" data-id="original-07" data-title-en="Sakura II" data-title-ru="Сакура II" data-status-en="Original Artwork" data-status-ru="Оригинал" data-size-en="10×10 cm" data-size-ru="10×10 см" data-medium-en="Oil" data-medium-ru="Масло" data-img="../images/spring/spring5.webp,../images/spring/spring2.png" data-desc-en="Cherry blossoms and fresh green shoots – the very first days of spring. Stretched canvas, ships in a protective box." data-desc-ru="Цветы сакуры и первая зелень – самые первые дни весны. Натянутый холст, доставляется в защитной коробке." data-price-eur="65" data-sold="false" aria-controls="store-listing"></button>
+  <button class="store-card" style="display:none" data-id="original-07" data-title-en="Sakura II" data-title-ru="Сакура II" data-status-en="Original Artwork" data-status-ru="Оригинал" data-size-en="10×10 cm" data-size-ru="10×10 см" data-medium-en="Oil" data-medium-ru="Масло" data-img="../images/spring/spring5.webp,../images/spring/spring2.png,../images/spring/spring5-big.png,../images/spring/spring5-big1.png,../images/spring/spring5-big2.png,../images/spring/spring2-big.png" data-desc-en="Cherry blossoms and fresh green shoots – the very first days of spring. Stretched canvas, ships in a protective box." data-desc-ru="Цветы сакуры и первая зелень – самые первые дни весны. Натянутый холст, доставляется в защитной коробке." data-price-eur="65" data-sold="false" aria-controls="store-listing"></button>
   <div id="cart-modal" class="cart-modal" hidden><div class="cart-content"><h2 data-i18n="cart_title">Your cart</h2><div id="cart-items"></div><p><strong data-i18n="cart_total">Total:</strong> <span id="cart-total">0</span></p><div class="checkout-options"><button id="send-tg" data-i18n="send_tg">Send via Telegram</button><button id="send-email" data-i18n="send_email">Send via Email</button></div></div></div>
   <script>function setImg(src){document.getElementById('product-img').src=src;document.querySelectorAll('.product-thumb').forEach(t=>t.classList.toggle('active',t.src===src));const bg=document.querySelector('.product-stage-bg');if(bg)bg.style.backgroundImage='url('+src+')';}</script>
   <section class="more-works">
