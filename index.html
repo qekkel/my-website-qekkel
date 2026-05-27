@@ -163,30 +163,22 @@
 .yt-callout {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  color: rgba(255,255,255,0.45);
+  gap: 8px;
+  color: rgba(255,255,255,0.35);
   text-decoration: none;
-  font-size: 0.82rem;
-  letter-spacing: 0.06em;
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 24px;
-  padding: 8px 18px 8px 12px;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
   margin-bottom: 1.6rem;
-  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  transition: color 0.2s;
 }
-.yt-callout:hover {
-  color: #fff;
-  border-color: rgba(255,80,80,0.5);
-  background: rgba(255,80,80,0.07);
-}
-.yt-callout svg { flex-shrink: 0; color: rgba(255,80,80,0.7); }
+.yt-callout:hover { color: rgba(255,255,255,0.7); }
+.yt-callout svg { flex-shrink: 0; color: rgba(255,80,80,0.6); transition: color 0.2s; }
+.yt-callout:hover svg { color: rgba(255,80,80,0.9); }
 .yt-subs {
   font-size: 0.7rem;
-  background: rgba(255,255,255,0.08);
-  border-radius: 10px;
-  padding: 2px 7px;
   letter-spacing: 0.08em;
-  color: rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.2);
+  margin-left: 2px;
 }
 html[lang="ru"] .yt-en { display: none; }
 html[lang="ru"] .yt-ru { display: inline !important; }
@@ -696,9 +688,9 @@ html[lang="en"] .yt-ru { display: none; }
         <span>Limited Drops</span>
       </div>
       <a href="https://www.youtube.com/@qekkel" target="_blank" rel="noopener" class="yt-callout" aria-label="YouTube channel">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-        <span class="yt-callout-text yt-en">Watch painting process on YouTube</span><span class="yt-callout-text yt-ru" style="display:none">Смотреть процесс рисования на YouTube</span>
-        <span class="yt-subs">1K+</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        <span>youtube / @qekkel</span>
+        <span class="yt-subs">· 1K</span>
       </a>
       <ul class="actions">
         <li><a href="#contact" class="button primary" data-i18n="about_cta">Let’s Connect</a></li>
