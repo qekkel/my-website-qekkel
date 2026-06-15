@@ -86,4 +86,13 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://qekkel.org/store/spring-park"/>
   </url>
 
+
+  <!-- Returns policy -->
+  <url>
+    <loc>https://qekkel.org/returns</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
 </urlset>
