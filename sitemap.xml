@@ -12,6 +12,16 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://qekkel.org/"/>
   </url>
 
+  <!-- Arts gallery -->
+  <url>
+    <loc>https://qekkel.org/arts</loc>
+    <lastmod>2026-05-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://qekkel.org/arts"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://qekkel.org/arts"/>
+  </url>
+
   <!-- Store listing -->
   <url>
     <loc>https://qekkel.org/store</loc>
