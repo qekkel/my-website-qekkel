@@ -109,13 +109,28 @@
     .arts-page-back:hover { color: #fff; }
     .arts-page-back::before { content: "←"; font-size: 1.1rem; }
 
-    .arts-page-title {
-      font-size: 1rem;
-      letter-spacing: 0.25em;
+    .arts-tabs {
+      display: flex;
+      gap: 0;
+    }
+    .arts-tab {
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: rgba(255,255,255,0.3);
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
-      font-weight: 300;
-      margin: 0;
+      cursor: pointer;
+      padding: 4px 0;
+      margin-right: 28px;
+      transition: color 0.2s, border-color 0.2s;
+      font-family: inherit;
+    }
+    .arts-tab:hover { color: rgba(255,255,255,0.7); }
+    .arts-tab.active {
+      color: rgba(255,255,255,0.9);
+      border-bottom-color: rgba(255,255,255,0.5);
     }
 
     .arts-page-lang {
@@ -200,7 +215,10 @@
 
     <header class="arts-page-header">
       <a href="/" class="arts-page-back" data-i18n-arts-back>qekkel.org</a>
-      <p class="arts-page-title" data-i18n="arts_title">Arts</p>
+      <nav class="arts-tabs" role="tablist">
+        <button class="arts-tab active" data-tab="arts" role="tab" aria-selected="true">Arts</button>
+        <button class="arts-tab" data-tab="animations" role="tab" aria-selected="false">Animations</button>
+      </nav>
       <div class="arts-page-lang lang-toggle" role="group" aria-label="Language switch">
         <button type="button" class="lang-btn" data-lang="ru" aria-pressed="false">RU</button>
         <button type="button" class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
@@ -255,6 +273,27 @@
       </div>
 
     </div>
+
+    <!-- ANIMATIONS GRID -->
+    <div class="arts-full-grid" id="animations-grid" style="display:none">
+
+      <div class="art-item" role="button" tabindex="0">
+        <img loading="lazy" src="images/art1.gif"
+          alt="Animated digital artwork by Qekkel">
+      </div>
+
+      <div class="art-item" role="button" tabindex="0">
+        <img loading="lazy" src="images/art3.gif"
+          alt="Dark animated illustration by Qekkel">
+      </div>
+
+      <div class="art-item" role="button" tabindex="0">
+        <img loading="lazy" src="images/frosch-animation.gif"
+          alt="Frog animation – digital illustration by Qekkel">
+      </div>
+
+    </div>
+
   </div>
 
   <!-- ART MODAL -->
@@ -301,6 +340,21 @@
   </div>
 
   <script src="assets/js/main.js"></script>
+  <script>
+    document.querySelectorAll('.arts-tab').forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        document.querySelectorAll('.arts-tab').forEach(function(t) {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        this.classList.add('active');
+        this.setAttribute('aria-selected', 'true');
+        var isAnimations = this.dataset.tab === 'animations';
+        document.querySelector('.arts-full-grid').style.display = isAnimations ? 'none' : 'grid';
+        document.getElementById('animations-grid').style.display = isAnimations ? 'grid' : 'none';
+      });
+    });
+  </script>
 
 </body>
 </html>
