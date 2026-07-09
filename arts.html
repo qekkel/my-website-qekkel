@@ -216,8 +216,9 @@
     <header class="arts-page-header">
       <a href="/" class="arts-page-back" data-i18n-arts-back>qekkel.org</a>
       <nav class="arts-tabs" role="tablist">
-        <button class="arts-tab active" data-tab="arts" role="tab" aria-selected="true">Arts</button>
+        <button class="arts-tab active" data-tab="digital" role="tab" aria-selected="true">Digital Art</button>
         <button class="arts-tab" data-tab="animations" role="tab" aria-selected="false">Animations</button>
+        <button class="arts-tab" data-tab="traditional" role="tab" aria-selected="false">Traditional Art</button>
       </nav>
       <div class="arts-page-lang lang-toggle" role="group" aria-label="Language switch">
         <button type="button" class="lang-btn" data-lang="ru" aria-pressed="false">RU</button>
@@ -225,51 +226,17 @@
       </div>
     </header>
 
-    <div class="arts-full-grid">
-
-      <div class="art-item" role="button" tabindex="0" data-art-id="art1">
-        <img loading="lazy" src="images/art1.gif"
-          alt="Abstract contemporary digital artwork by Qekkel">
-      </div>
+    <!-- DIGITAL ART GRID -->
+    <div class="arts-full-grid" id="digital-grid">
 
       <div class="art-item" role="button" tabindex="0" data-art-id="art2">
         <img loading="lazy" src="images/art2.webp"
-          alt="Surreal oil painting with expressive brush strokes by Qekkel">
-      </div>
-
-      <div class="art-item" role="button" tabindex="0" data-art-id="art3">
-        <img loading="lazy" src="images/art3.gif"
-          alt="Dark atmospheric digital illustration by Qekkel">
-      </div>
-
-      <div class="art-item" role="button" tabindex="0" data-art-id="art4">
-        <img loading="lazy" src="images/art4.webp"
-          alt="Abstract oil painting exploring texture and depth by Qekkel">
+          alt="Digital illustration by Qekkel">
       </div>
 
       <div class="art-item" role="button" tabindex="0" data-art-id="art5">
         <img loading="lazy" src="images/art5.webp"
           alt="Contemporary visual art composition in muted tones by Qekkel">
-      </div>
-
-      <div class="art-item" role="button" tabindex="0" data-art-id="art6">
-        <img loading="lazy" src="images/art6.webp"
-          alt="Expressive acrylic painting with dynamic movement by Qekkel">
-      </div>
-
-      <div class="art-item" role="button" tabindex="0" data-art-id="art7">
-        <img loading="lazy" src="images/art7.jpg"
-          alt="Minimalist conceptual artwork by Qekkel">
-      </div>
-
-      <div class="art-item" role="button" tabindex="0" data-art-id="art8">
-        <img loading="lazy" src="images/art8.jpg"
-          alt="Experimental visual art piece combining fantasy and abstraction by Qekkel">
-      </div>
-
-      <div class="art-item" role="button" tabindex="0" data-art-id="art9">
-        <img loading="lazy" src="images/art09/art9.jpg"
-          alt="Two Become One – surreal oil portrait with four eyes, red and blue hair, by Qekkel">
       </div>
 
     </div>
@@ -290,6 +257,36 @@
       <div class="art-item" role="button" tabindex="0">
         <img loading="lazy" src="images/frosch-animation.gif"
           alt="Frog animation – digital illustration by Qekkel">
+      </div>
+
+    </div>
+
+    <!-- TRADITIONAL ART GRID -->
+    <div class="arts-full-grid" id="traditional-grid" style="display:none">
+
+      <div class="art-item" role="button" tabindex="0" data-art-id="art4">
+        <img loading="lazy" src="images/art4.webp"
+          alt="Watercolor painting by Qekkel">
+      </div>
+
+      <div class="art-item" role="button" tabindex="0" data-art-id="art6">
+        <img loading="lazy" src="images/art6.webp"
+          alt="Ink on paper by Qekkel">
+      </div>
+
+      <div class="art-item" role="button" tabindex="0" data-art-id="art7">
+        <img loading="lazy" src="images/art7.jpg"
+          alt="Acrylic on canvas by Qekkel">
+      </div>
+
+      <div class="art-item" role="button" tabindex="0" data-art-id="art8">
+        <img loading="lazy" src="images/art8.jpg"
+          alt="Oil on canvas by Qekkel">
+      </div>
+
+      <div class="art-item" role="button" tabindex="0" data-art-id="art9">
+        <img loading="lazy" src="images/art09/art9.jpg"
+          alt="Two Become One – surreal oil portrait with four eyes, red and blue hair, by Qekkel">
       </div>
 
     </div>
@@ -349,11 +346,49 @@
         });
         this.classList.add('active');
         this.setAttribute('aria-selected', 'true');
-        var isAnimations = this.dataset.tab === 'animations';
-        document.querySelector('.arts-full-grid').style.display = isAnimations ? 'none' : 'grid';
-        document.getElementById('animations-grid').style.display = isAnimations ? 'grid' : 'none';
+        var which = this.dataset.tab;
+        document.getElementById('digital-grid').style.display = which === 'digital' ? 'grid' : 'none';
+        document.getElementById('animations-grid').style.display = which === 'animations' ? 'grid' : 'none';
+        document.getElementById('traditional-grid').style.display = which === 'traditional' ? 'grid' : 'none';
       });
     });
+
+    // Fullscreen for animation items
+    (function() {
+      var fsEl = document.getElementById('art-fs');
+      var fsImg = document.getElementById('art-fs-img');
+      var fsClose = document.getElementById('art-fs-close');
+      var animItems = document.querySelectorAll('#animations-grid .art-item');
+      var animSrcs = [];
+      var animIdx = 0;
+
+      animItems.forEach(function(item, i) {
+        animSrcs.push({ src: item.querySelector('img').src, alt: item.querySelector('img').alt });
+        item.addEventListener('click', function() {
+          animIdx = i;
+          fsImg.src = animSrcs[animIdx].src;
+          fsImg.alt = animSrcs[animIdx].alt;
+          fsEl.removeAttribute('hidden');
+        });
+      });
+
+      document.getElementById('art-fs-prev').addEventListener('click', function(e) {
+        e.stopPropagation();
+        animIdx = (animIdx - 1 + animSrcs.length) % animSrcs.length;
+        fsImg.src = animSrcs[animIdx].src;
+      });
+      document.getElementById('art-fs-next').addEventListener('click', function(e) {
+        e.stopPropagation();
+        animIdx = (animIdx + 1) % animSrcs.length;
+        fsImg.src = animSrcs[animIdx].src;
+      });
+      if (fsClose) {
+        fsClose.addEventListener('click', function() {
+          fsEl.setAttribute('hidden', '');
+          fsImg.src = '';
+        });
+      }
+    })();
   </script>
 
 </body>
