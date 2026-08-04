@@ -3,13 +3,13 @@
 // sale — цена со скидкой (если есть).
 
 var PRICES = {
-  'aerial':          { price: 231 },
-  'sakura':          { price: 68 },
-  'sakura-ii':       { price: 68 },
-  'spring-park':     { price: 68 },
-  'siesta':          { price: 126 },
-  'surreal-bouquet': { price: 168, sale: 147 },
-  'tropical-vortex': { price: 173 }
+  'aerial':          { price: 240 },
+  'sakura':          { price: 70 },
+  'sakura-ii':       { price: 70 },
+  'spring-park':     { price: 70 },
+  'siesta':          { price: 130 },
+  'surreal-bouquet': { price: 175, sale: 150 },
+  'tropical-vortex': { price: 180 }
 };
 
 // Маппинг data-id -> slug (для страниц store.html и index.html)
@@ -51,7 +51,6 @@ var PRICE_ID_MAP = {
     });
   }
 
-  // Страница отдельного товара (URL вида /store/aerial или /store/aerial.html)
   var slug = window.location.pathname.split('/').filter(Boolean).pop();
   if (slug) slug = slug.replace('.html', '');
   var p = PRICES[slug];
@@ -62,7 +61,6 @@ var PRICE_ID_MAP = {
     return;
   }
 
-  // Страница-листинг (store.html, index.html) — несколько карточек
   document.querySelectorAll('.store-card[data-id]').forEach(function (card) {
     var productSlug = PRICE_ID_MAP[card.dataset.id];
     applyPrice(card, PRICES[productSlug]);
