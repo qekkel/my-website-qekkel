@@ -34,6 +34,15 @@
 
   <!-- Product pages -->
   <url>
+    <loc>https://qekkel.org/store/lilies</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://qekkel.org/store/lilies"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://qekkel.org/store/lilies"/>
+  </url>
+
+  <url>
     <loc>https://qekkel.org/store/aerial</loc>
     <lastmod>2026-05-27</lastmod>
     <changefreq>monthly</changefreq>
