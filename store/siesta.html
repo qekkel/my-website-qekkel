@@ -37,7 +37,7 @@
           "@type": "Offer",
           "price": "130",
           "priceCurrency": "EUR",
-          "availability": "https://schema.org/InStock",
+          "availability": "https://schema.org/Discontinued",
           "itemCondition": "https://schema.org/NewCondition",
           "seller": { "@type": "Person", "name": "Olga Qekkel", "url": "https://qekkel.org" },
           "url": "https://qekkel.org/store/siesta",
@@ -108,24 +108,24 @@
     </div>
     <div class="product-info">
       <span class="product-num">04</span>
-      <p class="product-status" data-i18n="badge_limited">Limited</p>
+      <p class="product-status" data-i18n="badge_archive">Archive</p>
       <h1 class="product-title">Siesta</h1>
-      <p class="product-price">€120</p>
+      <p class="product-price" style="opacity:0.4;">€130</p>
       <div class="product-specs">
         <div class="product-spec"><span data-i18n="modal_size">Size</span><strong>35×30 cm</strong></div>
         <div class="product-spec"><span data-i18n="modal_medium">Medium</span><strong>Acrylic on Canvas</strong></div>
       </div>
       <p class="product-desc">Two cats in a dreamy embrace – painted in bold complementary colours on canvas. Stretched canvas, ships in a protective box.</p>
       <div class="product-actions">
-        <button class="store-add-btn" id="add-to-cart" onclick="document.querySelector('.store-card').click()">Add to cart</button>
-        <a class="store-ask-tg" href="https://t.me/qekkel?text=Hi!%20I'm%20interested%20in%20%22Siesta%22" target="_blank" rel="noopener">
+        <button class="store-add-btn" disabled style="opacity:0.35;cursor:default;" data-i18n="btn_unavailable">Not available</button>
+        <a class="store-ask-tg" href="https://t.me/qekkel?text=Hi!%20I'm%20interested%20in%20similar%20works%20by%20Qekkel" target="_blank" rel="noopener">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.932z"/></svg>
           <span data-i18n="ask_tg">Ask in Telegram</span>
         </a>
       </div>
     </div>
   </main>
-  <button class="store-card" style="display:none" data-id="original-04" data-title-en="Siesta" data-title-ru="Сиеста" data-status-en="Original Artwork" data-status-ru="Оригинал" data-size-en="35×30 cm" data-size-ru="35×30 см" data-medium-en="Acrylic" data-medium-ru="Акрил" data-img="../images/art01/detail4.webp,../images/art01/detail1.webp,../images/art01/detail2.webp,../images/art01/detail3.webp" data-desc-en="Two cats in a dreamy embrace – painted in bold complementary colours on canvas. Stretched canvas, ships in a protective box." data-desc-ru="Две кошки в объятиях – акрил в контрастных цветах на холсте. Натянутый холст, доставляется в защитной коробке." data-price-eur="130" data-sold="false" aria-controls="store-listing"></button>
+  <button class="store-card" style="display:none" data-id="original-04" data-title-en="Siesta" data-title-ru="Сиеста" data-status-en="Original Artwork" data-status-ru="Оригинал" data-size-en="35×30 cm" data-size-ru="35×30 см" data-medium-en="Acrylic" data-medium-ru="Акрил" data-img="../images/art01/detail4.webp,../images/art01/detail1.webp,../images/art01/detail2.webp,../images/art01/detail3.webp" data-desc-en="Two cats in a dreamy embrace – painted in bold complementary colours on canvas. Stretched canvas, ships in a protective box." data-desc-ru="Две кошки в объятиях – акрил в контрастных цветах на холсте. Натянутый холст, доставляется в защитной коробке." data-price-eur="130" data-sold="true" aria-controls="store-listing"></button>
   <div id="cart-modal" class="cart-modal" hidden><div class="cart-content"><h2 data-i18n="cart_title">Your cart</h2><div id="cart-items"></div><p><strong data-i18n="cart_total">Total:</strong> <span id="cart-total">0</span></p><div class="checkout-options"><button id="send-tg" data-i18n="send_tg">Send via Telegram</button><button id="send-email" data-i18n="send_email">Send via Email</button></div></div></div>
   <script>function setImg(src){document.getElementById('product-img').src=src;document.querySelectorAll('.product-thumb').forEach(t=>t.classList.toggle('active',t.src===src));const bg=document.querySelector('.product-stage-bg');if(bg)bg.style.backgroundImage='url('+src+')';}</script>
   <section class="more-works">
